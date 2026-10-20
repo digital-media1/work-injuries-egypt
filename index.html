@@ -2,830 +2,506 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>أخطر الوظائف في مصر | قصة صحافة بيانات</title>
-  <meta name="description" content="قصة صحافة بيانات عن إصابات العمل ومخاطر المهن في مصر.">
-
-  <style>
-    :root {
-      --ink: #202d29;
-      --green: #203c35;
-      --orange: #d96a45;
-      --cream: #f7f4ed;
-      --paper: #fffdf8;
-      --muted: #737a73;
-      --line: #deded3;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: Tahoma, Arial, sans-serif;
-      line-height: 1.9;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .topline {
-      height: 5px;
-      background: var(--orange);
-    }
-
-    header {
-      background: var(--paper);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      max-width: 1180px;
-      margin: auto;
-      padding: 19px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: -.4px;
-    }
-
-    .brand span {
-      color: var(--orange);
-    }
-
-    .nav a {
-      font-size: 12px;
-      text-decoration: none;
-      color: var(--muted);
-      margin-right: 18px;
-    }
-
-    .hero {
-      background: var(--cream);
-      overflow: hidden;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero-inner {
-      max-width: 1180px;
-      margin: auto;
-      padding: 55px 24px 65px;
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--orange);
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: .3px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 25px;
-      height: 2px;
-      background: var(--orange);
-    }
-
-    h1 {
-      font-size: clamp(40px, 5.5vw, 70px);
-      line-height: 1.35;
-      letter-spacing: -2px;
-      margin: 18px 0;
-      max-width: 620px;
-    }
-
-    h1 em {
-      color: var(--orange);
-      font-style: normal;
-    }
-
-    .hero-description {
-      color: #59635d;
-      font-size: 17px;
-      max-width: 520px;
-      line-height: 2;
-    }
-
-    .hero-meta {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #d8d7ce;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 25px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .hero-art {
-      position: relative;
-      background: #e7e8dc;
-      border-radius: 4px;
-      overflow: hidden;
-      min-height: 340px;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-art svg {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .art-label {
-      position: absolute;
-      bottom: 15px;
-      right: 15px;
-      background: var(--paper);
-      padding: 8px 12px;
-      font-size: 11px;
-      color: var(--green);
-      border-right: 3px solid var(--orange);
-    }
-
-    .float {
-      animation: float 3.5s ease-in-out infinite;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-
-    .float-delay {
-      animation: float 4s ease-in-out 1s infinite;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-
-    .pulse {
-      animation: pulse 2.5s ease-in-out infinite;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: .45; }
-      50% { opacity: 1; }
-    }
-
-    .story {
-      max-width: 850px;
-      margin: auto;
-      padding: 65px 24px;
-    }
-
-    .section-kicker {
-      color: var(--orange);
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    h2 {
-      font-size: clamp(27px, 4vw, 39px);
-      line-height: 1.5;
-      margin: 8px 0 20px;
-      letter-spacing: -.8px;
-    }
-
-    .lead {
-      font-size: 19px;
-      line-height: 2;
-      color: #4d5851;
-    }
-
-    .story p {
-      color: #4e5852;
-      font-size: 15px;
-    }
-
-    .divider {
-      width: 55px;
-      height: 3px;
-      background: var(--orange);
-      margin: 25px 0;
-    }
-
-    .quote {
-      margin: 35px 0;
-      padding: 20px 25px;
-      border-right: 4px solid var(--orange);
-      background: var(--cream);
-      font-size: 20px;
-      font-weight: bold;
-      line-height: 1.9;
-    }
-
-    .stats {
-      background: var(--green);
-      color: white;
-      padding: 55px 24px;
-    }
-
-    .stats-inner {
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .stats h2 {
-      max-width: 650px;
-    }
-
-    .stats-intro {
-      color: #d8e0d8;
-      font-size: 14px;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .stat-card {
-      border: 1px solid #557067;
-      padding: 24px;
-      min-height: 160px;
-    }
-
-    .stat-number {
-      font-size: 35px;
-      font-weight: bold;
-      color: #f1a17e;
-      line-height: 1.5;
-    }
-
-    .stat-card p {
-      color: #e2e7e1;
-      font-size: 13px;
-      margin-bottom: 0;
-    }
-
-    .placeholder {
-      font-size: 12px;
-      color: #d5d9d1;
-      margin-top: 8px;
-    }
-
-    .risk-list {
-      display: grid;
-      gap: 0;
-      margin-top: 25px;
-      border-top: 1px solid var(--line);
-    }
-
-    .risk-item {
-      display: grid;
-      grid-template-columns: 55px 1fr auto;
-      align-items: center;
-      gap: 15px;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .risk-index {
-      font-size: 24px;
-      font-weight: bold;
-      color: var(--orange);
-    }
-
-    .risk-item h3 {
-      font-size: 17px;
-      margin: 0;
-    }
-
-    .risk-item p {
-      font-size: 12px;
-      margin: 3px 0 0;
-    }
-
-    .risk-tag {
-      border: 1px solid var(--line);
-      padding: 5px 10px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .note {
-      margin-top: 20px;
-      font-size: 12px;
-      color: var(--muted);
-      background: var(--cream);
-      padding: 15px;
-    }
-
-    .team-section {
-      background: var(--cream);
-      padding: 65px 24px;
-      border-top: 1px solid var(--line);
-    }
-
-    .team-inner {
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .team-intro {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .team-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 22px 18px;
-      min-height: 115px;
-    }
-
-    .team-card span {
-      display: block;
-      color: var(--orange);
-      font-size: 11px;
-      margin-bottom: 8px;
-    }
-
-    .team-card h3 {
-      font-size: 15px;
-      margin: 0;
-      line-height: 1.8;
-    }
-
-    .credits {
-      margin-top: 25px;
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .sources {
-      max-width: 850px;
-      margin: auto;
-      padding: 60px 24px;
-    }
-
-    .source-row {
-      padding: 15px 0;
-      border-bottom: 1px solid var(--line);
-      font-size: 14px;
-    }
-
-    .source-row span {
-      color: var(--muted);
-      display: block;
-      font-size: 12px;
-      margin-top: 4px;
-    }
-
-    footer {
-      background: #192c27;
-      color: white;
-      padding: 28px 24px;
-      text-align: center;
-      font-size: 12px;
-    }
-
-    footer p {
-      color: #c9d4cd;
-      margin: 5px;
-    }
-
-    @media (max-width: 760px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        padding-top: 38px;
-        gap: 25px;
-      }
-
-      .hero-art {
-        min-height: auto;
-      }
-
-      .hero-art svg {
-        max-height: 330px;
-      }
-
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .nav a {
-        margin-right: 0;
-        margin-left: 14px;
-      }
-
-      .stat-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .team-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .risk-item {
-        grid-template-columns: 38px 1fr;
-      }
-
-      .risk-tag {
-        grid-column: 2;
-        justify-self: start;
-      }
-
-      .story, .sources {
-        padding-top: 45px;
-        padding-bottom: 45px;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        letter-spacing: -1px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#18352f">
+<title>خلف أسوار العمل | تحقيق في إصابات العمل بمصر</title>
+<meta name="description" content="تحقيق صحفي تفاعلي عن إصابات العمل في مصر، والمخاطر المهنية، وحقوق العمال.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#18352f;
+  --ink2:#25483f;
+  --paper:#f5f1e8;
+  --white:#fffdf7;
+  --red:#b94c38;
+  --red-light:#ead0c5;
+  --muted:#747a70;
+  --line:#d8d5c9;
+  --gold:#c7a66a;
+  --shadow:0 18px 55px #18352f12;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:95px}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Cairo',sans-serif;line-height:1.9;
+  overflow-x:hidden
+}
+a{color:inherit}
+button{font:inherit}
+::selection{background:var(--red);color:white}
+.topline{height:5px;background:var(--red)}
+.masthead{
+  background:var(--ink);color:var(--white);
+  padding:15px max(5%,calc((100% - 1200px)/2));
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;border-bottom:1px solid #ffffff25
+}
+.mast-brand{font-size:12px;letter-spacing:1px;font-weight:800}
+.mast-brand span{color:var(--gold)}
+.mast-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#d1d8cf}
+.nav{
+  background:var(--ink);color:var(--white);padding:0 max(5%,calc((100% - 1200px)/2));
+  display:flex;gap:26px;align-items:center;overflow-x:auto;
+  border-bottom:1px solid #ffffff20;position:sticky;top:0;z-index:20;
+  scrollbar-width:none
+}
+.nav a{white-space:nowrap;text-decoration:none;font-size:12px;padding:13px 0;color:#d7ddd6}
+.nav a:hover{color:var(--gold)}
+.nav .nav-label{color:var(--gold);font-size:10px;white-space:nowrap}
+main{max-width:1200px;margin:auto;padding:0 28px}
+.kicker{
+  display:flex;align-items:center;gap:10px;color:var(--red);
+  font-size:12px;font-weight:800;letter-spacing:.5px
+}
+.kicker:before{content:"";width:28px;height:2px;background:var(--red)}
+.hero{padding:70px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center}
+h1{font-size:clamp(42px,6vw,78px);line-height:1.2;letter-spacing:-2px;margin:18px 0}
+h1 span{color:var(--red);display:block}
+.hero-copy{max-width:590px;color:#58645c;font-size:16px}
+.hero-bottom{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-top:25px}
+.primary-btn{
+  display:inline-flex;align-items:center;gap:10px;background:var(--red);
+  color:white;text-decoration:none;padding:12px 20px;font-weight:800;font-size:13px;
+  transition:transform .2s,background .2s
+}
+.primary-btn:hover{transform:translateY(-3px);background:#963b2a}
+.hero-note{font-size:11px;color:var(--muted)}
+.hero-art{
+  min-height:370px;background:var(--ink);position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)
+}
+.hero-art:before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent 0,transparent 39px,#ffffff0a 40px),
+  repeating-linear-gradient(90deg,transparent 0,transparent 39px,#ffffff0a 40px)
+}
+.art-stamp{
+  position:absolute;top:20px;right:20px;border:1px solid #c7a66a;
+  color:var(--gold);font-size:10px;padding:5px 10px;z-index:2
+}
+.art-number{position:absolute;bottom:14px;left:18px;color:#ffffff25;font-size:58px;font-weight:900}
+.worker-svg{width:100%;max-width:470px;position:relative;z-index:1}
+.worker-move{animation:float 4s ease-in-out infinite;transform-origin:center}
+.beam-move{animation:beam 3s ease-in-out infinite;transform-origin:center}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes beam{0%,100%{transform:rotate(0)}50%{transform:rotate(-1deg)}}
+.section{padding:66px 0;border-top:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:30px}
+.section-index{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red)}
+h2{font-size:clamp(27px,4vw,43px);line-height:1.35;margin:8px 0 10px;letter-spacing:-.7px}
+.section-intro{color:var(--muted);max-width:650px;font-size:14px;margin:0}
+.side-note{font-size:10px;color:var(--muted);max-width:190px;border-right:2px solid var(--red);padding-right:12px}
+.story-strip{background:var(--ink);color:var(--white);padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.story-strip h3{font-size:25px;line-height:1.5;margin:0 0 12px}
+.story-strip p{font-size:13px;color:#d1d9d2;margin:0}
+.quote-mark{font-size:80px;line-height:.8;color:var(--gold)}
+.quote-text{font-size:21px;font-weight:800;line-height:1.7}
+.quote-caption{font-size:11px;color:#b8c2b8;margin-top:10px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.info-card{border:1px solid var(--line);background:var(--white);padding:23px;position:relative;overflow:hidden}
+.info-card:after{content:"";height:4px;background:var(--red);position:absolute;bottom:0;right:0;width:0;transition:width .3s}
+.info-card:hover:after{width:100%}
+.card-icon{width:43px;height:43px;background:#e8e6da;display:grid;place-items:center;color:var(--ink);margin-bottom:17px}
+.info-card h3{font-size:18px;margin:0 0 8px}
+.info-card p{font-size:12px;color:var(--muted);margin:0}
+.chart-layout{display:grid;grid-template-columns:.75fr 1.25fr;gap:22px}
+.chart-panel{background:var(--white);border:1px solid var(--line);padding:25px}
+.chart-panel h3{font-size:18px;margin:0 0 7px}
+.chart-panel>p{font-size:12px;color:var(--muted);margin:0 0 20px}
+.chart-rows{display:grid;gap:18px}
+.chart-row{display:grid;grid-template-columns:105px 1fr 28px;gap:10px;align-items:center;font-size:12px}
+.chart-track{height:11px;background:#e7e4d9;overflow:hidden}
+.chart-bar{height:100%;width:0;background:var(--red);transition:width 1s ease}
+.chart-row:nth-child(2) .chart-bar{background:var(--ink2)}
+.chart-row:nth-child(3) .chart-bar{background:var(--gold)}
+.chart-row:nth-child(4) .chart-bar{background:#89968b}
+.chart-row input{width:100%;accent-color:var(--red);cursor:pointer}
+.chart-value{font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center}
+.chart-warning{font-size:11px!important;color:var(--red)!important;margin-top:20px!important;border-top:1px solid var(--line);padding-top:13px}
+.data-empty{background:var(--paper);border:1px dashed #b7b4a8;padding:17px;font-size:12px;color:var(--muted)}
+.data-empty strong{color:var(--red)}
+.timeline{position:relative;margin-top:25px}
+.timeline:before{content:"";position:absolute;right:8px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.timeline-item{display:grid;grid-template-columns:25px 1fr;gap:18px;position:relative;padding:0 0 28px}
+.timeline-dot{width:17px;height:17px;background:var(--paper);border:4px solid var(--red);position:relative;z-index:1;margin-top:7px}
+.timeline-item h3{font-size:17px;margin:0 0 5px}
+.timeline-item p{font-size:13px;color:var(--muted);margin:0}
+.timeline-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--red)}
+.question-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.question{
+  width:100%;text-align:right;background:var(--white);border:1px solid var(--line);
+  padding:19px 20px;cursor:pointer;color:var(--ink);display:block
+}
+.question-top{display:flex;justify-content:space-between;gap:15px;font-weight:800;font-size:14px}
+.question-top span{color:var(--red);font-size:20px}
+.answer{display:none;color:var(--muted);font-size:12px;padding-top:12px}
+.question.open .answer{display:block}
+.question.open{border-color:var(--red)}
+.sources{background:#e9e5da;padding:25px}
+.sources h3{margin:0 0 10px;font-size:18px}
+.sources p{font-size:12px;color:#626c62}
+.sources ul{padding-right:20px;font-size:12px;color:#626c62}
+.sources a{color:var(--red);overflow-wrap:anywhere}
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.team-card{border-top:3px solid var(--ink);padding:17px 12px;background:var(--white);min-height:130px}
+.team-no{font-family:'IBM Plex Mono',monospace;color:var(--red);font-size:11px}
+.team-card h3{font-size:13px;line-height:1.8;margin:12px 0 0}
+.footer{background:var(--ink);color:var(--white);margin-top:45px;padding:40px 28px}
+.footer-inner{max-width:1144px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+.footer h2{font-size:23px;margin:0 0 8px}
+.footer p{color:#c1ccc2;font-size:11px;margin:0}
+.footer-mark{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s,transform .65s}
+.reveal.visible{opacity:1;transform:none}
+.progress{height:3px;background:var(--red);position:fixed;top:0;right:0;width:0;z-index:50}
+.smallcaps{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px}
+@media(max-width:800px){
+  main{padding:0 18px}
+  .hero{padding-top:42px}
+  .hero-grid,.chart-layout{grid-template-columns:1fr}
+  .hero-art{min-height:290px}
+  .cards{grid-template-columns:1fr 1fr}
+  .team{grid-template-columns:repeat(2,1fr)}
+  .team-card:last-child{grid-column:span 2}
+  .section-head{align-items:start;flex-direction:column}
+  .side-note{max-width:none}
+}
+@media(max-width:520px){
+  .masthead{padding:12px 16px}
+  .mast-meta{font-size:9px}
+  .nav{padding:0 16px;gap:19px}
+  h1{font-size:43px}
+  .hero-grid{gap:25px}
+  .hero-art{min-height:250px}
+  .story-strip{grid-template-columns:1fr;padding:24px;gap:18px}
+  .cards,.question-grid{grid-template-columns:1fr}
+  .chart-panel{padding:17px}
+  .chart-row{grid-template-columns:85px 1fr 25px;gap:7px}
+  .section{padding:48px 0}
+  .team{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 
 <body>
-  <div class="topline"></div>
+<div class="progress" id="progress"></div>
+<div class="topline"></div>
 
-  <header>
-    <nav class="nav">
-      <div class="brand">مرصد <span>البيانات</span> · مصر</div>
-      <div>
-        <a href="#story">القصة</a>
-        <a href="#numbers">الأرقام</a>
-        <a href="#team">فريق الإعداد</a>
-        <a href="#sources">المصادر</a>
-      </div>
-    </nav>
-  </header>
+<header class="masthead">
+  <div class="mast-brand">ملف <span>العمل</span> / تحقيق بصري</div>
+  <div class="mast-meta">EGYPT · DATA JOURNALISM</div>
+</header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="eyebrow">قصة صحافة بيانات · مصر</div>
+<nav class="nav" aria-label="التنقل الرئيسي">
+  <span class="nav-label">داخل التحقيق</span>
+  <a href="#story">القصة</a>
+  <a href="#risks">المخاطر</a>
+  <a href="#data">الأرقام</a>
+  <a href="#rights">حقوق العمال</a>
+  <a href="#sources">المصادر</a>
+  <a href="#team">فريق العمل</a>
+</nav>
 
-        <h1>أخطر الوظائف في مصر...<br><em>من يحمي العامل؟</em></h1>
-
-        <p class="hero-description">
-          وراء كل إصابة رقم، ووراء كل رقم إنسان.
-          رحلة في بيانات إصابات العمل، لفهم المهن الأكثر
-          تعرضًا للمخاطر، وما تكشفه الأرقام عن السلامة المهنية.
+<main>
+  <section class="hero" id="story">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="kicker">تحقيق صحفي · صحافة البيانات</div>
+        <h1>خلف أسوار <span>العمل</span></h1>
+        <p class="hero-copy">
+          كل يوم، يذهب ملايين العمال إلى مواقع البناء والمصانع وأماكن العمل المختلفة.
+          لكن ماذا يحدث عندما تتحول بيئة العمل إلى مصدر للخطر؟ وكيف نقرأ واقع إصابات العمل في مصر؟
         </p>
-
-        <div class="hero-meta">
-          <span>إعداد فريق صحافة البيانات</span>
-          <span>تحقيق قائم على البيانات</span>
-          <span>2026</span>
+        <div class="hero-bottom">
+          <a class="primary-btn" href="#risks">ابدأ اكتشاف القصة <span>←</span></a>
+          <span class="hero-note">اقرأ · استكشف · تحقّق من البيانات</span>
         </div>
       </div>
 
-      <div class="hero-art">
-        <svg viewBox="0 0 600 460" role="img"
-          aria-label="رسم توضيحي لعمال في مواقع عمل مختلفة ومخاطر السلامة المهنية">
-          <rect width="600" height="460" fill="#e7e8dc"/>
-          <circle cx="480" cy="82" r="45" fill="#d5d9c9"/>
-          <circle cx="105" cy="355" r="65" fill="#d5d9c9"/>
-
-          <!-- Crane -->
-          <g stroke="#203c35" stroke-width="8" fill="none"
-             stroke-linejoin="round">
-            <path d="M60 370V70H300"/>
-            <path d="M60 115H360"/>
-            <path d="M300 70L360 115"/>
-            <path d="M300 70V170"/>
-            <path d="M280 170H320"/>
-            <path d="M300 170V200"/>
+      <div class="hero-art reveal" aria-label="رسم توضيحي لعامل في موقع بناء">
+        <div class="art-stamp">ملف رقم 001 / مصر</div>
+        <svg class="worker-svg" viewBox="0 0 480 390" role="img" aria-label="رسم فني لعامل وخلفه هياكل بناء">
+          <g stroke="#c7a66a" stroke-width="2" fill="none" opacity=".65">
+            <path d="M40 315H435M70 315V90H220V315M70 125H220M70 175H220M70 225H220"/>
+            <path d="M70 90L220 315M220 90L70 315M260 315V70H420V315M260 115H420M260 165H420M260 215H420"/>
+            <path d="M260 70L420 315M420 70L260 315"/>
           </g>
-          <g stroke="#203c35" stroke-width="2" opacity=".35">
-            <path d="M60 155L120 115M60 205L160 115M60 255L210 115M60 305L260 115"/>
+          <g class="beam-move">
+            <path d="M34 74L300 74" stroke="#b94c38" stroke-width="8"/>
+            <path d="M55 74V98M280 74V98" stroke="#b94c38" stroke-width="4"/>
           </g>
-
-          <!-- Building -->
-          <g>
-            <rect x="345" y="175" width="190" height="195"
-              fill="#b8c7b7"/>
-            <rect x="365" y="200" width="42" height="45" fill="#e7e8dc"/>
-            <rect x="425" y="200" width="42" height="45" fill="#e7e8dc"/>
-            <rect x="485" y="200" width="30" height="45" fill="#e7e8dc"/>
-            <rect x="365" y="265" width="42" height="45" fill="#e7e8dc"/>
-            <rect x="425" y="265" width="42" height="45" fill="#e7e8dc"/>
-            <rect x="485" y="265" width="30" height="45" fill="#e7e8dc"/>
+          <g class="worker-move">
+            <path d="M178 175Q204 155 231 175L248 247H160Z" fill="#c7a66a"/>
+            <path d="M182 242L174 311H202L216 258L229 311H257L242 242Z" fill="#f5f1e8"/>
+            <path d="M173 310H204L205 324H164Z" fill="#b94c38"/>
+            <path d="M229 310H260L269 324H226Z" fill="#b94c38"/>
+            <path d="M176 184L145 224L164 239L194 205" fill="#c7a66a"/>
+            <path d="M233 184L263 210L250 229L222 205" fill="#c7a66a"/>
+            <path d="M191 137Q204 124 219 138L224 167L193 175L184 154Z" fill="#d9a17c"/>
+            <path d="M181 138Q202 105 227 137L229 147H180Z" fill="#b94c38"/>
+            <path d="M175 140Q202 119 233 140" fill="none" stroke="#f5f1e8" stroke-width="4"/>
+            <path d="M199 171L214 171L224 188L188 188Z" fill="#18352f"/>
           </g>
-
-          <!-- Worker one -->
-          <g class="float">
-            <circle cx="205" cy="180" r="24" fill="#b86b4c"/>
-            <path d="M178 177Q205 137 232 177Z" fill="#d96a45"/>
-            <path d="M176 174H234" stroke="#203c35" stroke-width="5"/>
-            <path d="M185 210L167 292L211 300L226 225Z" fill="#203c35"/>
-            <path d="M187 225L148 253L160 269L193 250" fill="#b86b4c"/>
-            <path d="M214 230L245 256L234 269L205 250" fill="#b86b4c"/>
-            <path d="M174 289L165 348L190 348L202 298" fill="#d96a45"/>
-            <path d="M202 298L212 348L235 348L220 292" fill="#d96a45"/>
-            <path d="M160 348H193V359H154Z" fill="#203c35"/>
-            <path d="M211 348H240V359H207Z" fill="#203c35"/>
+          <g fill="#b94c38">
+            <circle cx="112" cy="65" r="4"/><circle cx="375" cy="115" r="4"/>
+            <circle cx="337" cy="285" r="4"/><circle cx="112" cy="275" r="4"/>
           </g>
-
-          <!-- Safety vest -->
-          <path d="M185 218L202 231L217 216L221 253L191 260L176 248Z"
-            fill="#f0b76a"/>
-          <path d="M202 231L201 257" stroke="#203c35" stroke-width="3"/>
-
-          <!-- Caution icon -->
-          <g class="pulse">
-            <path d="M425 80L464 148H386Z" fill="#d96a45"/>
-            <path d="M425 101V124" stroke="#fffdf8" stroke-width="6"
-              stroke-linecap="round"/>
-            <circle cx="425" cy="136" r="3.5" fill="#fffdf8"/>
-          </g>
-
-          <!-- Factory worker -->
-          <g class="float-delay">
-            <circle cx="430" cy="330" r="16" fill="#b86b4c"/>
-            <path d="M411 327Q430 303 449 327Z" fill="#f0b76a"/>
-            <path d="M414 349L401 390L440 390L447 352Z" fill="#d96a45"/>
-            <path d="M408 360L388 377L395 385L418 373" fill="#b86b4c"/>
-            <path d="M442 361L458 377L451 385L435 373" fill="#b86b4c"/>
-            <path d="M408 387L405 415H420L427 389" fill="#203c35"/>
-            <path d="M427 389L433 415H448L439 387" fill="#203c35"/>
-          </g>
-
-          <!-- Ground -->
-          <path d="M25 370H575" stroke="#203c35" stroke-width="3"/>
-          <path d="M25 380H575" stroke="#b4bcac" stroke-width="2"/>
-
-          <!-- Decorative data lines -->
-          <g stroke="#d96a45" stroke-width="3" fill="none"
-             stroke-linecap="round">
-            <path d="M60 405H110"/>
-            <path d="M60 418H90"/>
-            <path d="M490 405H540"/>
-            <path d="M510 418H540"/>
+          <g stroke="#f5f1e8" stroke-width="1" opacity=".65">
+            <path d="M28 345H95M385 345H452"/>
           </g>
         </svg>
-        <div class="art-label">رسم توضيحي · ليس صورة لحادث حقيقي</div>
+        <div class="art-number">01—</div>
       </div>
     </div>
   </section>
 
-  <main>
-    <section class="story" id="story">
-      <div class="section-kicker">01 — بداية الحكاية</div>
-      <h2>حين يصبح الذهاب إلى العمل مخاطرة</h2>
-
-      <p class="lead">
-        يذهب ملايين الأشخاص إلى أعمالهم كل صباح، لكن بيئة العمل
-        ليست آمنة بالقدر نفسه للجميع. فبين مواقع البناء والمصانع
-        ووسائل النقل وغيرها من أماكن العمل، تختلف المخاطر
-        باختلاف طبيعة المهنة وظروفها وإجراءات السلامة المتاحة.
-      </p>
-
-      <div class="divider"></div>
-
-      <p>
-        تحاول هذه القصة الإجابة عن أسئلة تتجاوز عدد الإصابات:
-        ما القطاعات التي تسجل أكبر عدد من إصابات العمل؟
-        وما أنواع الإصابات الأكثر شيوعًا؟ وهل تعكس الأرقام
-        حجم الخطر الفعلي، أم تتأثر أيضًا بمدى الإبلاغ عن الحوادث
-        وتسجيلها؟
-      </p>
-
-      <p>
-        سنعتمد على البيانات المنشورة والمصادر الموثقة، مع توضيح
-        الفترة الزمنية وطريقة حساب المؤشرات وحدود كل مجموعة بيانات.
-        فالعدد الأكبر من الإصابات لا يعني بالضرورة أن المهنة
-        هي الأخطر؛ إذ ينبغي، متى توفرت البيانات، مقارنة الإصابات
-        بعدد العاملين أو ساعات العمل.
-      </p>
-
-      <div class="quote">
-        الأرقام لا تحكي كل شيء وحدها؛ لكنها تساعدنا على طرح
-        الأسئلة الصحيحة.
-      </div>
-    </section>
-
-    <section class="stats" id="numbers">
-      <div class="stats-inner">
-        <div class="section-kicker">02 — الأرقام تتحدث</div>
-        <h2>ما حجم إصابات العمل في مصر؟</h2>
-        <p class="stats-intro">
-          ستُستكمل المؤشرات بعد مراجعة البيانات الأصلية والتحقق
-          من سنة النشر وتعريف كل مؤشر.
+  <section class="section reveal">
+    <div class="story-strip">
+      <div>
+        <div class="kicker" style="color:var(--gold)">السؤال الأساسي</div>
+        <h3>هل مكان العمل آمن فعلًا؟</h3>
+        <p>
+          إصابة العمل ليست مجرد رقم في تقرير؛ إنها واقعة قد تؤثر على العامل وأسرته
+          وقدرته على الاستمرار في العمل. فهم المشكلة يبدأ من البيانات، ويكتمل بالتحقق
+          من ظروف العمل ووسائل الوقاية وحقوق المصابين.
         </p>
+      </div>
+      <div>
+        <div class="quote-mark">“</div>
+        <div class="quote-text">
+          وراء كل رقم حكاية، ووراء كل إصابة سؤال عن السلامة والوقاية والمسؤولية.
+        </div>
+        <div class="quote-caption">الفكرة المحورية للتحقيق — صياغة تحريرية وليست اقتباسًا من عامل</div>
+      </div>
+    </div>
+  </section>
 
-        <div class="stat-grid">
-          <article class="stat-card">
-            <div class="stat-number">—</div>
-            <strong>إجمالي الإصابات</strong>
-            <p>عدد الإصابات المسجلة خلال الفترة المختارة.</p>
-            <div class="placeholder">بانتظار إدخال البيانات الموثقة</div>
-          </article>
+  <section class="section" id="risks">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-index">01 / طبيعة المخاطر</div>
+        <h2>أين تكمن المخاطر؟</h2>
+        <p class="section-intro">تختلف المخاطر باختلاف المهنة وبيئة العمل. هذه أمثلة لأنواع الخطر التي ينبغي فحصها، وليست ترتيبًا للمهن الأكثر إصابة في مصر.</p>
+      </div>
+      <div class="side-note">من المهم التمييز بين شيوع الخطر ومعدل الإصابات الفعلي.</div>
+    </div>
 
-          <article class="stat-card">
-            <div class="stat-number">—</div>
-            <strong>إصابات مميتة</strong>
-            <p>عدد حالات الوفاة المرتبطة بإصابات العمل.</p>
-            <div class="placeholder">بانتظار إدخال البيانات الموثقة</div>
-          </article>
+    <div class="cards">
+      <article class="info-card reveal">
+        <div class="card-icon">
+          <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8h14v13M8 8V4h8v4M9 12h2m2 0h2m-6 4h2m2 0h2"/></svg>
+        </div>
+        <h3>مواقع البناء</h3>
+        <p>السقوط من ارتفاعات، سقوط الأجسام، مخاطر السقالات والمعدات، والتعرض لمناطق غير مؤمّنة.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="card-icon">
+          <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21V9l5 3V9l5 3V5h4v16M2 21h20M15 8h2m-2 4h2m-8 1h2m-2 4h2"/></svg>
+        </div>
+        <h3>المصانع والورش</h3>
+        <p>الآلات المتحركة، الأدوات الحادة، الكهرباء، الحرارة، والمواد التي قد تتطلب احتياطات خاصة.</p>
+      </article>
+      <article class="info-card reveal">
+        <div class="card-icon">
+          <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17h18l-2 4H5zM5 17l2-8h10l2 8M9 9V5h6v4M12 5V2M8 13h8"/></svg>
+        </div>
+        <h3>النقل والعمل الميداني</h3>
+        <p>حوادث الطرق، التعامل مع المعدات المتحركة، والإجهاد الناتج عن ظروف العمل والتنقل.</p>
+      </article>
+    </div>
+  </section>
 
-          <article class="stat-card">
-            <div class="stat-number">—</div>
-            <strong>الفترة الزمنية</strong>
-            <p>السنة أو السنوات التي تغطيها البيانات.</p>
-            <div class="placeholder">تُحدد وفق المصدر المستخدم</div>
-          </article>
+  <section class="section" id="data">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-index">02 / قراءة البيانات</div>
+        <h2>ماذا تقول الأرقام؟</h2>
+        <p class="section-intro">لا يمكن تحديد المهن الأعلى في إصابات العمل دون بيانات موثقة وفترة زمنية واضحة. هذا القسم جاهز لإضافة الأرقام الحقيقية ومقارنتها بصريًا.</p>
+      </div>
+      <div class="side-note">لن تُعرض أرقام تقديرية باعتبارها إحصاءات رسمية.</div>
+    </div>
+
+    <div class="chart-layout">
+      <div class="chart-panel reveal">
+        <h3>مؤشرات يجب تتبعها</h3>
+        <p>البيانات المطلوبة لبناء صورة أدق عن إصابات العمل.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div><div class="timeline-label">INDICATOR 01</div><h3>عدد الإصابات المسجلة</h3><p>مع تحديد السنة والجهة التي جمعت البيانات.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div><div class="timeline-label">INDICATOR 02</div><h3>نوع الإصابة</h3><p>مثل السقوط أو الإصابات المرتبطة بالمعدات.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div><div class="timeline-label">INDICATOR 03</div><h3>القطاع الاقتصادي</h3><p>للمقارنة بين القطاعات على أساس موحد.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div><div class="timeline-label">INDICATOR 04</div><h3>نتيجة الإصابة</h3><p>مع مراعاة تعريفات التصنيف المعتمدة في المصدر.</p></div>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="story">
-      <div class="section-kicker">03 — أين تتركز المخاطر؟</div>
-      <h2>هل توجد مهن أكثر خطورة من غيرها؟</h2>
-
-      <p>
-        تختلف المخاطر المهنية من قطاع إلى آخر. وتساعد المقارنة
-        بين القطاعات على تحديد مواضع الحاجة إلى الوقاية والتدريب
-        وتحسين بيئة العمل.
-      </p>
-
-      <div class="risk-list">
-        <article class="risk-item">
-          <div class="risk-index">01</div>
-          <div>
-            <h3>البناء والتشييد</h3>
-            <p>يُدرس من خلال بيانات السقوط والعمل على ارتفاعات.</p>
-          </div>
-          <div class="risk-tag">بانتظار التحقق</div>
-        </article>
-
-        <article class="risk-item">
-          <div class="risk-index">02</div>
-          <div>
-            <h3>الصناعة والمصانع</h3>
-            <p>يُدرس من خلال بيانات الآلات والإصابات أثناء التشغيل.</p>
-          </div>
-          <div class="risk-tag">بانتظار التحقق</div>
-        </article>
-
-        <article class="risk-item">
-          <div class="risk-index">03</div>
-          <div>
-            <h3>النقل والمهن الميدانية</h3>
-            <p>يُدرس من خلال بيانات الحوادث والإصابات المهنية.</p>
-          </div>
-          <div class="risk-tag">بانتظار التحقق</div>
-        </article>
-      </div>
-
-      <div class="note">
-        تنبيه منهجي: هذا ترتيب مبدئي لأقسام البحث، وليس تصنيفًا
-        نهائيًا للأخطر. لن يُعتمد ترتيب أو وصف إحصائي قبل التحقق
-        من البيانات الفعلية ومصدرها.
-      </div>
-    </section>
-
-    <section class="story">
-      <div class="section-kicker">04 — ما وراء الأرقام</div>
-      <h2>الإصابة ليست مجرد رقم</h2>
-
-      <p>
-        تساعد البيانات على فهم حجم المشكلة، لكن تفسيرها يحتاج
-        إلى معرفة ظروف العمل، وآليات الإبلاغ، وتدابير السلامة،
-        ومدى حصول المصابين على حقوقهم.
-      </p>
-
-      <p>
-        يمكن إضافة حالة إنسانية موثقة في هذا القسم بعد الحصول
-        على موافقة صاحبها، والتحقق من تفاصيل الواقعة، ومراعاة
-        الخصوصية وعدم نشر معلومات قد تعرّضه للضرر.
-      </p>
-    </section>
-
-    <section class="team-section" id="team">
-      <div class="team-inner">
-        <div class="section-kicker">فريق العمل</div>
-        <h2>من أعدّ هذه القصة؟</h2>
-        <p class="team-intro">
-          إعداد وتطوير قصة صحافة البيانات ضمن مشروع الإعلام الرقمي.
-        </p>
-
-        <div class="team-grid">
-          <article class="team-card">
-            <span>إعداد · 01</span>
-            <h3>رقية طارق عبدالعاطي</h3>
-          </article>
-
-          <article class="team-card">
-            <span>إعداد · 02</span>
-            <h3>فاطمة ناصرعلي الفيتوري</h3>
-          </article>
-
-          <article class="team-card">
-            <span>إعداد · 03</span>
-            <h3>حبيبه احمد زيدان</h3>
-          </article>
-
-          <article class="team-card">
-            <span>إعداد · 04</span>
-            <h3>أروى عبدالقوى سعيد</h3>
-          </article>
-
-          <article class="team-card">
-            <span>إعداد · 05</span>
-            <h3>نعمات محمود فتحى</h3>
-          </article>
+      <div class="chart-panel reveal">
+        <h3>استكشف الرسم البياني</h3>
+        <p>نموذج تفاعلي لتوضيح طريقة المقارنة فقط، وليس بيانات حقيقية عن مصر.</p>
+        <div class="data-empty">
+          <strong>تنبيه منهجي:</strong> القيم التالية تجريبية لشرح التفاعل البصري. يجب استبدالها ببيانات موثقة قبل نشر التحقيق.
         </div>
-
-        <div class="credits">
-          مشروع صحافة بيانات · الإعلام الرقمي
+        <div class="chart-rows" id="chartRows" style="margin-top:24px">
+          <div class="chart-row"><span>البناء</span><div class="chart-track"><div class="chart-bar" data-value="85"></div></div><span class="chart-value">85</span></div>
+          <div class="chart-row"><span>الصناعة</span><div class="chart-track"><div class="chart-bar" data-value="65"></div></div><span class="chart-value">65</span></div>
+          <div class="chart-row"><span>النقل</span><div class="chart-track"><div class="chart-bar" data-value="48"></div></div><span class="chart-value">48</span></div>
+          <div class="chart-row"><span>أخرى</span><div class="chart-track"><div class="chart-bar" data-value="30"></div></div><span class="chart-value">30</span></div>
         </div>
+        <div style="margin-top:24px">
+          <label for="chartControl" style="font-size:12px;font-weight:800">غيّري مقياس العرض</label>
+          <input id="chartControl" type="range" min="50" max="100" value="100" style="width:100%;margin-top:10px">
+          <p id="chartMessage" style="font-size:11px;color:var(--muted);margin:5px 0 0">حرّكي المؤشر لتغيير طول الأعمدة.</p>
+        </div>
+        <p class="chart-warning">لا تستنتجي أن مهنة أكثر خطورة من أخرى من هذا النموذج التجريبي. احذفي القيم الافتراضية واستبدليها بالبيانات المعتمدة قبل النشر.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="sources" id="sources">
-      <div class="section-kicker">المراجع والتوثيق</div>
-      <h2>المصادر والمنهجية</h2>
-
-      <p>
-        تُضاف هنا الروابط الأصلية للتقارير والجداول الإحصائية
-        المستخدمة في القصة، مع اسم الجهة الناشرة وسنة البيانات
-        وتاريخ الاطلاع.
-      </p>
-
-      <div class="source-row">
-        <strong>المصدر الأول</strong>
-        <span>يُضاف اسم الجهة والتقرير والرابط بعد التحقق.</span>
+  <section class="section" id="rights">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-index">03 / السلامة والحقوق</div>
+        <h2>ما الذي يجب أن نتحقق منه؟</h2>
+        <p class="section-intro">أسئلة تساعد في توجيه البحث الصحفي. المعلومات القانونية النهائية يجب مراجعتها بالرجوع إلى النصوص الرسمية السارية.</p>
       </div>
+    </div>
+    <div class="question-grid">
+      <button class="question" type="button" aria-expanded="false">
+        <span class="question-top">هل تتوفر وسائل الوقاية؟ <span>＋</span></span>
+        <span class="answer">تحقق من توافر معدات الوقاية الشخصية، والتدريب على استخدامها، وصيانة المعدات، وتطبيق إجراءات السلامة داخل موقع العمل.</span>
+      </button>
+      <button class="question" type="button" aria-expanded="false">
+        <span class="question-top">كيف يتم الإبلاغ عن الإصابة؟ <span>＋</span></span>
+        <span class="answer">يجب مراجعة الإجراءات الرسمية المعمول بها، والمستندات المطلوبة، والجهة المختصة بحسب طبيعة العمل والحالة.</span>
+      </button>
+      <button class="question" type="button" aria-expanded="false">
+        <span class="question-top">ما حقوق العامل المصاب؟ <span>＋</span></span>
+        <span class="answer">تختلف الحقوق والإجراءات بحسب الحالة والقوانين المطبقة. ينبغي التحقق من التغطية التأمينية، والتعويضات المستحقة، والجهة الرسمية المختصة.</span>
+      </button>
+      <button class="question" type="button" aria-expanded="false">
+        <span class="question-top">كيف نحمي خصوصية المصابين؟ <span>＋</span></span>
+        <span class="answer">لا تنشر الاسم أو الصورة أو البيانات الطبية دون موافقة مناسبة. وضّح للمصدر كيف ستُستخدم شهادته، واحذف التفاصيل التي قد تكشف هويته دون ضرورة صحفية.</span>
+      </button>
+    </div>
+  </section>
 
-      <div class="source-row">
-        <strong>المصدر الثاني</strong>
-        <span>يُضاف اسم قاعدة البيانات أو الجدول الإحصائي.</span>
+  <section class="section" id="sources">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-index">04 / التوثيق</div>
+        <h2>المصادر والمنهجية</h2>
+        <p class="section-intro">قوة التحقيق لا تأتي من التصميم وحده؛ بل من مصادر يمكن للقارئ الرجوع إليها، ومن توضيح طريقة جمع المعلومات وحدودها.</p>
       </div>
+    </div>
+    <div class="sources reveal">
+      <h3>مصادر مقترحة للتحقق وجمع البيانات</h3>
+      <p>أضيفي هنا اسم كل تقرير أو قاعدة بيانات، والجهة الناشرة، وسنة الإصدار، ورابط المصدر الأصلي الذي استُخدم بالفعل.</p>
+      <ul>
+        <li><a href="https://www.capmas.gov.eg/" target="_blank" rel="noopener noreferrer">الجهاز المركزي للتعبئة العامة والإحصاء (CAPMAS)</a> — ابحثي عن نشرات إصابات العمل والبيانات ذات الصلة.</li>
+        <li><a href="https://www.manpower.gov.eg/" target="_blank" rel="noopener noreferrer">وزارة العمل المصرية</a> — للتحقق من المعلومات واللوائح المنشورة رسميًا.</li>
+        <li><a href="https://www.ilo.org/" target="_blank" rel="noopener noreferrer">منظمة العمل الدولية (ILO)</a> — للمعايير والتقارير الدولية عن السلامة والصحة المهنية.</li>
+      </ul>
+      <p><strong>ملاحظة تحريرية:</strong> وجود رابط الجهة لا يعني أن البيانات المعروضة في هذا الموقع مأخوذة منها بالفعل. يجب توثيق التقرير المحدد والصفحة أو الجدول الذي استُخدم.</p>
+    </div>
+  </section>
 
-      <div class="source-row">
-        <strong>منهجية التحليل</strong>
-        <span>
-          توضيح فترة الدراسة، وتعريف الإصابات، وطريقة حساب
-          النسب، والقيود التي تؤثر على تفسير النتائج.
-        </span>
+  <section class="section" id="team">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-index">05 / فريق التحقيق</div>
+        <h2>من وراء القصة؟</h2>
+        <p class="section-intro">عمل جماعي يبحث في البيانات، ويطرح الأسئلة، ويحوّل المعلومات إلى قصة مفهومة للقارئ.</p>
       </div>
-    </section>
-  </main>
+    </div>
+    <div class="team">
+      <div class="team-card reveal"><div class="team-no">TEAM / 01</div><h3>رقية طارق عبدالعاطي</h3></div>
+      <div class="team-card reveal"><div class="team-no">TEAM / 02</div><h3>فاطمة ناصرعلي الفيتوري</h3></div>
+      <div class="team-card reveal"><div class="team-no">TEAM / 03</div><h3>حبيبه احمد زيدان</h3></div>
+      <div class="team-card reveal"><div class="team-no">TEAM / 04</div><h3>أروى عبدالقوى سعيد</h3></div>
+      <div class="team-card reveal"><div class="team-no">TEAM / 05</div><h3>نعمات محمود فتحى</h3></div>
+    </div>
+  </section>
+</main>
 
-  <footer>
-    <strong>أخطر الوظائف في مصر</strong>
-    <p>قصة صحافة بيانات عن إصابات العمل والسلامة المهنية</p>
-    <p>الرسومات التوضيحية تعبير بصري عن موضوع القصة وليست توثيقًا لحوادث فعلية.</p>
-  </footer>
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <h2>خلف أسوار العمل</h2>
+      <p>تحقيق بصري حول إصابات العمل في مصر.</p>
+      <p>المعلومات والإحصائيات تخضع للتحقق والتوثيق قبل النشر النهائي.</p>
+    </div>
+    <div class="footer-mark">DATA · PEOPLE · ACCOUNTABILITY</div>
+  </div>
+</footer>
+
+<script>
+/* Reveal sections as the reader scrolls */
+const revealItems = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealItems.forEach(item => observer.observe(item));
+} else {
+  revealItems.forEach(item => item.classList.add('visible'));
+}
+
+/* Expandable questions */
+document.querySelectorAll('.question').forEach(button => {
+  button.addEventListener('click', () => {
+    const isOpen = button.classList.toggle('open');
+    button.setAttribute('aria-expanded', String(isOpen));
+    const sign = button.querySelector('.question-top span');
+    if (sign) sign.textContent = isOpen ? '−' : '＋';
+  });
+});
+
+/* Interactive demo chart — values are illustrative, not real statistics */
+const chartControl = document.getElementById('chartControl');
+const chartBars = document.querySelectorAll('.chart-bar');
+const chartMessage = document.getElementById('chartMessage');
+
+function updateChart() {
+  const scale = Number(chartControl.value);
+  chartBars.forEach(bar => {
+    const demoValue = Number(bar.dataset.value);
+    bar.style.width = (demoValue * scale / 100) + '%';
+  });
+  chartMessage.textContent = 'مقياس العرض: ' + scale + '% — قيم تجريبية للشرح فقط.';
+}
+chartControl.addEventListener('input', updateChart);
+updateChart();
+
+/* Reading progress indicator */
+window.addEventListener('scroll', () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  document.getElementById('progress').style.width = progress + '%';
+}, { passive: true });
+</script>
 </body>
 </html>
