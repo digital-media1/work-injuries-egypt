@@ -1,507 +1,1761 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#18352f">
-<title>خلف أسوار العمل | تحقيق في إصابات العمل بمصر</title>
-<meta name="description" content="تحقيق صحفي تفاعلي عن إصابات العمل في مصر، والمخاطر المهنية، وحقوق العمال.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<title>من فوق السقالة | إصابات العمل في مصر</title>
+
+<meta name="description" content="قصة بيانات تفاعلية عن إصابات العمل في مصر وأسباب السقوط من الارتفاع وحقوق العامل.">
 
 <style>
 :root{
-  --ink:#18352f;
-  --ink2:#25483f;
-  --paper:#f5f1e8;
-  --white:#fffdf7;
+  --forest:#18352f;
+  --forest2:#102822;
+  --cream:#f5f1e8;
+  --paper:#fffdf8;
   --red:#b94c38;
-  --red-light:#ead0c5;
-  --muted:#747a70;
-  --line:#d8d5c9;
   --gold:#c7a66a;
-  --shadow:0 18px 55px #18352f12;
+  --ink:#202b27;
+  --muted:#65716b;
+  --line:#ded8ca;
+  --shadow:0 18px 50px rgba(24,53,47,.12);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:95px}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font-family:'Cairo',sans-serif;line-height:1.9;
-  overflow-x:hidden
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:Tahoma,"Arial",sans-serif;
+  line-height:1.8;
 }
-a{color:inherit}
-button{font:inherit}
-::selection{background:var(--red);color:white}
-.topline{height:5px;background:var(--red)}
-.masthead{
-  background:var(--ink);color:var(--white);
-  padding:15px max(5%,calc((100% - 1200px)/2));
-  display:flex;align-items:center;justify-content:space-between;
-  gap:18px;border-bottom:1px solid #ffffff25
+
+a{
+  color:inherit;
 }
-.mast-brand{font-size:12px;letter-spacing:1px;font-weight:800}
-.mast-brand span{color:var(--gold)}
-.mast-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#d1d8cf}
+
+.container{
+  width:min(1120px,92%);
+  margin:auto;
+}
+
+/* =========================
+   HERO
+========================= */
+
+header{
+  min-height:92vh;
+  display:flex;
+  align-items:center;
+  background:var(--forest);
+  color:var(--cream);
+  overflow:hidden;
+  position:relative;
+}
+
+header:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(199,166,106,.13),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 55%,
+      rgba(185,76,56,.12)
+    );
+  pointer-events:none;
+}
+
 .nav{
-  background:var(--ink);color:var(--white);padding:0 max(5%,calc((100% - 1200px)/2));
-  display:flex;gap:26px;align-items:center;overflow-x:auto;
-  border-bottom:1px solid #ffffff20;position:sticky;top:0;z-index:20;
-  scrollbar-width:none
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  z-index:5;
+  padding:20px 0;
+  border-bottom:1px solid rgba(245,241,232,.12);
 }
-.nav a{white-space:nowrap;text-decoration:none;font-size:12px;padding:13px 0;color:#d7ddd6}
-.nav a:hover{color:var(--gold)}
-.nav .nav-label{color:var(--gold);font-size:10px;white-space:nowrap}
-main{max-width:1200px;margin:auto;padding:0 28px}
-.kicker{
-  display:flex;align-items:center;gap:10px;color:var(--red);
-  font-size:12px;font-weight:800;letter-spacing:.5px
+
+.nav .container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
 }
-.kicker:before{content:"";width:28px;height:2px;background:var(--red)}
-.hero{padding:70px 0 40px}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center}
-h1{font-size:clamp(42px,6vw,78px);line-height:1.2;letter-spacing:-2px;margin:18px 0}
-h1 span{color:var(--red);display:block}
-.hero-copy{max-width:590px;color:#58645c;font-size:16px}
-.hero-bottom{display:flex;align-items:center;gap:15px;flex-wrap:wrap;margin-top:25px}
-.primary-btn{
-  display:inline-flex;align-items:center;gap:10px;background:var(--red);
-  color:white;text-decoration:none;padding:12px 20px;font-weight:800;font-size:13px;
-  transition:transform .2s,background .2s
+
+.logo{
+  font-weight:900;
+  letter-spacing:.5px;
 }
-.primary-btn:hover{transform:translateY(-3px);background:#963b2a}
-.hero-note{font-size:11px;color:var(--muted)}
-.hero-art{
-  min-height:370px;background:var(--ink);position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)
+
+.nav a{
+  text-decoration:none;
+  color:#fff;
+  font-size:14px;
+  opacity:.9;
 }
-.hero-art:before{
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(0deg,transparent 0,transparent 39px,#ffffff0a 40px),
-  repeating-linear-gradient(90deg,transparent 0,transparent 39px,#ffffff0a 40px)
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:55px;
+  align-items:center;
+  position:relative;
+  z-index:2;
 }
-.art-stamp{
-  position:absolute;top:20px;right:20px;border:1px solid #c7a66a;
-  color:var(--gold);font-size:10px;padding:5px 10px;z-index:2
+
+.eyebrow{
+  color:var(--gold);
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:1px;
 }
-.art-number{position:absolute;bottom:14px;left:18px;color:#ffffff25;font-size:58px;font-weight:900}
-.worker-svg{width:100%;max-width:470px;position:relative;z-index:1}
-.worker-move{animation:float 4s ease-in-out infinite;transform-origin:center}
-.beam-move{animation:beam 3s ease-in-out infinite;transform-origin:center}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes beam{0%,100%{transform:rotate(0)}50%{transform:rotate(-1deg)}}
-.section{padding:66px 0;border-top:1px solid var(--line)}
-.section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:30px}
-.section-index{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red)}
-h2{font-size:clamp(27px,4vw,43px);line-height:1.35;margin:8px 0 10px;letter-spacing:-.7px}
-.section-intro{color:var(--muted);max-width:650px;font-size:14px;margin:0}
-.side-note{font-size:10px;color:var(--muted);max-width:190px;border-right:2px solid var(--red);padding-right:12px}
-.story-strip{background:var(--ink);color:var(--white);padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
-.story-strip h3{font-size:25px;line-height:1.5;margin:0 0 12px}
-.story-strip p{font-size:13px;color:#d1d9d2;margin:0}
-.quote-mark{font-size:80px;line-height:.8;color:var(--gold)}
-.quote-text{font-size:21px;font-weight:800;line-height:1.7}
-.quote-caption{font-size:11px;color:#b8c2b8;margin-top:10px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.info-card{border:1px solid var(--line);background:var(--white);padding:23px;position:relative;overflow:hidden}
-.info-card:after{content:"";height:4px;background:var(--red);position:absolute;bottom:0;right:0;width:0;transition:width .3s}
-.info-card:hover:after{width:100%}
-.card-icon{width:43px;height:43px;background:#e8e6da;display:grid;place-items:center;color:var(--ink);margin-bottom:17px}
-.info-card h3{font-size:18px;margin:0 0 8px}
-.info-card p{font-size:12px;color:var(--muted);margin:0}
-.chart-layout{display:grid;grid-template-columns:.75fr 1.25fr;gap:22px}
-.chart-panel{background:var(--white);border:1px solid var(--line);padding:25px}
-.chart-panel h3{font-size:18px;margin:0 0 7px}
-.chart-panel>p{font-size:12px;color:var(--muted);margin:0 0 20px}
-.chart-rows{display:grid;gap:18px}
-.chart-row{display:grid;grid-template-columns:105px 1fr 28px;gap:10px;align-items:center;font-size:12px}
-.chart-track{height:11px;background:#e7e4d9;overflow:hidden}
-.chart-bar{height:100%;width:0;background:var(--red);transition:width 1s ease}
-.chart-row:nth-child(2) .chart-bar{background:var(--ink2)}
-.chart-row:nth-child(3) .chart-bar{background:var(--gold)}
-.chart-row:nth-child(4) .chart-bar{background:#89968b}
-.chart-row input{width:100%;accent-color:var(--red);cursor:pointer}
-.chart-value{font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center}
-.chart-warning{font-size:11px!important;color:var(--red)!important;margin-top:20px!important;border-top:1px solid var(--line);padding-top:13px}
-.data-empty{background:var(--paper);border:1px dashed #b7b4a8;padding:17px;font-size:12px;color:var(--muted)}
-.data-empty strong{color:var(--red)}
-.timeline{position:relative;margin-top:25px}
-.timeline:before{content:"";position:absolute;right:8px;top:8px;bottom:8px;width:1px;background:var(--line)}
-.timeline-item{display:grid;grid-template-columns:25px 1fr;gap:18px;position:relative;padding:0 0 28px}
-.timeline-dot{width:17px;height:17px;background:var(--paper);border:4px solid var(--red);position:relative;z-index:1;margin-top:7px}
-.timeline-item h3{font-size:17px;margin:0 0 5px}
-.timeline-item p{font-size:13px;color:var(--muted);margin:0}
-.timeline-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--red)}
-.question-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.question{
-  width:100%;text-align:right;background:var(--white);border:1px solid var(--line);
-  padding:19px 20px;cursor:pointer;color:var(--ink);display:block
+
+h1{
+  font-size:clamp(42px,7vw,78px);
+  line-height:1.05;
+  margin:15px 0 20px;
 }
-.question-top{display:flex;justify-content:space-between;gap:15px;font-weight:800;font-size:14px}
-.question-top span{color:var(--red);font-size:20px}
-.answer{display:none;color:var(--muted);font-size:12px;padding-top:12px}
-.question.open .answer{display:block}
-.question.open{border-color:var(--red)}
-.sources{background:#e9e5da;padding:25px}
-.sources h3{margin:0 0 10px;font-size:18px}
-.sources p{font-size:12px;color:#626c62}
-.sources ul{padding-right:20px;font-size:12px;color:#626c62}
-.sources a{color:var(--red);overflow-wrap:anywhere}
-.team{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.team-card{border-top:3px solid var(--ink);padding:17px 12px;background:var(--white);min-height:130px}
-.team-no{font-family:'IBM Plex Mono',monospace;color:var(--red);font-size:11px}
-.team-card h3{font-size:13px;line-height:1.8;margin:12px 0 0}
-.footer{background:var(--ink);color:var(--white);margin-top:45px;padding:40px 28px}
-.footer-inner{max-width:1144px;margin:auto;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
-.footer h2{font-size:23px;margin:0 0 8px}
-.footer p{color:#c1ccc2;font-size:11px;margin:0}
-.footer-mark{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold)}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s,transform .65s}
-.reveal.visible{opacity:1;transform:none}
-.progress{height:3px;background:var(--red);position:fixed;top:0;right:0;width:0;z-index:50}
-.smallcaps{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px}
-@media(max-width:800px){
-  main{padding:0 18px}
-  .hero{padding-top:42px}
-  .hero-grid,.chart-layout{grid-template-columns:1fr}
-  .hero-art{min-height:290px}
-  .cards{grid-template-columns:1fr 1fr}
-  .team{grid-template-columns:repeat(2,1fr)}
-  .team-card:last-child{grid-column:span 2}
-  .section-head{align-items:start;flex-direction:column}
-  .side-note{max-width:none}
+
+.hero h2{
+  font-size:clamp(20px,2.4vw,28px);
+  font-weight:500;
+  max-width:620px;
+  margin:0 0 25px;
+  color:#e9e4d9;
 }
+
+.hero-copy{
+  color:#bfc9c3;
+  max-width:620px;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 22px;
+  background:var(--red);
+  color:white;
+  text-decoration:none;
+  border-radius:4px;
+  font-weight:800;
+  margin-top:12px;
+}
+
+/* =========================
+   EDITORIAL FALLING IMAGE
+========================= */
+
+.visual{
+  position:relative;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+}
+
+.visual img{
+  width:100%;
+  display:block;
+  border-radius:6px;
+  box-shadow:0 25px 80px rgba(0,0,0,.28);
+  filter:saturate(.95) contrast(1.03);
+}
+
+/*
+   حركة بسيطة فوق الصورة
+   عشان الإحساس يبقى حي
+   من غير ما نشوه الصورة الأصلية
+*/
+
+.fall-overlay{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  border-radius:6px;
+}
+
+.fall-worker{
+  position:absolute;
+  left:52%;
+  top:42%;
+  width:18%;
+  height:18%;
+  transform:rotate(-8deg);
+  animation:fall 4.6s cubic-bezier(.22,.72,.25,1) infinite;
+  filter:drop-shadow(0 10px 10px rgba(0,0,0,.28));
+}
+
+.fall-worker .head{
+  width:26%;
+  height:26%;
+  background:#d79b42;
+  border-radius:50%;
+  position:absolute;
+  right:4%;
+  top:5%;
+}
+
+.fall-worker .body{
+  width:38%;
+  height:50%;
+  background:#18352f;
+  border-radius:45% 45% 30% 30%;
+  position:absolute;
+  left:28%;
+  top:28%;
+  transform:rotate(20deg);
+}
+
+.fall-worker .strap{
+  position:absolute;
+  width:32%;
+  height:48%;
+  border:3px solid #c7a66a;
+  border-radius:45%;
+  left:33%;
+  top:28%;
+  transform:rotate(20deg);
+}
+
+.fall-worker .arm{
+  position:absolute;
+  width:43%;
+  height:9%;
+  background:#18352f;
+  border-radius:20px;
+  top:35%;
+}
+
+.fall-worker .arm.a{
+  right:48%;
+  transform:rotate(-35deg);
+}
+
+.fall-worker .arm.b{
+  left:50%;
+  transform:rotate(28deg);
+}
+
+.fall-worker .leg{
+  position:absolute;
+  width:42%;
+  height:10%;
+  background:#18352f;
+  border-radius:20px;
+  top:72%;
+}
+
+.fall-worker .leg.a{
+  left:5%;
+  transform:rotate(30deg);
+}
+
+.fall-worker .leg.b{
+  left:38%;
+  transform:rotate(-38deg);
+}
+
+@keyframes fall{
+
+  0%,8%{
+    transform:translate(0,0) rotate(-8deg);
+    opacity:1;
+  }
+
+  18%{
+    transform:translate(2%,8%) rotate(5deg);
+  }
+
+  42%{
+    transform:translate(15%,30%) rotate(38deg);
+  }
+
+  66%{
+    transform:translate(29%,58%) rotate(67deg);
+  }
+
+  82%{
+    transform:translate(34%,78%) rotate(82deg);
+    opacity:1;
+  }
+
+  92%{
+    transform:translate(35%,88%) rotate(88deg);
+    opacity:0;
+  }
+
+  93%,100%{
+    transform:translate(0,0) rotate(-8deg);
+    opacity:0;
+  }
+}
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+section{
+  padding:90px 0;
+}
+
+.section-head{
+  max-width:760px;
+  margin-bottom:45px;
+}
+
+.section-kicker{
+  color:var(--red);
+  font-weight:900;
+  font-size:14px;
+}
+
+h2{
+  font-size:clamp(30px,4vw,48px);
+  line-height:1.15;
+  margin:10px 0 15px;
+  color:var(--forest);
+}
+
+.lead{
+  font-size:19px;
+  color:#46534e;
+}
+
+/* =========================
+   STORY
+========================= */
+
+.story{
+  background:var(--paper);
+}
+
+.story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:start;
+}
+
+.story-card{
+  background:var(--forest);
+  color:var(--cream);
+  padding:34px;
+  border-radius:8px;
+  box-shadow:var(--shadow);
+}
+
+.story-card h3{
+  color:var(--gold);
+  margin-top:0;
+  font-size:26px;
+}
+
+.quote{
+  border-right:4px solid var(--red);
+  padding:10px 22px;
+  margin:28px 0;
+  font-size:22px;
+  font-weight:700;
+  color:var(--forest);
+}
+
+.story-card .quote{
+  color:var(--cream);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+  background:var(--forest);
+  color:var(--cream);
+}
+
+.stats h2{
+  color:var(--cream);
+}
+
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat{
+  border:1px solid rgba(255,255,255,.13);
+  padding:25px;
+  border-radius:6px;
+  background:rgba(255,255,255,.035);
+}
+
+.stat strong{
+  display:block;
+  font-size:40px;
+  color:var(--gold);
+  line-height:1.1;
+}
+
+.stat span{
+  color:#c7d0cb;
+}
+
+/* =========================
+   DATA
+========================= */
+
+.data{
+  background:var(--cream);
+}
+
+.chart-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.chart{
+  background:var(--paper);
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:7px;
+  box-shadow:0 8px 25px rgba(24,53,47,.05);
+}
+
+.chart h3{
+  margin-top:0;
+  color:var(--forest);
+}
+
+.bar{
+  margin:18px 0;
+}
+
+.bar-label{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  font-size:14px;
+  font-weight:800;
+}
+
+.track{
+  height:13px;
+  background:#e7e1d6;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:7px;
+}
+
+.fill{
+  height:100%;
+  background:var(--red);
+  width:0;
+  transition:width 1.2s ease;
+}
+
+.note{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:22px;
+}
+
+.pie{
+  width:210px;
+  height:210px;
+  border-radius:50%;
+  margin:10px auto 25px;
+  background:
+    conic-gradient(
+      var(--red) 0 32.1%,
+      var(--gold) 32.1% 59.7%,
+      #82918a 59.7% 100%
+    );
+}
+
+.legend{
+  display:grid;
+  gap:10px;
+}
+
+.legend div{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  display:inline-block;
+}
+
+.red{
+  background:var(--red);
+}
+
+.gold{
+  background:var(--gold);
+}
+
+.gray{
+  background:#82918a;
+}
+
+/* =========================
+   SAFETY
+========================= */
+
+.dark{
+  background:var(--forest);
+  color:var(--cream);
+}
+
+.dark h2{
+  color:var(--cream);
+}
+
+.risk-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.risk{
+  padding:28px;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.035);
+  border-radius:7px;
+}
+
+.risk b{
+  color:var(--gold);
+  font-size:22px;
+}
+
+/* =========================
+   RIGHTS
+========================= */
+
+.rights{
+  background:var(--paper);
+}
+
+.rights-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.right{
+  border-top:4px solid var(--red);
+  padding:25px;
+  background:#fff;
+  border-radius:5px;
+  box-shadow:0 8px 25px rgba(24,53,47,.05);
+}
+
+.right h3{
+  color:var(--forest);
+  margin-top:0;
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.faq{
+  background:var(--cream);
+}
+
+details{
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+  padding:20px 0;
+}
+
+summary{
+  cursor:pointer;
+  font-weight:900;
+  color:var(--forest);
+  font-size:18px;
+}
+
+/* =========================
+   SOURCES
+========================= */
+
+.sources{
+  font-size:14px;
+  color:var(--muted);
+}
+
+.sources a{
+  color:var(--red);
+  font-weight:700;
+}
+
+/* =========================
+   TEAM
+========================= */
+
+.team{
+  background:var(--forest);
+  color:var(--cream);
+}
+
+.team h2{
+  color:var(--cream);
+}
+
+.team-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.member{
+  border:1px solid rgba(255,255,255,.15);
+  padding:10px 15px;
+  border-radius:30px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#0d211d;
+  color:#9eaaa4;
+  padding:25px 0;
+  font-size:13px;
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:all .7s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px){
+
+  .hero-grid,
+  .story-grid,
+  .chart-grid,
+  .rights-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-grid{
+    gap:25px;
+  }
+
+  .visual{
+    min-height:auto;
+  }
+
+  .stat-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .risk-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
 @media(max-width:520px){
-  .masthead{padding:12px 16px}
-  .mast-meta{font-size:9px}
-  .nav{padding:0 16px;gap:19px}
-  h1{font-size:43px}
-  .hero-grid{gap:25px}
-  .hero-art{min-height:250px}
-  .story-strip{grid-template-columns:1fr;padding:24px;gap:18px}
-  .cards,.question-grid{grid-template-columns:1fr}
-  .chart-panel{padding:17px}
-  .chart-row{grid-template-columns:85px 1fr 25px;gap:7px}
-  .section{padding:48px 0}
-  .team{grid-template-columns:1fr 1fr}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
-  .reveal{opacity:1;transform:none}
+
+  section{
+    padding:65px 0;
+  }
+
+  .stat-grid{
+    grid-template-columns:1fr;
+  }
+
+  .nav a{
+    display:none;
+  }
+
+  h1{
+    font-size:45px;
+  }
+
 }
 </style>
 </head>
 
 <body>
-<div class="progress" id="progress"></div>
-<div class="topline"></div>
 
-<header class="masthead">
-  <div class="mast-brand">ملف <span>العمل</span> / تحقيق بصري</div>
-  <div class="mast-meta">EGYPT · DATA JOURNALISM</div>
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+  <nav class="nav">
+    <div class="container">
+
+      <div class="logo">
+        إصابات العمل في مصر
+      </div>
+
+      <a href="#story">
+        القصة ↓
+      </a>
+
+    </div>
+  </nav>
+
+  <div class="container hero-grid">
+
+    <div class="reveal">
+
+      <div class="eyebrow">
+        DATA JOURNALISM • 2024
+      </div>
+
+      <h1>
+        من فوق<br>
+        السقالة
+      </h1>
+
+      <h2>
+        السقوط من الارتفاع ليس مجرد حادث…
+        أحيانًا هو اللحظة التي تغيّر حياة عامل بالكامل.
+      </h2>
+
+      <p class="hero-copy">
+        قصة بيانات عن إصابات العمل في مصر،
+        وما تقوله الأرقام عن السقوط،
+        أماكن الخطر، ومسؤولية الوقاية.
+      </p>
+
+      <a class="btn" href="#story">
+        ابدأ القصة
+      </a>
+
+    </div>
+
+
+    <!-- الصورة التي قمتي برفعها على GitHub -->
+
+    <div class="visual reveal">
+
+      <img
+        src="worker-fall-editorial.png"
+        alt="عامل يسقط من سقالة مرتفعة في مشهد تحريري درامي"
+      >
+
+      <!-- حركة إضافية بسيطة -->
+
+      <div class="fall-overlay" aria-hidden="true">
+
+        <div class="fall-worker">
+
+          <span class="head"></span>
+
+          <span class="body"></span>
+
+          <span class="strap"></span>
+
+          <span class="arm a"></span>
+
+          <span class="arm b"></span>
+
+          <span class="leg a"></span>
+
+          <span class="leg b"></span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </header>
 
-<nav class="nav" aria-label="التنقل الرئيسي">
-  <span class="nav-label">داخل التحقيق</span>
-  <a href="#story">القصة</a>
-  <a href="#risks">المخاطر</a>
-  <a href="#data">الأرقام</a>
-  <a href="#rights">حقوق العمال</a>
-  <a href="#sources">المصادر</a>
-  <a href="#team">فريق العمل</a>
-</nav>
 
-<main>
-  <section class="hero" id="story">
-    <div class="hero-grid">
+<!-- =========================
+     STORY
+========================= -->
+
+<section id="story" class="story">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        THE HUMAN STORY
+      </div>
+
+      <h2>
+        قبل أن تصبح الإصابة رقمًا
+      </h2>
+
+      <p class="lead">
+        وراء كل رقم في نشرات إصابات العمل
+        شخص وحياة وأسرة قد تتغير في لحظة.
+      </p>
+
+    </div>
+
+
+    <div class="story-grid">
+
       <div class="reveal">
-        <div class="kicker">تحقيق صحفي · صحافة البيانات</div>
-        <h1>خلف أسوار <span>العمل</span></h1>
-        <p class="hero-copy">
-          كل يوم، يذهب ملايين العمال إلى مواقع البناء والمصانع وأماكن العمل المختلفة.
-          لكن ماذا يحدث عندما تتحول بيئة العمل إلى مصدر للخطر؟ وكيف نقرأ واقع إصابات العمل في مصر؟
-        </p>
-        <div class="hero-bottom">
-          <a class="primary-btn" href="#risks">ابدأ اكتشاف القصة <span>←</span></a>
-          <span class="hero-note">اقرأ · استكشف · تحقّق من البيانات</span>
-        </div>
-      </div>
 
-      <div class="hero-art reveal" aria-label="رسم توضيحي لعامل في موقع بناء">
-        <div class="art-stamp">ملف رقم 001 / مصر</div>
-        <svg class="worker-svg" viewBox="0 0 480 390" role="img" aria-label="رسم فني لعامل وخلفه هياكل بناء">
-          <g stroke="#c7a66a" stroke-width="2" fill="none" opacity=".65">
-            <path d="M40 315H435M70 315V90H220V315M70 125H220M70 175H220M70 225H220"/>
-            <path d="M70 90L220 315M220 90L70 315M260 315V70H420V315M260 115H420M260 165H420M260 215H420"/>
-            <path d="M260 70L420 315M420 70L260 315"/>
-          </g>
-          <g class="beam-move">
-            <path d="M34 74L300 74" stroke="#b94c38" stroke-width="8"/>
-            <path d="M55 74V98M280 74V98" stroke="#b94c38" stroke-width="4"/>
-          </g>
-          <g class="worker-move">
-            <path d="M178 175Q204 155 231 175L248 247H160Z" fill="#c7a66a"/>
-            <path d="M182 242L174 311H202L216 258L229 311H257L242 242Z" fill="#f5f1e8"/>
-            <path d="M173 310H204L205 324H164Z" fill="#b94c38"/>
-            <path d="M229 310H260L269 324H226Z" fill="#b94c38"/>
-            <path d="M176 184L145 224L164 239L194 205" fill="#c7a66a"/>
-            <path d="M233 184L263 210L250 229L222 205" fill="#c7a66a"/>
-            <path d="M191 137Q204 124 219 138L224 167L193 175L184 154Z" fill="#d9a17c"/>
-            <path d="M181 138Q202 105 227 137L229 147H180Z" fill="#b94c38"/>
-            <path d="M175 140Q202 119 233 140" fill="none" stroke="#f5f1e8" stroke-width="4"/>
-            <path d="M199 171L214 171L224 188L188 188Z" fill="#18352f"/>
-          </g>
-          <g fill="#b94c38">
-            <circle cx="112" cy="65" r="4"/><circle cx="375" cy="115" r="4"/>
-            <circle cx="337" cy="285" r="4"/><circle cx="112" cy="275" r="4"/>
-          </g>
-          <g stroke="#f5f1e8" stroke-width="1" opacity=".65">
-            <path d="M28 345H95M385 345H452"/>
-          </g>
-        </svg>
-        <div class="art-number">01—</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section reveal">
-    <div class="story-strip">
-      <div>
-        <div class="kicker" style="color:var(--gold)">السؤال الأساسي</div>
-        <h3>هل مكان العمل آمن فعلًا؟</h3>
         <p>
-          إصابة العمل ليست مجرد رقم في تقرير؛ إنها واقعة قد تؤثر على العامل وأسرته
-          وقدرته على الاستمرار في العمل. فهم المشكلة يبدأ من البيانات، ويكتمل بالتحقق
-          من ظروف العمل ووسائل الوقاية وحقوق المصابين.
+          علي فوزي، 25 عامًا، ذهب إلى عمله في شركة
+          بترولجيت للمشروعات البترولية كعادته.
+          وبحسب القصة المقدمة لهذا التحقيق،
+          حدث عطل مفاجئ في إحدى الطلمبات الحرارية،
+          فاصطدمت به ودفعته من منصة العمل.
         </p>
-      </div>
-      <div>
-        <div class="quote-mark">“</div>
-        <div class="quote-text">
-          وراء كل رقم حكاية، ووراء كل إصابة سؤال عن السلامة والوقاية والمسؤولية.
+
+        <p>
+          سقط على رأسه، وأصيب — وفق الرواية —
+          بشلل رباعي وعجز كامل، وأصبح ملازمًا للفراش.
+        </p>
+
+        <div class="quote">
+          السقوط من مكان مرتفع قد يستغرق ثواني…
+          لكن آثاره قد تستمر مدى الحياة.
         </div>
-        <div class="quote-caption">الفكرة المحورية للتحقيق — صياغة تحريرية وليست اقتباسًا من عامل</div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section" id="risks">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-index">01 / طبيعة المخاطر</div>
-        <h2>أين تكمن المخاطر؟</h2>
-        <p class="section-intro">تختلف المخاطر باختلاف المهنة وبيئة العمل. هذه أمثلة لأنواع الخطر التي ينبغي فحصها، وليست ترتيبًا للمهن الأكثر إصابة في مصر.</p>
-      </div>
-      <div class="side-note">من المهم التمييز بين شيوع الخطر ومعدل الإصابات الفعلي.</div>
-    </div>
+        <p class="note">
+          ملاحظة تحريرية:
+          قصة علي كما وردت في المادة المقدمة للمشروع
+          وتحتاج إلى التحقق المستقل من الواقعة والتفاصيل
+          الطبية قبل النشر الصحفي النهائي.
+        </p>
 
-    <div class="cards">
-      <article class="info-card reveal">
-        <div class="card-icon">
-          <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8h14v13M8 8V4h8v4M9 12h2m2 0h2m-6 4h2m2 0h2"/></svg>
-        </div>
-        <h3>مواقع البناء</h3>
-        <p>السقوط من ارتفاعات، سقوط الأجسام، مخاطر السقالات والمعدات، والتعرض لمناطق غير مؤمّنة.</p>
-      </article>
-      <article class="info-card reveal">
-        <div class="card-icon">
-          <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21V9l5 3V9l5 3V5h4v16M2 21h20M15 8h2m-2 4h2m-8 1h2m-2 4h2"/></svg>
-        </div>
-        <h3>المصانع والورش</h3>
-        <p>الآلات المتحركة، الأدوات الحادة، الكهرباء، الحرارة، والمواد التي قد تتطلب احتياطات خاصة.</p>
-      </article>
-      <article class="info-card reveal">
-        <div class="card-icon">
-          <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17h18l-2 4H5zM5 17l2-8h10l2 8M9 9V5h6v4M12 5V2M8 13h8"/></svg>
-        </div>
-        <h3>النقل والعمل الميداني</h3>
-        <p>حوادث الطرق، التعامل مع المعدات المتحركة، والإجهاد الناتج عن ظروف العمل والتنقل.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" id="data">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-index">02 / قراءة البيانات</div>
-        <h2>ماذا تقول الأرقام؟</h2>
-        <p class="section-intro">لا يمكن تحديد المهن الأعلى في إصابات العمل دون بيانات موثقة وفترة زمنية واضحة. هذا القسم جاهز لإضافة الأرقام الحقيقية ومقارنتها بصريًا.</p>
-      </div>
-      <div class="side-note">لن تُعرض أرقام تقديرية باعتبارها إحصاءات رسمية.</div>
-    </div>
-
-    <div class="chart-layout">
-      <div class="chart-panel reveal">
-        <h3>مؤشرات يجب تتبعها</h3>
-        <p>البيانات المطلوبة لبناء صورة أدق عن إصابات العمل.</p>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div><div class="timeline-label">INDICATOR 01</div><h3>عدد الإصابات المسجلة</h3><p>مع تحديد السنة والجهة التي جمعت البيانات.</p></div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div><div class="timeline-label">INDICATOR 02</div><h3>نوع الإصابة</h3><p>مثل السقوط أو الإصابات المرتبطة بالمعدات.</p></div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div><div class="timeline-label">INDICATOR 03</div><h3>القطاع الاقتصادي</h3><p>للمقارنة بين القطاعات على أساس موحد.</p></div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div><div class="timeline-label">INDICATOR 04</div><h3>نتيجة الإصابة</h3><p>مع مراعاة تعريفات التصنيف المعتمدة في المصدر.</p></div>
-          </div>
-        </div>
       </div>
 
-      <div class="chart-panel reveal">
-        <h3>استكشف الرسم البياني</h3>
-        <p>نموذج تفاعلي لتوضيح طريقة المقارنة فقط، وليس بيانات حقيقية عن مصر.</p>
-        <div class="data-empty">
-          <strong>تنبيه منهجي:</strong> القيم التالية تجريبية لشرح التفاعل البصري. يجب استبدالها ببيانات موثقة قبل نشر التحقيق.
-        </div>
-        <div class="chart-rows" id="chartRows" style="margin-top:24px">
-          <div class="chart-row"><span>البناء</span><div class="chart-track"><div class="chart-bar" data-value="85"></div></div><span class="chart-value">85</span></div>
-          <div class="chart-row"><span>الصناعة</span><div class="chart-track"><div class="chart-bar" data-value="65"></div></div><span class="chart-value">65</span></div>
-          <div class="chart-row"><span>النقل</span><div class="chart-track"><div class="chart-bar" data-value="48"></div></div><span class="chart-value">48</span></div>
-          <div class="chart-row"><span>أخرى</span><div class="chart-track"><div class="chart-bar" data-value="30"></div></div><span class="chart-value">30</span></div>
-        </div>
-        <div style="margin-top:24px">
-          <label for="chartControl" style="font-size:12px;font-weight:800">غيّري مقياس العرض</label>
-          <input id="chartControl" type="range" min="50" max="100" value="100" style="width:100%;margin-top:10px">
-          <p id="chartMessage" style="font-size:11px;color:var(--muted);margin:5px 0 0">حرّكي المؤشر لتغيير طول الأعمدة.</p>
-        </div>
-        <p class="chart-warning">لا تستنتجي أن مهنة أكثر خطورة من أخرى من هذا النموذج التجريبي. احذفي القيم الافتراضية واستبدليها بالبيانات المعتمدة قبل النشر.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="section" id="rights">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-index">03 / السلامة والحقوق</div>
-        <h2>ما الذي يجب أن نتحقق منه؟</h2>
-        <p class="section-intro">أسئلة تساعد في توجيه البحث الصحفي. المعلومات القانونية النهائية يجب مراجعتها بالرجوع إلى النصوص الرسمية السارية.</p>
-      </div>
-    </div>
-    <div class="question-grid">
-      <button class="question" type="button" aria-expanded="false">
-        <span class="question-top">هل تتوفر وسائل الوقاية؟ <span>＋</span></span>
-        <span class="answer">تحقق من توافر معدات الوقاية الشخصية، والتدريب على استخدامها، وصيانة المعدات، وتطبيق إجراءات السلامة داخل موقع العمل.</span>
-      </button>
-      <button class="question" type="button" aria-expanded="false">
-        <span class="question-top">كيف يتم الإبلاغ عن الإصابة؟ <span>＋</span></span>
-        <span class="answer">يجب مراجعة الإجراءات الرسمية المعمول بها، والمستندات المطلوبة، والجهة المختصة بحسب طبيعة العمل والحالة.</span>
-      </button>
-      <button class="question" type="button" aria-expanded="false">
-        <span class="question-top">ما حقوق العامل المصاب؟ <span>＋</span></span>
-        <span class="answer">تختلف الحقوق والإجراءات بحسب الحالة والقوانين المطبقة. ينبغي التحقق من التغطية التأمينية، والتعويضات المستحقة، والجهة الرسمية المختصة.</span>
-      </button>
-      <button class="question" type="button" aria-expanded="false">
-        <span class="question-top">كيف نحمي خصوصية المصابين؟ <span>＋</span></span>
-        <span class="answer">لا تنشر الاسم أو الصورة أو البيانات الطبية دون موافقة مناسبة. وضّح للمصدر كيف ستُستخدم شهادته، واحذف التفاصيل التي قد تكشف هويته دون ضرورة صحفية.</span>
-      </button>
-    </div>
-  </section>
+      <div class="story-card reveal">
 
-  <section class="section" id="sources">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-index">04 / التوثيق</div>
-        <h2>المصادر والمنهجية</h2>
-        <p class="section-intro">قوة التحقيق لا تأتي من التصميم وحده؛ بل من مصادر يمكن للقارئ الرجوع إليها، ومن توضيح طريقة جمع المعلومات وحدودها.</p>
-      </div>
-    </div>
-    <div class="sources reveal">
-      <h3>مصادر مقترحة للتحقق وجمع البيانات</h3>
-      <p>أضيفي هنا اسم كل تقرير أو قاعدة بيانات، والجهة الناشرة، وسنة الإصدار، ورابط المصدر الأصلي الذي استُخدم بالفعل.</p>
-      <ul>
-        <li><a href="https://www.capmas.gov.eg/" target="_blank" rel="noopener noreferrer">الجهاز المركزي للتعبئة العامة والإحصاء (CAPMAS)</a> — ابحثي عن نشرات إصابات العمل والبيانات ذات الصلة.</li>
-        <li><a href="https://www.manpower.gov.eg/" target="_blank" rel="noopener noreferrer">وزارة العمل المصرية</a> — للتحقق من المعلومات واللوائح المنشورة رسميًا.</li>
-        <li><a href="https://www.ilo.org/" target="_blank" rel="noopener noreferrer">منظمة العمل الدولية (ILO)</a> — للمعايير والتقارير الدولية عن السلامة والصحة المهنية.</li>
-      </ul>
-      <p><strong>ملاحظة تحريرية:</strong> وجود رابط الجهة لا يعني أن البيانات المعروضة في هذا الموقع مأخوذة منها بالفعل. يجب توثيق التقرير المحدد والصفحة أو الجدول الذي استُخدم.</p>
-    </div>
-  </section>
+        <h3>
+          لماذا السقوط؟
+        </h3>
 
-  <section class="section" id="team">
-    <div class="section-head reveal">
-      <div>
-        <div class="section-index">05 / فريق التحقيق</div>
-        <h2>من وراء القصة؟</h2>
-        <p class="section-intro">عمل جماعي يبحث في البيانات، ويطرح الأسئلة، ويحوّل المعلومات إلى قصة مفهومة للقارئ.</p>
-      </div>
-    </div>
-    <div class="team">
-      <div class="team-card reveal"><div class="team-no">TEAM / 01</div><h3>رقية طارق عبدالعاطي</h3></div>
-      <div class="team-card reveal"><div class="team-no">TEAM / 02</div><h3>فاطمة ناصرعلي الفيتوري</h3></div>
-      <div class="team-card reveal"><div class="team-no">TEAM / 03</div><h3>حبيبه احمد زيدان</h3></div>
-      <div class="team-card reveal"><div class="team-no">TEAM / 04</div><h3>أروى عبدالقوى سعيد</h3></div>
-      <div class="team-card reveal"><div class="team-no">TEAM / 05</div><h3>نعمات محمود فتحى</h3></div>
-    </div>
-  </section>
-</main>
+        <p>
+          السقوط من الارتفاع جاء كأكثر أسباب إصابات
+          العمل المسجلة في بيانات 2024 الواردة في المادة،
+          متقدمًا على الاصطدامات.
+        </p>
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div>
-      <h2>خلف أسوار العمل</h2>
-      <p>تحقيق بصري حول إصابات العمل في مصر.</p>
-      <p>المعلومات والإحصائيات تخضع للتحقق والتوثيق قبل النشر النهائي.</p>
+        <p>
+          <strong>2,600</strong>
+          حالة سقوط —
+          <strong>32.1%</strong>
+          من إجمالي الإصابات المسجلة.
+        </p>
+
+        <p>
+          <strong>2,237</strong>
+          حالة اصطدام —
+          <strong>27.6%</strong>.
+        </p>
+
+      </div>
+
     </div>
-    <div class="footer-mark">DATA · PEOPLE · ACCOUNTABILITY</div>
+
   </div>
+
+</section>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        THE NUMBERS
+      </div>
+
+      <h2>
+        الصورة الأكبر
+      </h2>
+
+      <p>
+        بحسب أرقام CAPMAS الواردة في مادة المشروع،
+        سُجلت 8,091 إصابة عمل خلال 2024.
+      </p>
+
+    </div>
+
+
+    <div class="stat-grid">
+
+      <div class="stat reveal">
+        <strong>8,091</strong>
+        <span>إصابة عمل في 2024</span>
+      </div>
+
+      <div class="stat reveal">
+        <strong>−2.7%</strong>
+        <span>مقارنة بـ 2023</span>
+      </div>
+
+      <div class="stat reveal">
+        <strong>86.8%</strong>
+        <span>من المصابين ذكور</span>
+      </div>
+
+      <div class="stat reveal">
+        <strong>45.6%</strong>
+        <span>في نشاط الصناعات التحويلية</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     DATA
+========================= -->
+
+<section class="data">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        DATA BREAKDOWN
+      </div>
+
+      <h2>
+        أين تتركز الإصابات؟
+      </h2>
+
+      <p class="lead">
+        توضح المؤشرات الواردة في البيانات مناطق وقطاعات
+        ومهن تحتاج إلى اهتمام أكبر بإجراءات الوقاية.
+      </p>
+
+    </div>
+
+
+    <div class="chart-grid">
+
+
+      <!-- القطاع -->
+
+      <div class="chart reveal">
+
+        <h3>
+          الإصابات حسب القطاع
+        </h3>
+
+        <div class="bar">
+
+          <div class="bar-label">
+
+            <span>
+              القطاع الخاص — منشآت 50 عاملًا فأكثر
+            </span>
+
+            <span>
+              51.6%
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="fill"
+              data-width="51.6%"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="bar">
+
+          <div class="bar-label">
+
+            <span>
+              قطاع الأعمال العام
+            </span>
+
+            <span>
+              29.9%
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="fill"
+              data-width="29.9%"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="bar">
+
+          <div class="bar-label">
+
+            <span>
+              الحكومة
+            </span>
+
+            <span>
+              16.9%
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="fill"
+              data-width="16.9%"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <p class="note">
+
+          الأعداد الواردة:
+          4,175 — 2,423 — 1,370.
+
+          مجموعها 7,968، أي أقل من الإجمالي بـ123 حالة؛
+          لذلك يجب مراجعة الجدول الأصلي لتحديد باقي التصنيف.
+
+        </p>
+
+      </div>
+
+
+      <!-- أسباب الإصابة -->
+
+      <div class="chart reveal">
+
+        <h3>
+          أسباب الإصابة
+        </h3>
+
+        <div
+          class="pie"
+          aria-label="رسم دائري لأسباب الإصابات"
+        ></div>
+
+        <div class="legend">
+
+          <div>
+            <span class="dot red"></span>
+            السقوط: 32.1%
+          </div>
+
+          <div>
+            <span class="dot gold"></span>
+            الاصطدام: 27.6%
+          </div>
+
+          <div>
+            <span class="dot gray"></span>
+            أسباب أخرى: 40.3%
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- المحافظات -->
+
+      <div class="chart reveal">
+
+        <h3>
+          أعلى المحافظات المذكورة
+        </h3>
+
+
+        <div class="bar">
+
+          <div class="bar-label">
+
+            <span>
+              القاهرة
+            </span>
+
+            <span>
+              1,969 — 24.3%
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="fill"
+              data-width="24.3%"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="bar">
+
+          <div class="bar-label">
+
+            <span>
+              القليوبية
+            </span>
+
+            <span>
+              1,298 — 16.0%
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="fill"
+              data-width="16%"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- المهن -->
+
+      <div class="chart reveal">
+
+        <h3>
+          أكثر المهن تعرضًا
+        </h3>
+
+        <div class="bar">
+
+          <div class="bar-label">
+
+            <span>
+              الفنيون ومساعدو الأخصائيين
+            </span>
+
+            <span>
+              2,911 — 36.0%
+            </span>
+
+          </div>
+
+          <div class="track">
+
+            <div
+              class="fill"
+              data-width="36%"
+            ></div>
+
+          </div>
+
+        </div>
+
+        <p class="note">
+
+          الصناعات التحويلية سجلت
+          3,687 إصابة،
+          بما يعادل 45.6%
+          من إجمالي الإصابات المذكورة.
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <p class="note reveal">
+
+      تنبيه منهجي:
+      الأرقام السابقة من المادة التي قدمها فريق المشروع،
+      ويجب مطابقتها مع جداول النشرة الأصلية للجهاز
+      المركزي للتعبئة العامة والإحصاء قبل اعتبارها
+      نسخة نهائية للنشر.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SAFETY
+========================= -->
+
+<section class="dark">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        WHY FALLS HAPPEN
+      </div>
+
+      <h2>
+        الحادث لا يبدأ لحظة السقوط
+      </h2>
+
+      <p>
+        من منظور السلامة المهنية،
+        السقوط غالبًا نتيجة سلسلة من المخاطر
+        والقرارات قبل وقوع الحادث.
+      </p>
+
+    </div>
+
+
+    <div class="risk-grid">
+
+      <div class="risk reveal">
+
+        <b>
+          01 — خطر مادي
+        </b>
+
+        <p>
+          حواف مفتوحة، أسطح هشة،
+          منصات غير مؤمنة،
+          أو غياب وسائل منع السقوط.
+        </p>
+
+      </div>
+
+
+      <div class="risk reveal">
+
+        <b>
+          02 — فجوة تنظيمية
+        </b>
+
+        <p>
+          ضعف تقييم المخاطر
+          أو عدم تطبيق إجراءات السلامة
+          بالشكل المطلوب.
+        </p>
+
+      </div>
+
+
+      <div class="risk reveal">
+
+        <b>
+          03 — ضغط العمل
+        </b>
+
+        <p>
+          الاستعجال وضغط الإنتاج قد يدفعان
+          إلى تجاوز إجراءات الحماية
+          أو العمل في ظروف غير آمنة.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="quote"
+      style="color:#f5f1e8;margin-top:45px"
+    >
+
+      ارتفاع عدد حوادث السقوط قد يكون مؤشرًا
+      على وجود فجوة بين قواعد السلامة المكتوبة
+      وتطبيقها الفعلي.
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     RIGHTS
+========================= -->
+
+<section class="rights">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        WORKER RIGHTS
+      </div>
+
+      <h2>
+        ماذا يفعل العامل بعد الإصابة؟
+      </h2>
+
+      <p class="lead">
+        التوثيق المبكر مهم لحماية الحقوق،
+        خصوصًا إذا أصبحت الإصابة سببًا
+        في عجز مؤقت أو دائم.
+      </p>
+
+    </div>
+
+
+    <div class="rights-grid">
+
+
+      <div class="right reveal">
+
+        <h3>
+          01 — وثّق الإصابة
+        </h3>
+
+        <p>
+          الاحتفاظ بالتقارير الطبية والأشعات
+          وكل مستند متعلق بالإصابة
+          وتاريخ حدوثها.
+        </p>
+
+      </div>
+
+
+      <div class="right reveal">
+
+        <h3>
+          02 — الإبلاغ والتأمين
+        </h3>
+
+        <p>
+          بحسب المادة المقدمة،
+          يلتزم صاحب العمل بإجراءات الإبلاغ
+          عن إصابة العمل لدى التأمينات
+          والجهات المختصة.
+        </p>
+
+      </div>
+
+
+      <div class="right reveal">
+
+        <h3>
+          03 — التعويض أثناء العجز
+        </h3>
+
+        <p>
+          تتضمن القواعد التأمينية أحكامًا
+          للتعويض عن العجز المؤقت والمعاش
+          في حالات العجز المستديم،
+          وفق شروط الاستحقاق.
+        </p>
+
+      </div>
+
+
+      <div class="right reveal">
+
+        <h3>
+          04 — لا تتنازل عن المستندات
+        </h3>
+
+        <p>
+          إذا وُجد نزاع أو منع من العودة للعمل
+          أو تهديد بالفصل، يمكن طلب المشورة
+          من الجهات العمالية المختصة
+          وتقديم شكوى.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <p class="note">
+
+      المعلومات القانونية هنا للتوعية وليست استشارة قانونية.
+      الاستحقاقات والإجراءات تتوقف على حالة العامل،
+      والتسجيل التأميني، والقانون واللوائح السارية.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section class="faq">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        FAQ
+      </div>
+
+      <h2>
+        أسئلة سريعة
+      </h2>
+
+    </div>
+
+
+    <details class="reveal">
+
+      <summary>
+        هل كل إصابات العمل تظهر في الإحصاءات؟
+      </summary>
+
+      <p>
+        ليس بالضرورة.
+        بيانات النشرات الإحصائية لها نطاق تغطية محدد.
+        ومن أهم حدود البيانات المذكورة في المشروع
+        أنها لا تعكس كل العاملين والمنشآت الصغيرة
+        والقطاع غير الرسمي بنفس الدرجة.
+      </p>
+
+    </details>
+
+
+    <details class="reveal">
+
+      <summary>
+        هل السقوط من ارتفاع كبير فقط هو الخطر؟
+      </summary>
+
+      <p>
+        لا.
+        حتى السقوط من ارتفاعات متوسطة قد يؤدي
+        إلى إصابات خطيرة أو مميتة،
+        بحسب طريقة السقوط والسطح والعوامل المحيطة.
+      </p>
+
+    </details>
+
+
+    <details class="reveal">
+
+      <summary>
+        هل يمكن منع حوادث السقوط؟
+      </summary>
+
+      <p>
+        عدد كبير منها يمكن تقليل احتماله بشكل كبير
+        عندما تُحدد المخاطر مسبقًا
+        وتُستخدم وسائل الحماية المناسبة
+        ويجري تطبيق إجراءات العمل الآمن.
+      </p>
+
+    </details>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SOURCES
+========================= -->
+
+<section class="sources">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        SOURCES & NOTES
+      </div>
+
+      <h2>
+        المصادر والمنهجية
+      </h2>
+
+    </div>
+
+
+    <p>
+      المصدر الإحصائي الأساسي المقصود:
+      الجهاز المركزي للتعبئة العامة والإحصاء (CAPMAS).
+    </p>
+
+
+    <p>
+
+      للمراجعة الرسمية:
+
+      <a
+        href="https://www.capmas.gov.eg/"
+        target="_blank"
+        rel="noopener"
+      >
+        موقع CAPMAS
+      </a>
+
+    </p>
+
+
+    <p>
+
+      الجهة الحكومية المختصة بالعمل:
+
+      <a
+        href="https://www.labour.gov.eg/"
+        target="_blank"
+        rel="noopener"
+      >
+        وزارة العمل
+      </a>
+
+    </p>
+
+
+    <p>
+
+      مصدر قصة الحالة كما ورد في مادة المشروع:
+
+      <a
+        href="https://www.facebook.com/share/1C4HtGWKXg/?mibextid=wwXIfr"
+        target="_blank"
+        rel="noopener"
+      >
+        رابط الحالة على Facebook
+      </a>
+
+    </p>
+
+
+    <p class="note">
+
+      هذا الموقع مشروع صحافة بيانات/إعلام رقمي.
+      بعض الوقائع الفردية والأرقام القانونية والإحصائية
+      تحتاج إلى الرجوع إلى المصدر الأصلي والتحقق منها
+      قبل الاستخدام الصحفي أو القانوني النهائي.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     TEAM
+========================= -->
+
+<section class="team">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div class="section-kicker">
+        THE TEAM
+      </div>
+
+      <h2>
+        فريق المشروع
+      </h2>
+
+    </div>
+
+
+    <div class="team-list">
+
+      <div class="member">
+        رقية طارق عبدالعاطي
+      </div>
+
+      <div class="member">
+        فاطمة ناصرعلي الفيتوري
+      </div>
+
+      <div class="member">
+        حبيبه احمد زيدان
+      </div>
+
+      <div class="member">
+        أروى عبدالقوى سعيد
+      </div>
+
+      <div class="member">
+        نعمات محمود فتحى
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <div class="container">
+
+    مشروع صحافة بيانات عن إصابات العمل في مصر — 2024
+
+  </div>
+
 </footer>
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
-/* Reveal sections as the reader scrolls */
-const revealItems = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+
+const observer = new IntersectionObserver(
+
+  (entries)=>{
+
+    entries.forEach(entry=>{
+
+      if(entry.isIntersecting){
+
+        entry.target.classList.add('show');
+
+        if(entry.target.classList.contains('chart')){
+
+          entry.target
+            .querySelectorAll('.fill')
+            .forEach(bar=>{
+
+              bar.style.width = bar.dataset.width;
+
+            });
+
+        }
+
       }
+
     });
-  }, { threshold: 0.12 });
-  revealItems.forEach(item => observer.observe(item));
-} else {
-  revealItems.forEach(item => item.classList.add('visible'));
-}
 
-/* Expandable questions */
-document.querySelectorAll('.question').forEach(button => {
-  button.addEventListener('click', () => {
-    const isOpen = button.classList.toggle('open');
-    button.setAttribute('aria-expanded', String(isOpen));
-    const sign = button.querySelector('.question-top span');
-    if (sign) sign.textContent = isOpen ? '−' : '＋';
+  },
+
+  {
+    threshold:.12
+  }
+
+);
+
+
+document
+  .querySelectorAll('.reveal')
+  .forEach(el=>{
+
+    observer.observe(el);
+
   });
-});
 
-/* Interactive demo chart — values are illustrative, not real statistics */
-const chartControl = document.getElementById('chartControl');
-const chartBars = document.querySelectorAll('.chart-bar');
-const chartMessage = document.getElementById('chartMessage');
 
-function updateChart() {
-  const scale = Number(chartControl.value);
-  chartBars.forEach(bar => {
-    const demoValue = Number(bar.dataset.value);
-    bar.style.width = (demoValue * scale / 100) + '%';
+document
+  .querySelectorAll('.chart')
+  .forEach(chart=>{
+
+    const io = new IntersectionObserver(
+
+      entries=>{
+
+        entries.forEach(entry=>{
+
+          if(entry.isIntersecting){
+
+            chart
+              .querySelectorAll('.fill')
+              .forEach(bar=>{
+
+                bar.style.width =
+                  bar.dataset.width;
+
+              });
+
+            io.disconnect();
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold:.25
+      }
+
+    );
+
+    io.observe(chart);
+
   });
-  chartMessage.textContent = 'مقياس العرض: ' + scale + '% — قيم تجريبية للشرح فقط.';
-}
-chartControl.addEventListener('input', updateChart);
-updateChart();
 
-/* Reading progress indicator */
-window.addEventListener('scroll', () => {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-  document.getElementById('progress').style.width = progress + '%';
-}, { passive: true });
 </script>
+
 </body>
 </html>
