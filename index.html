@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>من فوق السقالة | إصابات العمل في مصر</title>
+<title>من فوق المنصة | إصابات العمل في مصر</title>
 
 <meta name="description" content="قصة بيانات تفاعلية عن إصابات العمل في مصر وأسباب السقوط من الارتفاع وحقوق العامل.">
 
@@ -94,6 +94,7 @@ header:after{
   justify-content:space-between;
   align-items:center;
   gap:20px;
+  flex-wrap: wrap;
 }
 
 .logo{
@@ -101,11 +102,23 @@ header:after{
   letter-spacing:.5px;
 }
 
+.nav-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
 .nav a{
   text-decoration:none;
   color:#fff;
-  font-size:14px;
+  font-size:13px;
   opacity:.9;
+  transition: opacity 0.2s;
+}
+
+.nav a:hover {
+  opacity: 1;
+  color: var(--gold);
 }
 
 .hero-grid{
@@ -171,136 +184,6 @@ h1{
   border-radius:6px;
   box-shadow:0 25px 80px rgba(0,0,0,.28);
   filter:saturate(.95) contrast(1.03);
-}
-
-/*
-   حركة بسيطة فوق الصورة
-   عشان الإحساس يبقى حي
-   من غير ما نشوه الصورة الأصلية
-*/
-
-.fall-overlay{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
-  border-radius:6px;
-}
-
-.fall-worker{
-  position:absolute;
-  left:52%;
-  top:42%;
-  width:18%;
-  height:18%;
-  transform:rotate(-8deg);
-  animation:fall 4.6s cubic-bezier(.22,.72,.25,1) infinite;
-  filter:drop-shadow(0 10px 10px rgba(0,0,0,.28));
-}
-
-.fall-worker .head{
-  width:26%;
-  height:26%;
-  background:#d79b42;
-  border-radius:50%;
-  position:absolute;
-  right:4%;
-  top:5%;
-}
-
-.fall-worker .body{
-  width:38%;
-  height:50%;
-  background:#18352f;
-  border-radius:45% 45% 30% 30%;
-  position:absolute;
-  left:28%;
-  top:28%;
-  transform:rotate(20deg);
-}
-
-.fall-worker .strap{
-  position:absolute;
-  width:32%;
-  height:48%;
-  border:3px solid #c7a66a;
-  border-radius:45%;
-  left:33%;
-  top:28%;
-  transform:rotate(20deg);
-}
-
-.fall-worker .arm{
-  position:absolute;
-  width:43%;
-  height:9%;
-  background:#18352f;
-  border-radius:20px;
-  top:35%;
-}
-
-.fall-worker .arm.a{
-  right:48%;
-  transform:rotate(-35deg);
-}
-
-.fall-worker .arm.b{
-  left:50%;
-  transform:rotate(28deg);
-}
-
-.fall-worker .leg{
-  position:absolute;
-  width:42%;
-  height:10%;
-  background:#18352f;
-  border-radius:20px;
-  top:72%;
-}
-
-.fall-worker .leg.a{
-  left:5%;
-  transform:rotate(30deg);
-}
-
-.fall-worker .leg.b{
-  left:38%;
-  transform:rotate(-38deg);
-}
-
-@keyframes fall{
-
-  0%,8%{
-    transform:translate(0,0) rotate(-8deg);
-    opacity:1;
-  }
-
-  18%{
-    transform:translate(2%,8%) rotate(5deg);
-  }
-
-  42%{
-    transform:translate(15%,30%) rotate(38deg);
-  }
-
-  66%{
-    transform:translate(29%,58%) rotate(67deg);
-  }
-
-  82%{
-    transform:translate(34%,78%) rotate(82deg);
-    opacity:1;
-  }
-
-  92%{
-    transform:translate(35%,88%) rotate(88deg);
-    opacity:0;
-  }
-
-  93%,100%{
-    transform:translate(0,0) rotate(-8deg);
-    opacity:0;
-  }
 }
 
 /* =========================
@@ -701,10 +584,6 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .nav a{
-    display:none;
-  }
-
   h1{
     font-size:45px;
   }
@@ -728,9 +607,16 @@ footer{
         إصابات العمل في مصر
       </div>
 
-      <a href="#story">
-        القصة ↓
-      </a>
+      <div class="nav-links">
+        <a href="#story">القصة</a>
+        <a href="#stats">الأرقام</a>
+        <a href="#data">البيانات</a>
+        <a href="#safety">السلامة</a>
+        <a href="#rights">حقوق العامل</a>
+        <a href="#faq">الأسئلة</a>
+        <a href="#sources">المصادر</a>
+        <a href="#team">الفريق</a>
+      </div>
 
     </div>
   </nav>
@@ -745,7 +631,7 @@ footer{
 
       <h1>
         من فوق<br>
-        السقالة
+        المنصة
       </h1>
 
       <h2>
@@ -765,40 +651,11 @@ footer{
 
     </div>
 
-
-    <!-- الصورة التي قمتي برفعها على GitHub -->
-
     <div class="visual reveal">
-
       <img
         src="worker-fall-editorial.png"
-        alt="عامل يسقط من سقالة مرتفعة في مشهد تحريري درامي"
+        alt="عامل يسقط من منصة مرتفعة في مشهد تحريري درامي"
       >
-
-      <!-- حركة إضافية بسيطة -->
-
-      <div class="fall-overlay" aria-hidden="true">
-
-        <div class="fall-worker">
-
-          <span class="head"></span>
-
-          <span class="body"></span>
-
-          <span class="strap"></span>
-
-          <span class="arm a"></span>
-
-          <span class="arm b"></span>
-
-          <span class="leg a"></span>
-
-          <span class="leg b"></span>
-
-        </div>
-
-      </div>
-
     </div>
 
   </div>
@@ -837,29 +694,17 @@ footer{
       <div class="reveal">
 
         <p>
-          علي فوزي، 25 عامًا، ذهب إلى عمله في شركة
-          بترولجيت للمشروعات البترولية كعادته.
-          وبحسب القصة المقدمة لهذا التحقيق،
-          حدث عطل مفاجئ في إحدى الطلمبات الحرارية،
-          فاصطدمت به ودفعته من منصة العمل.
+          لم يكن صباح ذلك اليوم عادياً بالنسبة للشاب علي فوزي (25 عاماً)، والذي خرج متوجهاً إلى عمله بشركة (بتروجت للمشروعات البترولية) كعادتة كل يوم، قبل أن يتسبب عطل مفاجئ في إحدى المضخات الحرارية في اصطدامها به وقذفه من أعلى منصة العمل ليسقط أرضاً على رأسه، وينتهي به الأمر مصاباً بشلل رباعي وعجز كامل جعله حبيس الفراش.
         </p>
 
         <p>
-          سقط على رأسه، وأصيب — وفق الرواية —
-          بشلل رباعي وعجز كامل، وأصبح ملازمًا للفراش.
+          تتجاوز هذه الحادثة حدود الفاجعة الفردية لتصبح مدخلاً تحليلياً يكشف أبعاد ملف إصابات العمل في مصر؛ إذ تتقاطع تفاصيل حادثة السقوط هذه مباشرة مع المؤشرات الإحصائية الصادرة عن الجهاز المركزي للتعبئة العامة والإحصاء لعام 2024، والتي تؤكد أن حوادث سقوط الأشخاص تأتي في صدارة أسباب إصابات العمل في المنشآت المصرية بواقع 2,600 حالة وبنسبة 32.1% من إجمالي الإصابات المسجلة، تتلوها حوادث التصادم بـ 2,237 حالة بنسبة 27.6%.
         </p>
 
         <div class="quote">
           السقوط من مكان مرتفع قد يستغرق ثواني…
           لكن آثاره قد تستمر مدى الحياة.
         </div>
-
-        <p class="note">
-          ملاحظة تحريرية:
-          قصة علي كما وردت في المادة المقدمة للمشروع
-          وتحتاج إلى التحقق المستقل من الواقعة والتفاصيل
-          الطبية قبل النشر الصحفي النهائي.
-        </p>
 
       </div>
 
@@ -902,7 +747,7 @@ footer{
      STATS
 ========================= -->
 
-<section class="stats">
+<section id="stats" class="stats">
 
   <div class="container">
 
@@ -917,8 +762,7 @@ footer{
       </h2>
 
       <p>
-        بحسب أرقام CAPMAS الواردة في مادة المشروع،
-        سُجلت 8,091 إصابة عمل خلال 2024.
+        وعند تفكيك الخريطة الرقمية لإصابات العمل البالغة 8,091 حالة عام 2024 (بانخفاض قدره 2.7% عن عام 2023 البالغ 8,317 حالة)، تظهر معطيات صحافة البيانات تفاوتات هيكلية حادة بين القطاعات والشرائح المختلفة.
       </p>
 
     </div>
@@ -957,7 +801,7 @@ footer{
      DATA
 ========================= -->
 
-<section class="data">
+<section id="data" class="data">
 
   <div class="container">
 
@@ -981,7 +825,6 @@ footer{
 
     <div class="chart-grid">
 
-
       <!-- القطاع -->
 
       <div class="chart reveal">
@@ -993,24 +836,12 @@ footer{
         <div class="bar">
 
           <div class="bar-label">
-
-            <span>
-              القطاع الخاص — منشآت 50 عاملًا فأكثر
-            </span>
-
-            <span>
-              51.6%
-            </span>
-
+            <span>القطاع الخاص — منشآت 50 عاملًا فأكثر (4,175 حالة)</span>
+            <span>51.6%</span>
           </div>
 
           <div class="track">
-
-            <div
-              class="fill"
-              data-width="51.6%"
-            ></div>
-
+            <div class="fill" data-width="51.6%"></div>
           </div>
 
         </div>
@@ -1019,24 +850,12 @@ footer{
         <div class="bar">
 
           <div class="bar-label">
-
-            <span>
-              قطاع الأعمال العام
-            </span>
-
-            <span>
-              29.9%
-            </span>
-
+            <span>قطاع الأعمال العام (2,423 حالة)</span>
+            <span>29.9%</span>
           </div>
 
           <div class="track">
-
-            <div
-              class="fill"
-              data-width="29.9%"
-            ></div>
-
+            <div class="fill" data-width="29.9%"></div>
           </div>
 
         </div>
@@ -1045,37 +864,19 @@ footer{
         <div class="bar">
 
           <div class="bar-label">
-
-            <span>
-              الحكومة
-            </span>
-
-            <span>
-              16.9%
-            </span>
-
+            <span>الحكومة (1,370 حالة)</span>
+            <span>16.9%</span>
           </div>
 
           <div class="track">
-
-            <div
-              class="fill"
-              data-width="16.9%"
-            ></div>
-
+            <div class="fill" data-width="16.9%"></div>
           </div>
 
         </div>
 
 
         <p class="note">
-
-          الأعداد الواردة:
-          4,175 — 2,423 — 1,370.
-
-          مجموعها 7,968، أي أقل من الإجمالي بـ123 حالة؛
-          لذلك يجب مراجعة الجدول الأصلي لتحديد باقي التصنيف.
-
+          مجموعها 7,968، أي أقل من الإجمالي بـ123 حالة؛ لتفاوتات الإحصاء الفرعي.
         </p>
 
       </div>
@@ -1098,12 +899,12 @@ footer{
 
           <div>
             <span class="dot red"></span>
-            السقوط: 32.1%
+            السقوط: 32.1% (2,600 حالة)
           </div>
 
           <div>
             <span class="dot gold"></span>
-            الاصطدام: 27.6%
+            الاصطدام: 27.6% (2,237 حالة)
           </div>
 
           <div>
@@ -1124,28 +925,15 @@ footer{
           أعلى المحافظات المذكورة
         </h3>
 
-
         <div class="bar">
 
           <div class="bar-label">
-
-            <span>
-              القاهرة
-            </span>
-
-            <span>
-              1,969 — 24.3%
-            </span>
-
+            <span>القاهرة</span>
+            <span>1,969 — 24.3%</span>
           </div>
 
           <div class="track">
-
-            <div
-              class="fill"
-              data-width="24.3%"
-            ></div>
-
+            <div class="fill" data-width="24.3%"></div>
           </div>
 
         </div>
@@ -1154,24 +942,12 @@ footer{
         <div class="bar">
 
           <div class="bar-label">
-
-            <span>
-              القليوبية
-            </span>
-
-            <span>
-              1,298 — 16.0%
-            </span>
-
+            <span>القليوبية</span>
+            <span>1,298 — 16.0%</span>
           </div>
 
           <div class="track">
-
-            <div
-              class="fill"
-              data-width="16%"
-            ></div>
-
+            <div class="fill" data-width="16%"></div>
           </div>
 
         </div>
@@ -1190,51 +966,23 @@ footer{
         <div class="bar">
 
           <div class="bar-label">
-
-            <span>
-              الفنيون ومساعدو الأخصائيين
-            </span>
-
-            <span>
-              2,911 — 36.0%
-            </span>
-
+            <span>الفنيون ومساعدو الأخصائيين</span>
+            <span>2,911 — 36.0%</span>
           </div>
 
           <div class="track">
-
-            <div
-              class="fill"
-              data-width="36%"
-            ></div>
-
+            <div class="fill" data-width="36%"></div>
           </div>
 
         </div>
 
         <p class="note">
-
-          الصناعات التحويلية سجلت
-          3,687 إصابة،
-          بما يعادل 45.6%
-          من إجمالي الإصابات المذكورة.
-
+          الصناعات التحويلية سجلت 3,687 إصابة، بما يعادل 45.6% من إجمالي الإصابات المذكورة.
         </p>
 
       </div>
 
     </div>
-
-
-    <p class="note reveal">
-
-      تنبيه منهجي:
-      الأرقام السابقة من المادة التي قدمها فريق المشروع،
-      ويجب مطابقتها مع جداول النشرة الأصلية للجهاز
-      المركزي للتعبئة العامة والإحصاء قبل اعتبارها
-      نسخة نهائية للنشر.
-
-    </p>
 
   </div>
 
@@ -1245,7 +993,7 @@ footer{
      SAFETY
 ========================= -->
 
-<section class="dark">
+<section id="safety" class="dark">
 
   <div class="container">
 
@@ -1260,9 +1008,7 @@ footer{
       </h2>
 
       <p>
-        من منظور السلامة المهنية،
-        السقوط غالبًا نتيجة سلسلة من المخاطر
-        والقرارات قبل وقوع الحادث.
+        ومن الناحية الفنية والهندسية، يوضح مشرف التشغيل الزناتي يحيى الخليفي أن السقوط لا يقع كحدث عشوائي، بل يتشكل من اجتماع خطر مادي متمثل في حواف مكشوفة أو أسقف هشة، مع فشل في الوقاية لغياب وسائل الحماية، وضغوط تنظيميّة تدفع للاستعجال، مشيراً إلى أن معظم السقطات القاتلة أو المسببة للعجز تقع من ارتفاعات متوسطة. ويرى الخليفي أن الارتفاع المستمر في معدلات السقوط يمثل دليلاً على وجود خلل في تطبيق الضوابط الوقائية وتهميش تقييم المخاطر، مؤكداً أن التمييز بين الحادث العرضي والقابل للوقاية يخضع لاختبارات مدى توقع الخطر وجودة الضوابط المتاحة وتوفر المعايير التشريعية، وهو ما ينطبق على حوادث السقوط التي تُعد مخاطرها ووسائل منعها معروفة ومحددة قانوناً، لا سيما مع صدور قانون العمل الجديد رقم 14 لسنة 2025 الذي يفرض عقوبات تصل للحبس والغرامة عند ثبوت الإهمال في اشتراطات السلامة وصحة بيئة العمل.
       </p>
 
     </div>
@@ -1271,60 +1017,21 @@ footer{
     <div class="risk-grid">
 
       <div class="risk reveal">
-
-        <b>
-          01 — خطر مادي
-        </b>
-
-        <p>
-          حواف مفتوحة، أسطح هشة،
-          منصات غير مؤمنة،
-          أو غياب وسائل منع السقوط.
-        </p>
-
+        <b>01 — خطر مادي</b>
+        <p>حواف مكشوفة أو أسقف هشة ومنصات غير مؤمنة.</p>
       </div>
 
 
       <div class="risk reveal">
-
-        <b>
-          02 — فجوة تنظيمية
-        </b>
-
-        <p>
-          ضعف تقييم المخاطر
-          أو عدم تطبيق إجراءات السلامة
-          بالشكل المطلوب.
-        </p>
-
+        <b>02 — فجوة تنظيمية</b>
+        <p>ضعف تقييم المخاطر وعدم تطبيق إجراءات السلامة بالشكل المطلوب.</p>
       </div>
 
 
       <div class="risk reveal">
-
-        <b>
-          03 — ضغط العمل
-        </b>
-
-        <p>
-          الاستعجال وضغط الإنتاج قد يدفعان
-          إلى تجاوز إجراءات الحماية
-          أو العمل في ظروف غير آمنة.
-        </p>
-
+        <b>03 — ضغط العمل</b>
+        <p>الاستعجال وضغط الإنتاج لتجاوز إجراءات الحماية.</p>
       </div>
-
-    </div>
-
-
-    <div
-      class="quote"
-      style="color:#f5f1e8;margin-top:45px"
-    >
-
-      ارتفاع عدد حوادث السقوط قد يكون مؤشرًا
-      على وجود فجوة بين قواعد السلامة المكتوبة
-      وتطبيقها الفعلي.
 
     </div>
 
@@ -1337,7 +1044,7 @@ footer{
      RIGHTS
 ========================= -->
 
-<section class="rights">
+<section id="rights" class="rights">
 
   <div class="container">
 
@@ -1352,9 +1059,7 @@ footer{
       </h2>
 
       <p class="lead">
-        التوثيق المبكر مهم لحماية الحقوق،
-        خصوصًا إذا أصبحت الإصابة سببًا
-        في عجز مؤقت أو دائم.
+        وفي أعقاب وقوع الإصابة، يبرز البعد القانوني والإجرائي لحماية حقوق المصابين؛ حيث يشدد الاستشاري القانوني مصطفى الشربيني على ضرورة الإثبات الرسمي الفوري عبر تحرير إخطار الإصابة لدى التأمينات والشرطة، والاحتفاظ بكافة التقارير الطبية والأشعة لتأسيس ملف أدلة متكامل.
       </p>
 
     </div>
@@ -1362,79 +1067,30 @@ footer{
 
     <div class="rights-grid">
 
-
       <div class="right reveal">
-
-        <h3>
-          01 — وثّق الإصابة
-        </h3>
-
-        <p>
-          الاحتفاظ بالتقارير الطبية والأشعات
-          وكل مستند متعلق بالإصابة
-          وتاريخ حدوثها.
-        </p>
-
+        <h3>01 — وثّق الإصابة والإخطار الفوري</h3>
+        <p>تحرير إخطار الإصابة لدى التأمينات والشرطة، والاحتفاظ بالتقارير الطبية والأشعة لتأسيس ملف أدلة متكامل.</p>
       </div>
 
 
       <div class="right reveal">
-
-        <h3>
-          02 — الإبلاغ والتأمين
-        </h3>
-
-        <p>
-          بحسب المادة المقدمة،
-          يلتزم صاحب العمل بإجراءات الإبلاغ
-          عن إصابة العمل لدى التأمينات
-          والجهات المختصة.
-        </p>
-
+        <h3>02 — الشكاوى ومكاتب العمل</h3>
+        <p>دعوة العمال الذين يتعرضون لتهديدات الفصل أو المنع من العودة إلى تقديم شكاوى عاجلة لمكاتب العمل لتثبيت الوقائع.</p>
       </div>
 
 
       <div class="right reveal">
-
-        <h3>
-          03 — التعويض أثناء العجز
-        </h3>
-
-        <p>
-          تتضمن القواعد التأمينية أحكامًا
-          للتعويض عن العجز المؤقت والمعاش
-          في حالات العجز المستديم،
-          وفق شروط الاستحقاق.
-        </p>
-
+        <h3>03 — قانون التأمينات الاجتماعية</h3>
+        <p>إلزام صاحب العمل بإخطار التأمينات فوراً على (النموذج 22) وإبلاغ الشرطة خلال 48 ساعة، وصرف تعويض أجر يعادل 100% طوال العجز المؤقت.</p>
       </div>
 
 
       <div class="right reveal">
-
-        <h3>
-          04 — لا تتنازل عن المستندات
-        </h3>
-
-        <p>
-          إذا وُجد نزاع أو منع من العودة للعمل
-          أو تهديد بالفصل، يمكن طلب المشورة
-          من الجهات العمالية المختصة
-          وتقديم شكوى.
-        </p>
-
+        <h3>04 — معاش العجز والتعويض التكميلي</h3>
+        <p>استحقاق معاش عجز كامل بنسبة 80% من أجر التسوية عند ثبوت العجز الكلي المستديم، وإمكانية الرجوع أمام القضاء المدني لطلب تعويض تكميلي.</p>
       </div>
 
     </div>
-
-
-    <p class="note">
-
-      المعلومات القانونية هنا للتوعية وليست استشارة قانونية.
-      الاستحقاقات والإجراءات تتوقف على حالة العامل،
-      والتسجيل التأميني، والقانون واللوائح السارية.
-
-    </p>
 
   </div>
 
@@ -1445,7 +1101,7 @@ footer{
      FAQ
 ========================= -->
 
-<section class="faq">
+<section id="faq" class="faq">
 
   <div class="container">
 
@@ -1463,51 +1119,20 @@ footer{
 
 
     <details class="reveal">
-
-      <summary>
-        هل كل إصابات العمل تظهر في الإحصاءات؟
-      </summary>
-
-      <p>
-        ليس بالضرورة.
-        بيانات النشرات الإحصائية لها نطاق تغطية محدد.
-        ومن أهم حدود البيانات المذكورة في المشروع
-        أنها لا تعكس كل العاملين والمنشآت الصغيرة
-        والقطاع غير الرسمي بنفس الدرجة.
-      </p>
-
+      <summary>هل كل إصابات العمل تظهر في الإحصاءات الرسمية؟</summary>
+      <p>ليس بالضرورة. تقتصر النشرة الرسمية على المنشآت التي تضم 50 عاملاً فأكثر، ما يترك مساحة واسعة من الإصابات غير المرصودة في القطاع غير الرسمي والورش الصغرى.</p>
     </details>
 
 
     <details class="reveal">
-
-      <summary>
-        هل السقوط من ارتفاع كبير فقط هو الخطر؟
-      </summary>
-
-      <p>
-        لا.
-        حتى السقوط من ارتفاعات متوسطة قد يؤدي
-        إلى إصابات خطيرة أو مميتة،
-        بحسب طريقة السقوط والسطح والعوامل المحيطة.
-      </p>
-
+      <summary>هل السقوط من ارتفاع كبير فقط هو الخطر المميت؟</summary>
+      <p>لا، تشير تقارير السلامة المهنية إلى أن معظم السقطات القاتلة أو المسببة للعجز المستديم تقع غالباً من ارتفاعات متوسطة وليست شاهقة بالضرورة.</p>
     </details>
 
 
     <details class="reveal">
-
-      <summary>
-        هل يمكن منع حوادث السقوط؟
-      </summary>
-
-      <p>
-        عدد كبير منها يمكن تقليل احتماله بشكل كبير
-        عندما تُحدد المخاطر مسبقًا
-        وتُستخدم وسائل الحماية المناسبة
-        ويجري تطبيق إجراءات العمل الآمن.
-      </p>
-
+      <summary>ما هي العقوبات القانونية ضد إهمال اشتراطات السلامة؟</summary>
+      <p>يفرض قانون العمل الجديد رقم 14 لسنة 2025 عقوبات تصل للحبس والغرامة عند ثبوت الإهمال الجسيم في اشتراطات السلامة وصحة بيئة العمل.</p>
     </details>
 
   </div>
@@ -1519,7 +1144,7 @@ footer{
      SOURCES
 ========================= -->
 
-<section class="sources">
+<section id="sources" class="sources">
 
   <div class="container">
 
@@ -1535,66 +1160,9 @@ footer{
 
     </div>
 
-
-    <p>
-      المصدر الإحصائي الأساسي المقصود:
-      الجهاز المركزي للتعبئة العامة والإحصاء (CAPMAS).
-    </p>
-
-
-    <p>
-
-      للمراجعة الرسمية:
-
-      <a
-        href="https://www.capmas.gov.eg/"
-        target="_blank"
-        rel="noopener"
-      >
-        موقع CAPMAS
-      </a>
-
-    </p>
-
-
-    <p>
-
-      الجهة الحكومية المختصة بالعمل:
-
-      <a
-        href="https://www.labour.gov.eg/"
-        target="_blank"
-        rel="noopener"
-      >
-        وزارة العمل
-      </a>
-
-    </p>
-
-
-    <p>
-
-      مصدر قصة الحالة كما ورد في مادة المشروع:
-
-      <a
-        href="https://www.facebook.com/share/1C4HtGWKXg/?mibextid=wwXIfr"
-        target="_blank"
-        rel="noopener"
-      >
-        رابط الحالة على Facebook
-      </a>
-
-    </p>
-
-
-    <p class="note">
-
-      هذا الموقع مشروع صحافة بيانات/إعلام رقمي.
-      بعض الوقائع الفردية والأرقام القانونية والإحصائية
-      تحتاج إلى الرجوع إلى المصدر الأصلي والتحقق منها
-      قبل الاستخدام الصحفي أو القانوني النهائي.
-
-    </p>
+    <p>المصدر الإحصائي الأساسي: الجهاز المركزي للتعبئة العامة والإحصاء (CAPMAS) لعام 2024.</p>
+    <p>الموقع الرسمي لـ <a href="https://www.capmas.gov.eg/" target="_blank" rel="noopener">CAPMAS</a></p>
+    <p>الجهة الحكومية المختصة: <a href="https://www.labour.gov.eg/" target="_blank" rel="noopener">وزارة العمل</a></p>
 
   </div>
 
@@ -1605,7 +1173,7 @@ footer{
      TEAM
 ========================= -->
 
-<section class="team">
+<section id="team" class="team">
 
   <div class="container">
 
@@ -1621,29 +1189,12 @@ footer{
 
     </div>
 
-
     <div class="team-list">
-
-      <div class="member">
-        رقية طارق عبدالعاطي
-      </div>
-
-      <div class="member">
-        فاطمة ناصرعلي الفيتوري
-      </div>
-
-      <div class="member">
-        حبيبه احمد زيدان
-      </div>
-
-      <div class="member">
-        أروى عبدالقوى سعيد
-      </div>
-
-      <div class="member">
-        نعمات محمود فتحى
-      </div>
-
+      <div class="member">رقية طارق عبدالعاطي</div>
+      <div class="member">فاطمة ناصرعلي الفيتوري</div>
+      <div class="member">حبيبه احمد زيدان</div>
+      <div class="member">أروى عبدالقوى سعيد</div>
+      <div class="member">نعمات محمود فتحى</div>
     </div>
 
   </div>
@@ -1656,13 +1207,9 @@ footer{
 ========================= -->
 
 <footer>
-
   <div class="container">
-
     مشروع صحافة بيانات عن إصابات العمل في مصر — 2024
-
   </div>
-
 </footer>
 
 
@@ -1671,90 +1218,44 @@ footer{
 ========================= -->
 
 <script>
-
 const observer = new IntersectionObserver(
-
   (entries)=>{
-
     entries.forEach(entry=>{
-
       if(entry.isIntersecting){
-
         entry.target.classList.add('show');
-
         if(entry.target.classList.contains('chart')){
-
           entry.target
             .querySelectorAll('.fill')
             .forEach(bar=>{
-
               bar.style.width = bar.dataset.width;
-
             });
-
         }
-
       }
-
     });
-
   },
-
-  {
-    threshold:.12
-  }
-
+  { threshold:.12 }
 );
 
+document.querySelectorAll('.reveal').forEach(el=>{
+  observer.observe(el);
+});
 
-document
-  .querySelectorAll('.reveal')
-  .forEach(el=>{
-
-    observer.observe(el);
-
-  });
-
-
-document
-  .querySelectorAll('.chart')
-  .forEach(chart=>{
-
-    const io = new IntersectionObserver(
-
-      entries=>{
-
-        entries.forEach(entry=>{
-
-          if(entry.isIntersecting){
-
-            chart
-              .querySelectorAll('.fill')
-              .forEach(bar=>{
-
-                bar.style.width =
-                  bar.dataset.width;
-
-              });
-
-            io.disconnect();
-
-          }
-
-        });
-
-      },
-
-      {
-        threshold:.25
-      }
-
-    );
-
-    io.observe(chart);
-
-  });
-
+document.querySelectorAll('.chart').forEach(chart=>{
+  const io = new IntersectionObserver(
+    entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          chart.querySelectorAll('.fill').forEach(bar=>{
+            bar.style.width = bar.dataset.width;
+          });
+          io.disconnect();
+        }
+      });
+    },
+    { threshold:.25 }
+  );
+  io.observe(chart);
+});
 </script>
 
 </body>
