@@ -500,42 +500,6 @@ h2{
   opacity:.8;
 }
 
-.falling-person{
-  position:absolute;
-  right:42%;
-  top:17%;
-  width:85px;
-  height:85px;
-  border-radius:50%;
-  border:10px solid var(--red);
-  transform:rotate(35deg);
-  animation:fallPulse 2.4s ease-in-out infinite;
-}
-
-.falling-person:before{
-  content:"";
-  position:absolute;
-  width:95px;
-  height:15px;
-  background:var(--red);
-  top:35px;
-  right:-50px;
-  transform:rotate(55deg);
-  border-radius:10px;
-}
-
-.falling-person:after{
-  content:"";
-  position:absolute;
-  width:70px;
-  height:12px;
-  background:var(--red);
-  top:60px;
-  right:15px;
-  transform:rotate(-40deg);
-  border-radius:10px;
-}
-
 .fall-number{
   position:relative;
   z-index:3;
@@ -562,15 +526,6 @@ h2{
   margin:12px auto 0;
   color:#bfc9c3;
   font-size:14px;
-}
-
-@keyframes fallPulse{
-  0%,100%{
-    transform:rotate(35deg) translateY(0);
-  }
-  50%{
-    transform:rotate(35deg) translateY(35px);
-  }
 }
 
 /* =========================
@@ -1484,7 +1439,7 @@ footer{
 
       <div class="fall-line"></div>
 
-      <div class="falling-person"></div>
+      <!-- تم حذف العنصر الأحمر المتحرك فقط -->
 
       <div class="fall-number">
 
