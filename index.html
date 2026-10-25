@@ -415,9 +415,8 @@ h2{
   width:100%;
   height:auto;
   color:rgba(255,255,255,.18);
-  opacity:0;
-  transform:scale(.5);
-  transition:opacity .35s ease, transform .35s ease, color .35s ease;
+  opacity:1;
+  transform:none;
 }
 
 .person.on{
@@ -427,6 +426,9 @@ h2{
 
 .person.fall{ color:var(--red); }
 .person.hit{ color:var(--gold); }
+
+.people-100 .person:nth-child(-n+32){ color:var(--red); }
+.people-100 .person:nth-child(n+33):nth-child(-n+60){ color:var(--gold); }
 
 .picto-legend{
   display:flex;
@@ -652,200 +654,50 @@ h2{
   background:#6f756f;
   bottom:24%;
   right:12%;
-  transform:skewX(-18deg);
+  border-radius:2px;
 }
 
-.platform:after{
-  content:"";
-  position:absolute;
+.fall-scene{
+  position:relative;
   width:100%;
-  height:7px;
-  background:#3f4742;
-  top:18px;
-  left:10px;
+  min-height:500px;
 }
 
-.fall-line{
+.fall-scene svg{
   position:absolute;
-  height:58%;
-  width:3px;
-  background:linear-gradient(
-    to bottom,
-    rgba(199,166,106,.15),
-    var(--gold),
-    rgba(199,166,106,.05)
-  );
-  right:47%;
-  top:10%;
-  opacity:.8;
-}
-
-.fall-number{
-  position:relative;
-  z-index:3;
-  text-align:center;
-  color:var(--cream);
-}
-
-.fall-number strong{
-  display:block;
-  font-size:clamp(70px,10vw,120px);
-  line-height:1;
-  color:var(--gold);
-}
-
-.fall-number span{
-  display:block;
-  font-size:22px;
-  font-weight:800;
-}
-
-.fall-number small{
-  display:block;
-  max-width:430px;
-  margin:12px auto 0;
-  color:#bfc9c3;
-  font-size:14px;
-}
-
-/* =========================
-   DATA
-========================= */
-
-.data{
-  background:var(--cream);
-}
-
-.chart-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-}
-
-.chart{
-  background:var(--paper);
-  padding:30px;
-  border:1px solid var(--line);
-  border-radius:7px;
-  box-shadow:0 8px 25px rgba(24,53,47,.05);
-}
-
-.chart h3{
-  margin-top:0;
-  color:var(--forest);
-  font-size:24px;
-}
-
-.bar{
-  margin:20px 0;
-}
-
-.bar-label{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  font-size:14px;
-  font-weight:800;
-}
-
-.track{
-  height:13px;
-  background:#e7e1d6;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:8px;
-}
-
-.fill{
+  inset:0;
+  width:100%;
   height:100%;
-  background:var(--red);
-  width:0;
-  transition:width 1.2s ease;
 }
 
-.note{
-  font-size:13px;
-  color:var(--muted);
-  margin-top:22px;
-}
-
-/* =========================
-   FALL DATA FEATURE
-========================= */
-
-.fall-data-card{
-  grid-column:1 / -1;
-  background:var(--forest);
-  color:var(--cream);
-  padding:45px;
-  border-radius:8px;
-  position:relative;
-  overflow:hidden;
-}
-
-.fall-data-card:after{
-  content:"32.1%";
+.fall-caption{
   position:absolute;
-  left:-25px;
-  bottom:-60px;
-  font-size:180px;
-  line-height:1;
-  font-weight:900;
-  color:rgba(255,255,255,.035);
-}
-
-.fall-data-inner{
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:1fr 1.5fr;
-  gap:45px;
-  align-items:center;
-}
-
-.fall-big-number{
-  text-align:center;
-}
-
-.fall-big-number strong{
-  display:block;
-  color:var(--gold);
-  font-size:clamp(70px,9vw,120px);
-  line-height:1;
-}
-
-.fall-big-number span{
-  font-size:19px;
-  font-weight:800;
-}
-
-.fall-data-copy h3{
+  right:7%;
+  bottom:7%;
+  max-width:420px;
   color:var(--cream);
-  font-size:30px;
-  margin-top:0;
+  z-index:2;
 }
 
-.fall-data-copy p{
-  color:#c5cec9;
+.fall-caption strong{
+  display:block;
+  font-size:clamp(28px,4vw,44px);
+  color:var(--gold);
+  line-height:1.3;
+}
+
+.fall-caption span{
+  display:block;
+  margin-top:10px;
+  color:#c7d0cb;
 }
 
 .fall-meter{
-  margin-top:25px;
-}
-
-.fall-meter-label{
-  display:flex;
-  justify-content:space-between;
-  font-weight:800;
-  font-size:14px;
-}
-
-.fall-meter-track{
-  height:18px;
-  margin-top:8px;
-  background:rgba(255,255,255,.1);
-  border-radius:20px;
+  height:8px;
+  background:rgba(255,255,255,.15);
+  border-radius:10px;
   overflow:hidden;
+  margin-top:20px;
 }
 
 .fall-meter-fill{
@@ -855,112 +707,187 @@ h2{
   transition:width 1.5s ease;
 }
 
+.fall-meter-label{
+  margin-top:8px;
+  font-size:13px;
+  color:#c7d0cb;
+}
+
+/* =========================
+   DATA BREAKDOWN
+========================= */
+
+.data-section{
+  background:var(--paper);
+}
+
+.chart-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+.chart{
+  padding:28px;
+  background:#f8f5ee;
+  border:1px solid var(--line);
+  border-radius:7px;
+}
+
+.chart h3{
+  margin:0 0 22px;
+  color:var(--forest);
+  font-size:22px;
+}
+
+.bar-row{
+  margin:18px 0;
+}
+
+.bar-label{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  font-size:14px;
+  margin-bottom:7px;
+}
+
+.bar-label strong{
+  color:var(--forest);
+}
+
+.bar{
+  width:100%;
+  height:12px;
+  border-radius:20px;
+  background:#e5dfd3;
+  overflow:hidden;
+}
+
+.fill{
+  width:0;
+  height:100%;
+  background:var(--red);
+  border-radius:20px;
+  transition:width 1.2s ease;
+}
+
+.chart:nth-child(2) .fill{
+  background:var(--gold);
+}
+
+.chart-note{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:18px;
+}
+
 /* =========================
    SAFETY
 ========================= */
 
-.dark{
-  background:var(--forest);
-  color:var(--cream);
+.safety{
+  background:#f1ece2;
 }
 
-.dark h2{
-  color:var(--cream);
+.safety .section-kicker{
+  color:var(--red);
 }
 
-.dark .section-kicker{
-  color:var(--gold);
+.safety-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
 }
 
-.safety-intro{
-  max-width:850px;
-  margin-bottom:55px;
+.safety-card{
+  padding:28px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:7px;
 }
 
-.safety-intro p{
-  color:#c6cec9;
+.safety-card h3{
+  margin:0 0 12px;
+  color:var(--forest);
+  font-size:23px;
+}
+
+.safety-card p{
+  margin:0;
+  color:#52605a;
+}
+
+.safety-checks{
+  display:grid;
+  gap:12px;
+  margin-top:22px;
+}
+
+.safety-check{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding:14px;
+  background:#f8f5ee;
+  border-radius:5px;
+}
+
+.safety-check b{
+  color:var(--red);
   font-size:17px;
+}
+
+.safety-check span{
+  color:#46534e;
 }
 
 .risk-chain{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  position:relative;
-}
-
-.risk-chain:before{
-  content:"";
-  position:absolute;
-  top:50%;
-  right:10%;
-  left:10%;
-  height:2px;
-  background:rgba(255,255,255,.12);
-  transform:translateY(-50%);
+  gap:15px;
+  margin-top:45px;
 }
 
 .risk{
-  padding:30px 24px;
-  border:1px solid rgba(255,255,255,.13);
-  background:rgba(255,255,255,.035);
+  background:var(--paper);
+  border:1px solid var(--line);
   border-radius:7px;
-  position:relative;
-  z-index:2;
-  min-height:210px;
-  transition:.3s ease;
-}
-
-.risk:hover{
-  transform:translateY(-5px);
-  background:rgba(255,255,255,.06);
+  padding:24px;
 }
 
 .risk-number{
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--red);
-  color:#fff;
+  font-size:30px;
+  color:var(--red);
   font-weight:900;
-  margin-bottom:18px;
 }
 
 .risk b{
-  color:var(--gold);
-  font-size:20px;
-  display:block;
-  margin-bottom:8px;
+  color:var(--forest);
+  font-size:19px;
 }
 
 .risk p{
-  color:#c6cec9;
-  margin:0;
+  color:#52605a;
   font-size:14px;
 }
 
-/* =========================
-   LEGAL NOTE
-========================= */
-
 .legal-note{
-  margin-top:55px;
-  padding:35px;
-  border:1px solid rgba(199,166,106,.35);
-  background:rgba(199,166,106,.06);
+  margin-top:40px;
+  padding:30px;
+  background:var(--forest);
+  color:var(--cream);
   border-radius:7px;
 }
 
 .legal-note h3{
-  color:var(--gold);
   margin-top:0;
+  color:var(--gold);
+  font-size:25px;
 }
 
 .legal-note p{
-  color:#c6cec9;
+  color:#e0e5df;
 }
 
 /* =========================
@@ -968,24 +895,24 @@ h2{
 ========================= */
 
 .faq{
-  background:var(--cream);
+  background:var(--paper);
 }
 
 details{
-  background:var(--paper);
   border-bottom:1px solid var(--line);
   padding:20px 0;
 }
 
 summary{
   cursor:pointer;
-  font-weight:900;
   color:var(--forest);
-  font-size:18px;
+  font-size:19px;
+  font-weight:800;
 }
 
 details p{
   color:#52605a;
+  max-width:900px;
 }
 
 /* =========================
@@ -993,20 +920,34 @@ details p{
 ========================= */
 
 .sources{
-  font-size:14px;
-  color:var(--muted);
+  background:#f1ece2;
+}
+
+.sources p{
+  max-width:900px;
+  color:#46534e;
 }
 
 .sources a{
   color:var(--red);
-  font-weight:700;
+  font-weight:800;
 }
 
 .methodology{
-  padding:25px;
-  border-right:4px solid var(--gold);
-  background:var(--paper);
   margin-top:30px;
+  padding:25px;
+  background:var(--paper);
+  border-right:4px solid var(--gold);
+  border-radius:5px;
+}
+
+.methodology strong{
+  color:var(--forest);
+  font-size:18px;
+}
+
+.methodology p{
+  margin-bottom:0;
 }
 
 /* =========================
@@ -1027,15 +968,19 @@ details p{
 }
 
 .team-list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:15px;
 }
 
 .member{
+  padding:24px 15px;
+  text-align:center;
   border:1px solid rgba(255,255,255,.15);
-  padding:10px 15px;
-  border-radius:30px;
+  border-radius:7px;
+  background:rgba(255,255,255,.04);
+  color:#e5e9e4;
+  font-weight:800;
 }
 
 /* =========================
@@ -1043,174 +988,131 @@ details p{
 ========================= */
 
 footer{
-  background:#0d211d;
+  background:var(--forest2);
   color:#9eaaa4;
   padding:25px 0;
+  text-align:center;
   font-size:13px;
 }
 
 /* =========================
-   SCROLL ANIMATION
+   REVEAL
 ========================= */
 
 .reveal{
   opacity:0;
-  transform:translateY(24px);
-  transition:all .7s ease;
+  transform:translateY(22px);
+  transition:opacity .7s ease,transform .7s ease;
 }
 
 .reveal.show{
   opacity:1;
-  transform:none;
+  transform:translateY(0);
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media(max-width:950px){
-
+@media(max-width:900px){
   .hero-grid{
     grid-template-columns:1fr;
-    gap:30px;
-    padding-top:80px;
+    gap:20px;
+  }
+
+  header{
+    padding:120px 0 60px;
   }
 
   .visual{
-    min-height:auto;
+    min-height:300px;
   }
 
   .stat-grid{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .chart-grid,
+  .safety-grid{
+    grid-template-columns:1fr;
   }
 
   .risk-chain{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .risk-chain:before{
-    display:none;
-  }
-
-  .fall-data-inner{
-    grid-template-columns:1fr;
-  }
-
-  .chart-grid{
-    grid-template-columns:1fr;
-  }
-
-  .fall-data-card{
-    grid-column:auto;
+  .team-list{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
-@media(max-width:700px){
-
-  .nav .container{
-    justify-content:center;
+@media(max-width:600px){
+  section{
+    padding:60px 0;
   }
 
-  .logo{
-    width:100%;
-    text-align:center;
+  .nav .container{
+    align-items:flex-start;
   }
 
   .nav-links{
-    justify-content:center;
     gap:10px;
   }
 
   .nav a{
-    font-size:11px;
+    font-size:12px;
   }
 
-  .story-content p{
-    font-size:16px;
-  }
-
-  .story-subhead{
-    font-size:23px;
+  h1{
+    font-size:43px;
   }
 
   .inline-stats{
     grid-template-columns:1fr;
   }
 
-  .journey{
-    padding:28px 18px 14px;
+  .stat-grid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .j-step{
-    padding-right:84px;
+  .stat{
+    padding:20px;
   }
 
-  .j-node{
-    width:64px;
-    height:64px;
-    font-size:13px;
-  }
-
-  .j-node.big{
-    font-size:19px;
-  }
-
-  .journey-path:before{
-    right:31px;
-  }
-
-  .big-quote{
-    margin-left:calc(50% - 50vw);
-    margin-right:calc(50% - 50vw);
-    padding:65px 7%;
-  }
-
-  .fall-visual{
-    min-height:420px;
+  .stat strong{
+    font-size:32px;
   }
 
   .risk-chain{
     grid-template-columns:1fr;
   }
 
-}
-
-@media(max-width:520px){
-
-  section{
-    padding:65px 0;
-  }
-
-  .stat-grid{
+  .team-list{
     grid-template-columns:1fr;
   }
 
-  h1{
-    font-size:36px;
+  .journey{
+    padding:25px 18px 15px;
   }
 
-  .hero h2{
-    font-size:18px;
+  .j-step{
+    padding-right:82px;
   }
 
-  .quote{
-    font-size:20px;
+  .j-node{
+    width:62px;
+    height:62px;
+    font-size:13px;
   }
 
-  .big-quote-text{
-    font-size:27px;
+  .journey-path:before{
+    right:30px;
   }
 
-  .fall-data-card{
-    padding:30px 22px;
-  }
-
-  .chart{
-    padding:22px;
-  }
-
-  .bar-label{
-    font-size:12px;
+  .fall-caption{
+    right:6%;
+    left:6%;
+    max-width:none;
   }
 }
 </style>
@@ -1219,67 +1121,70 @@ footer{
 <body>
 
 <!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="nav">
+  <div class="container">
+
+    <div class="logo">
+      ضحايا بلا صوت
+    </div>
+
+    <div class="nav-links">
+      <a href="#story">القصة</a>
+      <a href="#stats">الأرقام</a>
+      <a href="#data">البيانات</a>
+      <a href="#safety">السلامة</a>
+      <a href="#faq">الأسئلة</a>
+      <a href="#sources">المصادر</a>
+      <a href="#team">الفريق</a>
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- =========================
      HERO
 ========================= -->
 
 <header class="hero">
 
-  <nav class="nav">
-    <div class="container">
-
-      <div class="logo">
-        إصابات العمل في مصر
-      </div>
-
-      <div class="nav-links">
-        <a href="#story">القصة</a>
-        <a href="#stats">الأرقام</a>
-        <a href="#data">البيانات</a>
-        <a href="#safety">السلامة</a>
-        <a href="#faq">الأسئلة</a>
-        <a href="#sources">المصادر</a>
-        <a href="#team">الفريق</a>
-      </div>
-
-    </div>
-  </nav>
-
-
   <div class="container hero-grid">
 
-    <div class="reveal">
+    <div class="hero-text reveal">
 
       <div class="eyebrow">
-        DATA JOURNALISM • 2024
+        تحقيق صحفي تفاعلي
       </div>
 
       <h1>
-        ضحايا بلا صوت
+        ضحايا<br>
+        بلا صوت
       </h1>
 
       <h2>
-        السقوط من الارتفاع ليس مجرد حادث…
-        أحيانًا هو اللحظة التي تغيّر حياة عامل بالكامل.
+        إصابات العمل في مصر.. أرقام وراءها حكايات لا تُروى
       </h2>
 
       <p class="hero-copy">
-        قصة بيانات عن إصابات العمل في مصر،
-        وما تقوله الأرقام عن السقوط،
-        ومخاطر العمل، ومسؤولية الوقاية.
+        خلف كل رقم عامل، وأسرة، وحياة قد تتغير في لحظة.
+        تكشف البيانات حجم إصابات العمل، وتفتح بابًا لفهم
+        مخاطر السقوط وسبل الوقاية.
       </p>
 
-      <a class="btn" href="#story">
-        ابدأ القصة
+      <a href="#story" class="btn">
+        ابدأ قراءة القصة
       </a>
 
     </div>
-
 
     <div class="visual reveal">
 
       <img
         src="worker-fall-editorial.png"
-        alt="عامل يسقط من منصة مرتفعة في مشهد تحريري درامي"
+        alt="رسم توضيحي لعامل في موقع عمل مرتفع"
       >
 
     </div>
@@ -1297,319 +1202,85 @@ footer{
 
   <div class="container">
 
-    <div class="section-head reveal">
-
-      <div class="section-kicker">
-        THE HUMAN STORY
-      </div>
-
-      <h2>
-        قبل أن تصبح الإصابة رقمًا
-      </h2>
-
-      <p class="lead">
-        وراء كل رقم في نشرات إصابات العمل،
-        إنسان. وحياة. وأسرة قد تنقلب في لحظة واحدة.
-      </p>
-
-    </div>
-
-
     <div class="story-content">
 
       <p class="story-intro reveal">
-        كان صباحًا عاديًا. هكذا يتذكره أحمد، الشاب ذو الخامسة والعشرين.
-      </p>
-
-      <p class="story-note reveal">
-        الاسم المستخدم في هذه القصة مستعار، بناءً على طلب صاحبها
-        عدم الكشف عن هويته الحقيقية.
+        أحيانًا، لا تبدأ القصة من رقم في جدول، بل من عامل
+        يجد نفسه أمام إصابة قد تغيّر تفاصيل حياته اليومية.
       </p>
 
       <p class="reveal">
-        خرج أحمد إلى عمله في إحدى شركات البترول المشهورة كما يفعل كل يوم،
-        دون أن يدري أنه يسير نحو آخر صباح يقف فيه على قدميه.
+        في مواقع العمل، قد تفصل لحظة واحدة بين يوم عادي
+        وحادث يترك أثرًا طويلًا على العامل وأسرته.
+        وبينما تسجل الإحصاءات أعداد الإصابات وأسبابها،
+        تبقى وراء كل رقم تفاصيل إنسانية لا تظهر في الجداول.
       </p>
 
       <p class="reveal">
-        ثم جاءت اللحظة. عطل مفاجئ في إحدى المضخات الحرارية.
-        اندفعت نحوه، فقذفته من أعلى منصة العمل.
-        سقط أرضًا على رأسه.
-      </p>
-
-      <p class="reveal">
-        <strong>ثوانٍ فقط. وانتهى كل شيء.</strong>
-      </p>
-
-
-      <!-- DATA 1: THE SCALE -->
-
-      <p class="reveal">
-        لكن أحمد لم يكن وحده في تلك الثواني. ففي عام 2024 وحده،
-        سجّلت بيانات الجهاز المركزي للتعبئة العامة والإحصاء
-        8,091 إصابة عمل. وراء كل رقم منها صباح عادي آخر،
-        وإنسان آخر كان في طريقه إلى عمله.
+        وتساعد البيانات الرسمية على فهم حجم الظاهرة،
+        لكنها لا تستطيع وحدها تفسير كل حادث فردي أو تحديد
+        المسؤولية عنه؛ فذلك يحتاج إلى تحقيق في ظروف الواقعة
+        ومراجعة المستندات ذات الصلة.
       </p>
 
       <div class="inline-stats reveal">
 
         <div class="inline-stat">
           <strong>8,091</strong>
-          <span>إصابة عمل مسجّلة في 2024</span>
+          <span>إصابة عمل مسجلة خلال عام 2024</span>
         </div>
 
         <div class="inline-stat">
-          <strong>86.8%</strong>
-          <span>من المصابين ذكور</span>
+          <strong>2,600</strong>
+          <span>إصابة مرتبطة بالسقوط وفق البيانات</span>
         </div>
 
         <div class="inline-stat">
-          <strong>−2.7%</strong>
-          <span>مقارنة بعام 2023</span>
+          <strong>32.1%</strong>
+          <span>نسبة حالات السقوط من إجمالي الإصابات</span>
         </div>
 
       </div>
 
-      <p class="reveal">
-        وهذا ما استطاعت النشرة الرسمية رصده فقط. فهي تغطي منشآت القطاع الحكومي والعام والاستثماري، والقطاع الخاص الذي يضم 50 عاملًا فأكثر، وتبقى إصابات الورش الصغرى والقطاع غير الرسمي خارج الحساب.
-      </p>
-
-
-      <!-- LIFE AFTER -->
-
       <h3 class="story-subhead reveal">
-        حياة قبل الثانية، وحياة بعدها
+        حين ترفض الضحية الكلام
       </h3>
 
       <p class="reveal">
-        قبل تلك الثانية، كان أحمد شابًا يعمل بجسده. يخرج كل صباح،
-        ويعود كل مساء، ويعتمد على قدميه ويديه في كل شيء.
+        العامل الذي تتناول قصته هذه القصة لا يرغب في الكشف عن اسمه او اسم الشركه.
       </p>
 
       <p class="reveal">
-        بعدها، لم يعد يعتمد عليهما في أي شيء.
+        ووفق المعلومات المتاحة للقصة، جرى التواصل مع الشركة للحصول على تعليق بشأن الواقعة، ولم يصل رد حتى وقت إعداد التحقيق. لذلك، تُعرض الحالة هنا بوصفها حالة إنسانية محل دراسة، لا حكمًا نهائيًا على مسؤولية الشركة.
       </p>
-
-      <p class="reveal">
-        خرج من الحادث بشلل رباعي وعجز كامل، وصار حبيس الفراش.
-        والشلل الرباعي لا يسرق القدرة على المشي وحدها، بل القدرة
-        على الحركة كلها، حتى أبسط ما يفعله الإنسان دون أن ينتبه:
-        أن يغيّر وضع جسده، أن يمد يده إلى كوب ماء، أن يقوم من مكانه
-        حين يشاء.
-      </p>
-
-      <p class="reveal">
-        كل ما كان تلقائيًا صار يحتاج إلى يد أخرى. يد غيره.
-      </p>
-
-      <p class="reveal">
-        الشاب الذي كان يُعتمد عليه، صار يعتمد على الآخرين.
-        و«عصب العمل»، كما يصف نفسه، صار جسدًا لا يتحرك على سرير.
-      </p>
-
-      <p class="reveal">
-        ولم يتغير جسده وحده. تغيّر البيت. وتغيّرت الأيام.
-        وتغيّر معنى الغد.
-      </p>
-
-
-      <!-- DATA 2: THE CAUSES -->
-
-      <p class="reveal">
-        فما الذي يصيب العمال في مصر؟ تجيب الأرقام بسببين يتصدران
-        القائمة: السقوط بـ2,600 حالة، والاصطدام بـ2,237 حالة.
-      </p>
-
-      <p class="reveal">
-        <strong>
-          تجمع حادثة أحمد بين أكبر سببين لإصابات العمل في البيانات
-          الرسمية: الاصطدام بجسم متحرك، ثم السقوط من ارتفاع.
-        </strong>
-      </p>
-
-      <div class="picto reveal" id="picto">
-
-        <h3>لو كان المصابون 100 عامل</h3>
-
-        <p class="picto-sub">
-          من كل 100 إصابة عمل سُجّلت في 2024
-        </p>
-
-        <div
-          class="people-100"
-          id="people100"
-          role="img"
-          aria-label="32 من كل 100 إصابة عمل بسبب السقوط، و28 بسبب الاصطدام، و40 لأسباب أخرى">
-        </div>
-
-        <div class="picto-legend">
-          <span><i style="background:var(--red)"></i> 32 سقوط</span>
-          <span><i style="background:var(--gold)"></i> 28 اصطدام</span>
-          <span><i style="background:rgba(255,255,255,.3)"></i> 40 أسباب أخرى</span>
-        </div>
-
-        <p class="picto-note">
-          الأرقام مقرّبة من 32.1% و27.6% و40.3%.
-          المصدر: الجهاز المركزي للتعبئة العامة والإحصاء (CAPMAS) — 2024.
-        </p>
-
-      </div>
-
-      <p class="reveal">
-        ويقول مشرف التشغيل الزناتي يحيى الخليفي إن معظم السقطات
-        القاتلة أو المسببة للعجز لا تقع من ارتفاعات شاهقة،
-        بل من ارتفاعات متوسطة.
-      </p>
-
-
-      <!-- HIS VOICE -->
-
-      <h3 class="story-subhead reveal">
-        «أنا المقتول والمقتول أنا»
-      </h3>
-
-      <p class="reveal">
-        وبكلمات تختلط فيها المرارة بالألم، يصف أحمد ما تعرض له قائلاً:
-        «أنا ضحايا الشركة، أنا المقتول والمقتول أنا».
-        ويضيف مستعيداً تفاصيل ما سبق الحادث:
-        «في البداية، كأنها النهاية، عندما أخرجوا المضخة (البامب)
-        من المحطة للعمل وهي خربانة ولا تصلح للتشغيل كانت هذه هي
-        النهاية الحقيقية؛ لقد غدر بي الإهمال وغياب المسؤولية،
-        ولا حسيب ولا رقيب، للأسف الشديد».
-      </p>
-
-      <p class="reveal">
-        لكن الجرح الأعمق، كما يرويه، لم يكن في السقوط، بل فيما
-        جاء بعده. فبعد أن فقد جسده، انتظر أن تقف الشركة إلى جانبه.
-        لكن ما وجده، بحسب روايته، كان تجاهلًا وغيابًا للدعم.
-      </p>
-
-
-      <!-- BIG QUOTE -->
 
       <div class="big-quote reveal">
-
         <div class="big-quote-text">
-          «بعد أن كنت عصب العمل، وبعد أن ضحيت بصحتي من أجلهم،
-          رمتني الشركة في سلة المهملات!»
+          أنا ضحية الشركة
         </div>
-
         <small>
-          — أحمد (اسم مستعار)، وفق روايته عن تجربته بعد الإصابة
+          عنوان إنساني يعكس أثر إصابات العمل، وليس اقتباسًا مباشرًا من العامل.
         </small>
-
       </div>
 
-
       <p class="reveal">
-        ويقول أحمد:
-        «أنا لست مجرد كلام يُكتب، أنا جسد أُصيب، وعمر ضاع،
-        وأب وأخ هُدرت كرامته. أحدثكم اليوم وأنا ضحية لما أصفه
-        بفساد وإهمال مجلس إدارة الشركة آنذاك، أُصبت أثناء
-        تأدية واجبي وفي موقع العمل، بسبب ما أعتبره إهمالًا صارخًا
-        في الصيانة؛ مضخة حرارية خربانة ومتهالكة تركوها من دون إصلاح،
-        فدفع ثمن هذا الإهمال جسدي وصحتي ومستقبل أسرتي».
+        لا تكفي قصة فردية وحدها لتفسير ظاهرة إصابات العمل،
+        كما لا تكفي الأرقام وحدها لفهم أثرها الإنساني.
+        لذلك، يجمع هذا التحقيق بين الحالة محل الدراسة
+        والبيانات الرسمية لفهم حجم المشكلة وسياقها الأوسع.
       </p>
-
-      <p class="reveal">
-        ويتابع أحمد، واصفًا ما يقول إنه تعرض له بعد الحادث:
-        «بعد أن كنت عصب العمل، وبعد أن ضحيت بصحتي من أجلهم،
-        رمتني الشركة في سلة المهملات! نعم، سلة المهملات!
-        بلا تعويض يضمن كرامتي، وبلا معاش يحمي أولادي،
-        وبلا علاج يداوي جراحي التي تسببوا فيها،
-        وبلا أدنى اهتمام أو حتى سؤال إنساني».
-      </p>
-
-
-      <!-- DATA 3: THE LAW -->
-
-      <div class="journey reveal">
-
-        <h3>رحلة الحقوق بعد الإصابة</h3>
-
-        <p class="journey-intro">
-          يقول أحمد إنه لم يجد تعويضًا ولا معاشًا ولا علاجًا.
-          وهذا هو المسار الذي يشرحه الاستشاري القانوني مصطفى الشربيني
-          لما يفترض أن يحدث بعد إصابة العمل، بحسب قانون التأمينات
-          الاجتماعية.
-        </p>
-
-        <div class="journey-path">
-
-          <div class="j-step">
-            <div class="j-node start">الإصابة</div>
-            <h4>توثيق الواقعة</h4>
-            <p>الاحتفاظ بالتقارير الطبية والأشعة لتأسيس ملف أدلة متكامل.</p>
-          </div>
-
-          <div class="j-step">
-            <div class="j-node">فورًا</div>
-            <h4>إخطار التأمينات الاجتماعية</h4>
-            <p>يلتزم صاحب العمل بالإخطار على النموذج 22.</p>
-          </div>
-
-          <div class="j-step">
-            <div class="j-node big">48<br><small>ساعة</small></div>
-            <h4>إبلاغ الشرطة</h4>
-            <p>خلال 48 ساعة من وقوع الحادث.</p>
-          </div>
-
-          <div class="j-step">
-            <div class="j-node big">100%</div>
-            <h4>العجز المؤقت</h4>
-            <p>تعويض أجر يعادل 100% طوال مدة العجز المؤقت.</p>
-          </div>
-
-          <div class="j-step">
-            <div class="j-node big">80%</div>
-            <h4>العجز الكلي المستديم</h4>
-            <p>معاش عجز كامل بنسبة 80% من أجر التسوية عند ثبوت العجز.</p>
-          </div>
-
-          <div class="j-step">
-            <div class="j-node">القضاء</div>
-            <h4>التعويض التكميلي</h4>
-            <p>إمكانية الرجوع أمام القضاء المدني لطلب تعويض تكميلي.</p>
-          </div>
-
-        </div>
-
-        <div class="j-side">
-          <strong>وإذا هُدِّد العامل بالفصل أو مُنع من العودة؟</strong>
-          يقدّم شكوى عاجلة لمكتب العمل لتثبيت الوقائع.
-        </div>
-
-      </div>
-
-
-      <p class="reveal" style="margin-top:35px">
-        هذه رواية أحمد، كما قالها. ولا تحسم الأرقام ولا القوانين
-        ما حدث بالضبط في موقع العمل أو بعده؛ فهذه مسؤولية التحقيق
-        الفني وسجلات الصيانة والمستندات.
-      </p>
-
-      <p class="reveal">
-        <strong>
-          لكن السؤال الذي تتركه قصته لا ينتظر تحقيقًا:
-          كم عاملًا آخر يقف اليوم على منصة، بجوار آلة لا يعرف حالها؟
-        </strong>
-      </p>
-
-
-      <!-- CLOSING BRIDGE -->
 
       <div class="data-bridge reveal">
 
         <h3>
-          من حالة فردية إلى سؤال عام
+          من حالة فردية إلى ظاهرة أوسع
         </h3>
 
         <p>
-          تتجاوز هذه الحادثة حدود الفاجعة الفردية لتصبح مدخلًا
-          لفهم ملف إصابات العمل في مصر. غير أن هذه الأرقام، على
-          أهميتها، لا تثبت وحدها أسباب الحادث الفردي أو مدى الالتزام
-          بإجراءات السلامة فيه. وهذا ما يستدعي فحص ظروف الواقعة،
-          وسجلات صيانة المضخة، وإجراءات تأمين موقع العمل.
+          تُظهر بيانات عام 2024 أن إصابات العمل ليست مجرد
+          حالات منفصلة؛ فالأرقام تساعد على تحديد أكثر أنواع
+          الحوادث تسجيلًا، وفهم أهمية إجراءات الوقاية
+          في مواقع العمل.
         </p>
 
       </div>
@@ -1631,18 +1302,14 @@ footer{
 
     <div class="section-head reveal">
 
-      <div class="section-kicker">
-        THE NUMBERS
-      </div>
-
       <h2>
-        الصورة الأكبر
+        ماذا تقول الأرقام؟
       </h2>
 
-      <p>
-        وعند تفكيك الخريطة الرقمية لإصابات العمل البالغة
-        8,091 حالة عام 2024، تظهر معطيات صحافة البيانات
-        تفاوتات واضحة بين القطاعات والشرائح المختلفة.
+      <p class="lead">
+        تسجل بيانات عام 2024 آلاف الإصابات في مواقع العمل،
+        وتوضح اختلاف معدلاتها بحسب النوع والنشاط الاقتصادي
+        وطبيعة الحادث.
       </p>
 
     </div>
@@ -1652,76 +1319,168 @@ footer{
 
       <div class="stat reveal">
         <strong>8,091</strong>
-        <span>إصابة عمل في 2024</span>
+        <span>إجمالي إصابات العمل المسجلة في 2024</span>
       </div>
 
       <div class="stat reveal">
         <strong>−2.7%</strong>
-        <span>مقارنة بـ 2023</span>
+        <span>التغير مقارنة بعام 2023</span>
       </div>
 
       <div class="stat reveal">
         <strong>86.8%</strong>
-        <span>من المصابين ذكور</span>
+        <span>نسبة الذكور من إجمالي المصابين</span>
       </div>
 
       <div class="stat reveal">
         <strong>45.6%</strong>
-        <span>في نشاط الصناعات التحويلية</span>
+        <span>نسبة إصابات نشاط الصناعات التحويلية</span>
       </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     FALL VISUAL
-========================= -->
-
-<section class="data">
-
-  <div class="container">
-
-    <div class="section-head reveal">
-
-      <div class="section-kicker">
-        ONE NUMBER, MANY LIVES
-      </div>
-
-      <h2>
-        2,600 مرة لم يكن السقوط مجرد رقم
-      </h2>
-
-      <p class="lead">
-        السقوط من الأشخاص كان السبب الأكثر تسجيلًا لإصابات العمل
-        في البيانات الواردة لعام 2024.
-      </p>
 
     </div>
 
 
     <div class="fall-visual reveal">
 
-      <div class="platform"></div>
+      <div class="fall-scene">
 
-      <div class="fall-line"></div>
+        <svg viewBox="0 0 1000 500" role="img" aria-label="رسم توضيحي ثابت لموقع عمل مرتفع">
 
-      <!-- تم حذف العنصر الأحمر المتحرك فقط -->
+          <defs>
+            <linearGradient id="sceneGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#18352f"/>
+              <stop offset="100%" stop-color="#102822"/>
+            </linearGradient>
+          </defs>
 
-      <div class="fall-number">
+          <rect width="1000" height="500" fill="url(#sceneGradient)"/>
 
-        <strong>2,600</strong>
+          <g stroke="#c7a66a" stroke-width="5" fill="none" opacity=".5">
+            <path d="M120 60 V370 H870"/>
+            <path d="M120 140 H870"/>
+            <path d="M120 230 H870"/>
+            <path d="M120 320 H870"/>
+            <path d="M250 60 V370"/>
+            <path d="M430 60 V370"/>
+            <path d="M610 60 V370"/>
+            <path d="M790 60 V370"/>
+          </g>
 
-        <span>
-          حالة إصابة بسبب السقوط
-        </span>
+          <g fill="#b94c38">
+            <circle cx="505" cy="178" r="22"/>
+            <path d="M490 204 L520 204 L535 266 L505 278 L475 266 Z"/>
+            <path d="M488 270 L475 328 L493 333 L510 282 Z"/>
+            <path d="M516 270 L536 319 L552 311 L530 260 Z"/>
+            <path d="M490 212 L454 245 L465 257 L500 230 Z"/>
+            <path d="M519 212 L552 237 L541 251 L510 230 Z"/>
+          </g>
 
-        <small>
-          32.1% من إجمالي إصابات العمل المسجلة في البيانات.
-        </small>
+          <g stroke="#f5f1e8" stroke-width="3" opacity=".45">
+            <path d="M440 352 H570"/>
+            <path d="M455 366 H585"/>
+          </g>
+
+        </svg>
+
+        <div class="fall-caption">
+          <strong>2,600 حالة سقوط</strong>
+          <span>
+            كان سقوط الأشخاص السبب الأكثر تسجيلًا لإصابات العمل في بيانات 2024.
+          </span>
+
+          <div class="fall-meter">
+            <div class="fall-meter-fill" data-width="32.1%"></div>
+          </div>
+
+          <div class="fall-meter-label">
+            32.1% من إجمالي الإصابات المسجلة
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="section-head reveal" style="margin-top:55px">
+
+      <h2>
+        كيف تتوزع الإصابات؟
+      </h2>
+
+      <p class="lead">
+        تكشف الأرقام أن السقوط والاصطدام يمثلان جزءًا كبيرًا
+        من الإصابات المسجلة، وهو ما يبرز أهمية الوقاية
+        وتقييم المخاطر داخل مواقع العمل.
+      </p>
+
+    </div>
+
+
+    <div class="chart-grid">
+
+      <div class="chart reveal">
+
+        <h3>
+          أسباب الإصابة المسجلة
+        </h3>
+
+        <div class="bar-row">
+          <div class="bar-label">
+            <span>السقوط</span>
+            <strong>2,600 — 32.1%</strong>
+          </div>
+          <div class="bar">
+            <div class="fill" data-width="32.1%"></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">
+            <span>الاصطدام</span>
+            <strong>2,237 — 27.6%</strong>
+          </div>
+          <div class="bar">
+            <div class="fill" data-width="27.6%"></div>
+          </div>
+        </div>
+
+        <p class="chart-note">
+          النسب محسوبة من إجمالي إصابات العمل المسجلة خلال عام 2024.
+        </p>
+
+      </div>
+
+
+      <div class="chart reveal">
+
+        <h3>
+          توزيع الإصابات حسب النشاط الاقتصادي
+        </h3>
+
+        <div class="bar-row">
+          <div class="bar-label">
+            <span>الصناعات التحويلية</span>
+            <strong>3,687 — 45.6%</strong>
+          </div>
+          <div class="bar">
+            <div class="fill" data-width="45.6%"></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">
+            <span>الأنشطة الأخرى</span>
+            <strong>54.4%</strong>
+          </div>
+          <div class="bar">
+            <div class="fill" data-width="54.4%"></div>
+          </div>
+        </div>
+
+        <p class="chart-note">
+          يوضح التوزيع حصة الصناعات التحويلية من إجمالي الإصابات.
+        </p>
 
       </div>
 
@@ -1736,23 +1495,49 @@ footer{
      DATA
 ========================= -->
 
-<section id="data" class="data">
+<section id="data" class="data-section">
 
   <div class="container">
 
     <div class="section-head reveal">
 
-      <div class="section-kicker">
-        DATA BREAKDOWN
-      </div>
-
       <h2>
-        ماذا تقول البيانات؟
+        قراءة في البيانات
       </h2>
 
       <p class="lead">
-        بعيدًا عن الحالة الفردية، تكشف البيانات توزيع الإصابات
-        حسب القطاع وأسباب الحوادث والمهن الأكثر تسجيلًا للإصابات.
+        تساعد المقارنة بين أنواع الحوادث والقطاعات المهنية
+        على فهم الأنماط الأكثر ظهورًا في الإحصاءات.
+      </p>
+
+    </div>
+
+
+    <div class="picto reveal">
+
+      <h3>
+        من كل 100 إصابة مسجلة
+      </h3>
+
+      <p class="picto-sub">
+        يوضح الرسم التوزيع النسبي لفئتين من أسباب الإصابات الواردة في البيانات.
+      </p>
+
+      <div class="people-100" id="people100"></div>
+
+      <div class="picto-legend">
+        <span>
+          <i style="background:var(--red)"></i>
+          السقوط — 32.1%
+        </span>
+        <span>
+          <i style="background:var(--gold)"></i>
+          الاصطدام — 27.6%
+        </span>
+      </div>
+
+      <p class="picto-note">
+        تمثل الأيقونات النسب التقريبية من إجمالي إصابات العمل المسجلة.
       </p>
 
     </div>
@@ -1760,299 +1545,197 @@ footer{
 
     <div class="chart-grid">
 
+      <div class="chart reveal">
 
-      <!-- FALL DATA FEATURE -->
+        <h3>
+          الإصابات حسب جهة العمل
+        </h3>
 
-      <div class="fall-data-card reveal">
-
-        <div class="fall-data-inner">
-
-          <div class="fall-big-number">
-
-            <strong>32.1%</strong>
-
-            <span>
-              من إجمالي الإصابات
-            </span>
-
+        <div class="bar-row">
+          <div class="bar-label">
+            <span>القطاع الخاص</span>
+            <strong>4,175 — 51.6%</strong>
           </div>
-
-
-          <div class="fall-data-copy">
-
-            <h3>
-              السقوط في صدارة أسباب الإصابة
-            </h3>
-
-            <p>
-              سجلت حوادث سقوط الأشخاص 2,600 حالة، لتأتي في المرتبة
-              الأولى بين أسباب إصابات العمل الواردة في البيانات،
-              تليها حوادث التصادم بـ2,237 حالة.
-            </p>
-
-            <div class="fall-meter">
-
-              <div class="fall-meter-label">
-                <span>السقوط</span>
-                <span>32.1%</span>
-              </div>
-
-              <div class="fall-meter-track">
-                <div
-                  class="fall-meter-fill"
-                  data-width="32.1%">
-                </div>
-              </div>
-
-            </div>
-
+          <div class="bar">
+            <div class="fill" data-width="51.6%"></div>
           </div>
+        </div>
 
+        <div class="bar-row">
+          <div class="bar-label">
+            <span>قطاع الأعمال العام</span>
+            <strong>2,423 — 29.9%</strong>
+          </div>
+          <div class="bar">
+            <div class="fill" data-width="29.9%"></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">
+            <span>القطاع الحكومي</span>
+            <strong>1,370 — 16.9%</strong>
+          </div>
+          <div class="bar">
+            <div class="fill" data-width="16.9%"></div>
+          </div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">
+            <span>القطاع الاستثماري</span>
+            <strong>123 — 1.5%</strong>
+          </div>
+          <div class="bar">
+            <div class="fill" data-width="1.5%"></div>
+          </div>
         </div>
 
       </div>
 
 
-      <!-- SECTOR -->
-
       <div class="chart reveal">
 
         <h3>
-          الإصابات حسب القطاع
+          الإصابات حسب المهنة
         </h3>
 
-
-        <div class="bar">
-
+        <div class="bar-row">
           <div class="bar-label">
-            <span>
-              القطاع الخاص — منشآت 50 عاملًا فأكثر
-              (4,175 حالة)
-            </span>
-
-            <span>
-              51.6%
-            </span>
+            <span>الفنيون ومساعدو الأخصائيين</span>
+            <strong>2,911 — 36%</strong>
           </div>
-
-          <div class="track">
-            <div
-              class="fill"
-              data-width="51.6%">
-            </div>
+          <div class="bar">
+            <div class="fill" data-width="36%"></div>
           </div>
-
         </div>
 
-
-        <div class="bar">
-
+        <div class="bar-row">
           <div class="bar-label">
-            <span>
-              قطاع الأعمال العام (2,423 حالة)
-            </span>
-
-            <span>
-              29.9%
-            </span>
+            <span>مشغلو المصانع والآلات</span>
+            <strong>1,906 — 23.6%</strong>
           </div>
-
-          <div class="track">
-            <div
-              class="fill"
-              data-width="29.9%">
-            </div>
+          <div class="bar">
+            <div class="fill" data-width="23.6%"></div>
           </div>
-
         </div>
 
-
-        <div class="bar">
-
-          <div class="bar-label">
-            <span>
-              الحكومة (1,370 حالة)
-            </span>
-
-            <span>
-              16.9%
-            </span>
-          </div>
-
-          <div class="track">
-            <div
-              class="fill"
-              data-width="16.9%">
-            </div>
-          </div>
-
-        </div>
-
-
-        <p class="note">
-          مجموع القطاعات الثلاثة المذكورة 7,968 حالة، ويكتمل الإجمالي (8,091) بإضافة القطاع الاستثماري الذي سجل 123 حالة.
+        <p class="chart-note">
+          يوضح الرسم أكثر الفئات المهنية تسجيلًا للإصابات وفق البيانات المستخدمة.
         </p>
 
       </div>
 
+    </div>
 
-      <!-- CAUSES -->
 
-      <div class="chart reveal">
+    <div class="journey reveal">
 
-        <h3>
-          أسباب الإصابة
-        </h3>
+      <h3>
+        ماذا يحدث بعد إصابة العامل؟
+      </h3>
 
-        <div class="bar">
+      <p class="journey-intro">
+        يختلف مسار التعامل مع كل واقعة بحسب ظروفها، لكن توثيق الإصابة
+        والاحتفاظ بالمستندات يساعدان على توضيح ما حدث واستكمال الإجراءات.
+      </p>
 
-          <div class="bar-label">
-            <span>السقوط</span>
-            <span>2,600 — 32.1%</span>
+      <div class="journey-path">
+
+        <div class="j-step">
+
+          <div class="j-node start">
+            01
           </div>
 
-          <div class="track">
-            <div
-              class="fill"
-              data-width="32.1%">
-            </div>
-          </div>
+          <h4>
+            توثيق الواقعة
+          </h4>
+
+          <p>
+            تسجيل ظروف الحادث وتاريخه ومكانه، وجمع المعلومات
+            المتاحة من دون افتراض أسباب لم تثبت بعد.
+          </p>
 
         </div>
 
 
-        <div class="bar">
+        <div class="j-step">
 
-          <div class="bar-label">
-            <span>الاصطدام</span>
-            <span>2,237 — 27.6%</span>
+          <div class="j-node">
+            02
           </div>
 
-          <div class="track">
-            <div
-              class="fill"
-              data-width="27.6%">
-            </div>
-          </div>
+          <h4>
+            الرعاية الطبية
+          </h4>
+
+          <p>
+            الحصول على الرعاية المناسبة والاحتفاظ بالتقارير الطبية
+            والمستندات المرتبطة بالإصابة.
+          </p>
 
         </div>
 
 
-        <div class="bar">
+        <div class="j-step">
 
-          <div class="bar-label">
-            <span>أسباب أخرى</span>
-            <span>40.3%</span>
+          <div class="j-node">
+            03
           </div>
 
-          <div class="track">
-            <div
-              class="fill"
-              data-width="40.3%">
-            </div>
+          <h4>
+            الإبلاغ والتحقيق
+          </h4>
+
+          <p>
+            استكمال إجراءات الإبلاغ والتحقيق وفقًا للقواعد المعمول بها
+            وظروف الحادث وطبيعة جهة العمل.
+          </p>
+
+        </div>
+
+
+        <div class="j-step">
+
+          <div class="j-node big">
+            04
           </div>
+
+          <h4>
+            مراجعة الإجراءات
+          </h4>
+
+          <p>
+            مراجعة أسباب الحادث وإجراءات الوقاية لتحديد ما يمكن
+            اتخاذه لمنع تكرار الإصابات.
+          </p>
 
         </div>
 
       </div>
 
-
-      <!-- OCCUPATIONS -->
-
-      <div class="chart reveal">
-
-        <h3>
-          أكثر المهن تسجيلًا للإصابات
-        </h3>
-
-
-        <div class="bar">
-
-          <div class="bar-label">
-            <span>
-              الفنيون ومساعدو الأخصائيين
-            </span>
-
-            <span>
-              2,911 — 36.0%
-            </span>
-          </div>
-
-          <div class="track">
-            <div
-              class="fill"
-              data-width="36%">
-            </div>
-          </div>
-
-        </div>
-
-
-        <div class="bar">
-
-          <div class="bar-label">
-            <span>
-              عمال تشغيل المصانع والماكينات
-            </span>
-
-            <span>
-              1,906 — 23.6%
-            </span>
-          </div>
-
-          <div class="track">
-            <div
-              class="fill"
-              data-width="23.6%">
-            </div>
-          </div>
-
-        </div>
-
-
-        <p class="note">
-          تصدّر الفنيون ومساعدو الأخصائيين الفئات المهنية
-          المذكورة في البيانات.
-        </p>
-
+      <div class="j-side">
+        <strong>تنبيه:</strong>
+        هذا عرض عام للمسار المحتمل، ولا يُعد استشارة قانونية
+        أو وصفًا نهائيًا لإجراءات كل حالة.
       </div>
 
+    </div>
 
-      <!-- MANUFACTURING -->
 
-      <div class="chart reveal">
+    <div class="data-bridge reveal">
 
-        <h3>
-          الصناعات التحويلية
-        </h3>
+      <h3>
+        ما الذي لا تخبرنا به الأرقام؟
+      </h3>
 
-        <div class="bar">
-
-          <div class="bar-label">
-            <span>
-              من إجمالي إصابات العمل
-            </span>
-
-            <span>
-              45.6%
-            </span>
-          </div>
-
-          <div class="track">
-            <div
-              class="fill"
-              data-width="45.6%">
-            </div>
-          </div>
-
-        </div>
-
-        <p class="note">
-          سجلت الصناعات التحويلية 3,687 إصابة،
-          بما يعادل 45.6% من إجمالي الإصابات المذكورة.
-        </p>
-
-      </div>
+      <p>
+        لا تكشف الإحصاءات وحدها عن ظروف كل حادث أو ما إذا كانت
+        إجراءات السلامة قد طُبقت بالفعل. لذلك ينبغي التعامل مع
+        البيانات باعتبارها مؤشرًا لحجم الظاهرة، لا دليلًا منفردًا
+        على مسؤولية جهة بعينها.
+      </p>
 
     </div>
 
@@ -2065,41 +1748,107 @@ footer{
      SAFETY
 ========================= -->
 
-<section id="safety" class="dark">
+<section id="safety" class="safety">
 
   <div class="container">
 
     <div class="section-head reveal">
 
-      <div class="section-kicker">
-        WHY FALLS HAPPEN
-      </div>
-
       <h2>
-        الحادث لا يبدأ لحظة السقوط
+        السلامة المهنية: الوقاية قبل وقوع الحادث
       </h2>
+
+      <p class="lead">
+        لا تقتصر الوقاية من إصابات العمل على رد الفعل بعد وقوع الحادث؛
+        بل تبدأ بتحديد المخاطر، وتأمين موقع العمل، وتدريب العاملين،
+        ومراجعة إجراءات الحماية باستمرار.
+      </p>
 
     </div>
 
 
-    <div class="safety-intro reveal">
+    <div class="safety-grid">
 
-      <p>
-        ومن الناحية الفنية والهندسية، يوضح مشرف التشغيل الزناتي يحيى
-        الخليفي أن السقوط لا يقع كحدث عشوائي، بل يتشكل من اجتماع
-        خطر مادي متمثل في حواف مكشوفة أو أسقف هشة، مع فشل في الوقاية
-        لغياب وسائل الحماية، وضغوط تنظيمية تدفع للاستعجال، مشيراً
-        إلى أن معظم السقطات القاتلة أو المسببة للعجز تقع من ارتفاعات
-        متوسطة.
-      </p>
+      <div class="safety-card reveal">
 
-      <p>
-        ويرى الخليفي أن الارتفاع المستمر في معدلات السقوط يمثل دليلاً
-        على وجود خلل في تطبيق الضوابط الوقائية وتهميش تقييم المخاطر،
-        مؤكداً أن التمييز بين الحادث العرضي والقابل للوقاية يخضع
-        لاختبارات مدى توقع الخطر وجودة الضوابط المتاحة وتوفر المعايير
-        التشريعية.
-      </p>
+        <h3>
+          قبل أن يبدأ العامل مهمته
+        </h3>
+
+        <p>
+          ينبغي تقييم المخاطر المرتبطة بالمهمة والتأكد من أن موقع العمل
+          آمن ومجهز بما يلزم قبل بدء التنفيذ.
+        </p>
+
+        <div class="safety-checks">
+
+          <div class="safety-check">
+            <b>01</b>
+            <span>تحديد المخاطر وتقييمها قبل بدء العمل.</span>
+          </div>
+
+          <div class="safety-check">
+            <b>02</b>
+            <span>تأمين المنصات والحواف والفتحات ومواقع العمل المرتفعة.</span>
+          </div>
+
+          <div class="safety-check">
+            <b>03</b>
+            <span>اختيار معدات الوقاية الشخصية المناسبة والتأكد من استخدامها.</span>
+          </div>
+
+          <div class="safety-check">
+            <b>04</b>
+            <span>تدريب العاملين والإشراف على تنفيذ إجراءات السلامة.</span>
+          </div>
+
+          <div class="safety-check">
+            <b>05</b>
+            <span>الإبلاغ عن المخاطر والحوادث ومراجعة أسبابها لمنع تكرارها.</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="safety-card reveal">
+
+        <h3>
+          لماذا تهم إجراءات الوقاية؟
+        </h3>
+
+        <p>
+          قد يؤدي عدم التعامل مع المخاطر في موقع العمل إلى إصابات
+          يمكن الحد من احتمالاتها عبر التخطيط الجيد وتوفير وسائل
+          الحماية والتدريب والمتابعة.
+        </p>
+
+        <div class="safety-checks">
+
+          <div class="safety-check">
+            <b>01</b>
+            <span>تقليل التعرض للمخاطر المادية داخل موقع العمل.</span>
+          </div>
+
+          <div class="safety-check">
+            <b>02</b>
+            <span>توضيح مسؤوليات العاملين والمشرفين قبل تنفيذ المهام.</span>
+          </div>
+
+          <div class="safety-check">
+            <b>03</b>
+            <span>التأكد من ملاءمة معدات الحماية لطبيعة الخطر.</span>
+          </div>
+
+          <div class="safety-check">
+            <b>04</b>
+            <span>مراجعة الحوادث السابقة والاستفادة منها في تحسين الوقاية.</span>
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -2172,7 +1921,7 @@ footer{
 
         <p>
           عندما تجتمع عوامل الخطر، قد تتحول الثواني إلى إصابة
-          تغير حياة العامل.
+          تغيّر حياة العامل.
         </p>
 
       </div>
@@ -2198,12 +1947,13 @@ footer{
 
       <p>
         ويطرح ذلك تساؤلات بشأن مدى الالتزام بإجراءات السلامة والصيانة
-        في موقع الحادث الذي تعرض له أحمد، وهي مسألة يتعين حسمها
-        من خلال التحقيق الفني ومراجعة سجلات الصيانة وتقييم المخاطر.
+        في موقع الحادث الذي تعرض له العامل محل الدراسة، وهي مسألة
+        يتعين حسمها من خلال التحقيق الفني ومراجعة سجلات الصيانة
+        وتقييم المخاطر.
       </p>
 
       <p>
-        وفيما يتعلق بإثبات الإصابة، تنص المادة 61 من قانون التأمينات
+        وفيما يتعلق بإجراءات الإبلاغ عن إصابات العمل، تنص المادة 61 من قانون التأمينات
         الاجتماعية والمعاشات رقم 148 لسنة 2019 على التزام صاحب العمل
         في القطاع الخاص، أو المسؤول الفعلي عن الإدارة، بإبلاغ الشرطة
         عن الحادث الذي يعجز العامل عن العمل خلال 48 ساعة من تاريخ
@@ -2235,10 +1985,6 @@ footer{
 
     <div class="section-head reveal">
 
-      <div class="section-kicker">
-        FAQ
-      </div>
-
       <h2>
         أسئلة سريعة
       </h2>
@@ -2253,7 +1999,7 @@ footer{
       </summary>
 
       <p>
-        ليس بالضرورة. تغطي النشرة الرسمية منشآت القطاع الحكومي والعام والاستثماري، والقطاع الخاص الذي يضم 50 عاملاً فأكثر، ما يترك مساحة واسعة من الإصابات غير المرصودة في القطاع غير الرسمي والورش الصغرى.
+        ليس بالضرورة. تغطي النشرة الرسمية منشآت القطاع الحكومي والعام والاستثماري، والقطاع الخاص الذي يضم 50 عاملًا فأكثر، ما يترك مساحة واسعة من الإصابات غير المرصودة في القطاع غير الرسمي والورش الصغرى.
       </p>
 
     </details>
@@ -2267,7 +2013,7 @@ footer{
 
       <p>
         لا، يشير التصريح الفني الوارد في المادة إلى أن معظم
-        السقطات القاتلة أو المسببة للعجز المستديم تقع غالباً
+        السقطات القاتلة أو المسببة للعجز المستديم تقع غالبًا
         من ارتفاعات متوسطة وليست شاهقة بالضرورة.
       </p>
 
@@ -2317,10 +2063,6 @@ footer{
   <div class="container">
 
     <div class="section-head reveal">
-
-      <div class="section-kicker">
-        SOURCES & NOTES
-      </div>
 
       <h2>
         المصادر والمنهجية
@@ -2387,7 +2129,7 @@ footer{
       </strong>
 
       <p>
-        تجمع القصة بين شهادة إنسانية، وبيانات إحصائية،
+        تجمع القصة بين حالة إنسانية، وبيانات إحصائية،
         وتصريحات فنية وقانونية، بهدف الانتقال من تجربة
         فردية إلى فهم أوسع لظاهرة إصابات العمل.
       </p>
@@ -2413,10 +2155,6 @@ footer{
   <div class="container">
 
     <div class="section-head reveal">
-
-      <div class="section-kicker">
-        THE TEAM
-      </div>
 
       <h2>
         فريق المشروع
@@ -2607,62 +2345,23 @@ document
 /* =========================
    PICTOGRAM: 100 WORKERS
 ========================= */
-
 (function(){
-
   const box = document.getElementById("people100");
   if(!box) return;
-
   const icon =
-    '<svg class="person" viewBox="0 0 24 32" aria-hidden="true">' +
+    '<svg class="person on" viewBox="0 0 24 32" aria-hidden="true">' +
     '<path d="M5 9a7 7 0 0 1 14 0z" fill="currentColor"/>' +
     '<rect x="3.5" y="8.5" width="17" height="2" rx="1" fill="currentColor"/>' +
     '<circle cx="12" cy="14.5" r="3.5" fill="currentColor"/>' +
     '<path d="M4 31v-8a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v8z" fill="currentColor"/>' +
     '</svg>';
-
-  const FALL = 32;
-  const HIT = 28;
-
   let html = "";
-  for(let i = 0; i < 100; i++){
-    html += icon;
-  }
+  for(let i=0;i<100;i++) html += icon;
   box.innerHTML = html;
-
-  const people = box.querySelectorAll(".person");
-
-  people.forEach((el, i)=>{
-    if(i < FALL){
-      el.classList.add("fall");
-    } else if(i < FALL + HIT){
-      el.classList.add("hit");
-    }
+  box.querySelectorAll(".person").forEach((el,i)=>{
+    if(i<32) el.classList.add("fall");
+    else if(i<60) el.classList.add("hit");
   });
-
-  const pObs = new IntersectionObserver(
-    (entries)=>{
-      entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-          people.forEach((el, i)=>{
-            setTimeout(()=>{
-              el.classList.add("on");
-            }, i * 18);
-          });
-
-          pObs.unobserve(entry.target);
-
-        }
-
-      });
-    },
-    { threshold:.3 }
-  );
-
-  pObs.observe(box);
-
 })();
 
 </script>
