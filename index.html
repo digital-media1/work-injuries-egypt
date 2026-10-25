@@ -378,6 +378,188 @@ h2{
 }
 
 /* =========================
+   PICTOGRAM + RIGHTS JOURNEY
+========================= */
+
+.picto{
+  margin:35px 0 30px;
+  padding:30px 26px;
+  background:var(--forest);
+  color:var(--cream);
+  border-radius:8px;
+  text-align:center;
+}
+
+.picto h3{
+  margin:0 0 4px;
+  font-size:24px;
+  color:var(--cream);
+}
+
+.picto-sub{
+  margin:0 0 22px !important;
+  font-size:14px !important;
+  line-height:1.6 !important;
+  color:#bfc9c3;
+}
+
+.people-100{
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:8px 6px;
+  max-width:440px;
+  margin:0 auto 24px;
+}
+
+.person{
+  width:100%;
+  height:auto;
+  color:rgba(255,255,255,.18);
+  opacity:0;
+  transform:scale(.5);
+  transition:opacity .35s ease, transform .35s ease, color .35s ease;
+}
+
+.person.on{
+  opacity:1;
+  transform:none;
+}
+
+.person.fall{ color:var(--red); }
+.person.hit{ color:var(--gold); }
+
+.picto-legend{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px 24px;
+  font-size:14px;
+  font-weight:800;
+}
+
+.picto-legend span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.picto-legend i{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  display:inline-block;
+}
+
+.picto-note{
+  margin:18px 0 0 !important;
+  font-size:12px !important;
+  line-height:1.7 !important;
+  color:#9eaaa4;
+}
+
+.journey{
+  margin:45px 0 35px;
+  padding:35px 30px 20px;
+  background:#f1ece2;
+  border-right:5px solid var(--gold);
+  border-radius:5px;
+}
+
+.journey h3{
+  margin:0 0 8px;
+  color:var(--forest);
+  font-size:26px;
+}
+
+.journey-intro{
+  margin:0 0 30px !important;
+  font-size:16px !important;
+  color:#46534e;
+}
+
+.journey-path{
+  position:relative;
+}
+
+.journey-path:before{
+  content:"";
+  position:absolute;
+  right:36px;
+  top:20px;
+  bottom:20px;
+  width:3px;
+  background:repeating-linear-gradient(
+    to bottom,
+    var(--gold) 0 8px,
+    transparent 8px 14px
+  );
+}
+
+.j-step{
+  position:relative;
+  padding-right:100px;
+  margin-bottom:24px;
+  min-height:72px;
+}
+
+.j-node{
+  position:absolute;
+  right:0;
+  top:0;
+  width:74px;
+  height:74px;
+  border-radius:50%;
+  background:var(--forest);
+  color:var(--gold);
+  border:4px solid #f1ece2;
+  box-shadow:0 0 0 2px var(--forest);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-weight:900;
+  font-size:15px;
+  line-height:1.2;
+  z-index:2;
+}
+
+.j-node.big{
+  font-size:22px;
+}
+
+.j-node.start{
+  background:var(--red);
+  color:#fff;
+  box-shadow:0 0 0 2px var(--red);
+}
+
+.j-step h4{
+  margin:4px 0 2px;
+  color:var(--forest);
+  font-size:19px;
+}
+
+.j-step p{
+  margin:0 !important;
+  font-size:15px !important;
+  line-height:1.8 !important;
+  color:#52605a;
+}
+
+.j-side{
+  margin:10px 0 18px;
+  padding:14px 18px;
+  border:1px dashed var(--red);
+  border-radius:5px;
+  font-size:14px;
+  color:#52605a;
+}
+
+.j-side strong{
+  color:var(--red);
+}
+
+/* =========================
    STORY DATA BRIDGE
 ========================= */
 
@@ -782,45 +964,6 @@ h2{
 }
 
 /* =========================
-   RIGHTS
-========================= */
-
-.rights{
-  background:var(--paper);
-}
-
-.rights-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:25px;
-}
-
-.right{
-  border-top:4px solid var(--red);
-  padding:28px;
-  background:#fff;
-  border-radius:5px;
-  box-shadow:0 8px 25px rgba(24,53,47,.05);
-  transition:.3s ease;
-}
-
-.right:hover{
-  transform:translateY(-4px);
-}
-
-.right h3{
-  color:var(--forest);
-  margin-top:0;
-}
-
-.right-number{
-  color:var(--red);
-  font-size:13px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-
-/* =========================
    FAQ
 ========================= */
 
@@ -994,6 +1137,28 @@ footer{
     grid-template-columns:1fr;
   }
 
+  .journey{
+    padding:28px 18px 14px;
+  }
+
+  .j-step{
+    padding-right:84px;
+  }
+
+  .j-node{
+    width:64px;
+    height:64px;
+    font-size:13px;
+  }
+
+  .j-node.big{
+    font-size:19px;
+  }
+
+  .journey-path:before{
+    right:31px;
+  }
+
   .big-quote{
     margin-left:calc(50% - 50vw);
     margin-right:calc(50% - 50vw);
@@ -1008,9 +1173,6 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .rights-grid{
-    grid-template-columns:1fr;
-  }
 }
 
 @media(max-width:520px){
@@ -1074,7 +1236,6 @@ footer{
         <a href="#stats">الأرقام</a>
         <a href="#data">البيانات</a>
         <a href="#safety">السلامة</a>
-        <a href="#rights">حقوق العامل</a>
         <a href="#faq">الأسئلة</a>
         <a href="#sources">المصادر</a>
         <a href="#team">الفريق</a>
@@ -1210,9 +1371,7 @@ footer{
       </div>
 
       <p class="reveal">
-        وهذا ما استطاعت النشرة الرسمية رصده فقط. فهي تقتصر على
-        المنشآت التي تضم 50 عاملًا فأكثر، وتبقى إصابات الورش الصغرى
-        والقطاع غير الرسمي خارج الحساب.
+        وهذا ما استطاعت النشرة الرسمية رصده فقط. فهي تغطي منشآت القطاع الحكومي والعام والاستثماري، والقطاع الخاص الذي يضم 50 عاملًا فأكثر، وتبقى إصابات الورش الصغرى والقطاع غير الرسمي خارج الحساب.
       </p>
 
 
@@ -1268,52 +1427,29 @@ footer{
         </strong>
       </p>
 
-      <div class="chart inline-chart reveal">
+      <div class="picto reveal" id="picto">
 
-        <h3>
-          أسباب إصابات العمل في 2024
-        </h3>
+        <h3>لو كان المصابون 100 عامل</h3>
 
-        <div class="bar">
+        <p class="picto-sub">
+          من كل 100 إصابة عمل سُجّلت في 2024
+        </p>
 
-          <div class="bar-label">
-            <span>السقوط</span>
-            <span>2,600 — 32.1%</span>
-          </div>
-
-          <div class="track">
-            <div class="fill" data-width="32.1%"></div>
-          </div>
-
+        <div
+          class="people-100"
+          id="people100"
+          role="img"
+          aria-label="32 من كل 100 إصابة عمل بسبب السقوط، و28 بسبب الاصطدام، و40 لأسباب أخرى">
         </div>
 
-        <div class="bar">
-
-          <div class="bar-label">
-            <span>الاصطدام</span>
-            <span>2,237 — 27.6%</span>
-          </div>
-
-          <div class="track">
-            <div class="fill" data-width="27.6%"></div>
-          </div>
-
+        <div class="picto-legend">
+          <span><i style="background:var(--red)"></i> 32 سقوط</span>
+          <span><i style="background:var(--gold)"></i> 28 اصطدام</span>
+          <span><i style="background:rgba(255,255,255,.3)"></i> 40 أسباب أخرى</span>
         </div>
 
-        <div class="bar">
-
-          <div class="bar-label">
-            <span>أسباب أخرى</span>
-            <span>40.3%</span>
-          </div>
-
-          <div class="track">
-            <div class="fill" data-width="40.3%"></div>
-          </div>
-
-        </div>
-
-        <p class="note">
+        <p class="picto-note">
+          الأرقام مقرّبة من 32.1% و27.6% و40.3%.
           المصدر: الجهاز المركزي للتعبئة العامة والإحصاء (CAPMAS) — 2024.
         </p>
 
@@ -1387,21 +1523,61 @@ footer{
 
       <!-- DATA 3: THE LAW -->
 
-      <div class="data-bridge reveal">
+      <div class="journey reveal">
 
-        <h3>
-          بين روايته وما ينص عليه القانون
-        </h3>
+        <h3>رحلة الحقوق بعد الإصابة</h3>
 
-        <p>
+        <p class="journey-intro">
           يقول أحمد إنه لم يجد تعويضًا ولا معاشًا ولا علاجًا.
-          وبحسب الاستشاري القانوني مصطفى الشربيني، يُلزم قانون
-          التأمينات الاجتماعية صاحب العمل بإخطار التأمينات فورًا
-          (النموذج 22) وإبلاغ الشرطة خلال 48 ساعة، وصرف تعويض أجر
-          يعادل 100% طوال العجز المؤقت، ثم معاش عجز كامل بنسبة 80%
-          من أجر التسوية عند ثبوت العجز الكلي المستديم، مع إمكانية
-          الرجوع إلى القضاء المدني لطلب تعويض تكميلي.
+          وهذا هو المسار الذي يشرحه الاستشاري القانوني مصطفى الشربيني
+          لما يفترض أن يحدث بعد إصابة العمل، بحسب قانون التأمينات
+          الاجتماعية.
         </p>
+
+        <div class="journey-path">
+
+          <div class="j-step">
+            <div class="j-node start">الإصابة</div>
+            <h4>توثيق الواقعة</h4>
+            <p>الاحتفاظ بالتقارير الطبية والأشعة لتأسيس ملف أدلة متكامل.</p>
+          </div>
+
+          <div class="j-step">
+            <div class="j-node">فورًا</div>
+            <h4>إخطار التأمينات الاجتماعية</h4>
+            <p>يلتزم صاحب العمل بالإخطار على النموذج 22.</p>
+          </div>
+
+          <div class="j-step">
+            <div class="j-node big">48<br><small>ساعة</small></div>
+            <h4>إبلاغ الشرطة</h4>
+            <p>خلال 48 ساعة من وقوع الحادث.</p>
+          </div>
+
+          <div class="j-step">
+            <div class="j-node big">100%</div>
+            <h4>العجز المؤقت</h4>
+            <p>تعويض أجر يعادل 100% طوال مدة العجز المؤقت.</p>
+          </div>
+
+          <div class="j-step">
+            <div class="j-node big">80%</div>
+            <h4>العجز الكلي المستديم</h4>
+            <p>معاش عجز كامل بنسبة 80% من أجر التسوية عند ثبوت العجز.</p>
+          </div>
+
+          <div class="j-step">
+            <div class="j-node">القضاء</div>
+            <h4>التعويض التكميلي</h4>
+            <p>إمكانية الرجوع أمام القضاء المدني لطلب تعويض تكميلي.</p>
+          </div>
+
+        </div>
+
+        <div class="j-side">
+          <strong>وإذا هُدِّد العامل بالفصل أو مُنع من العودة؟</strong>
+          يقدّم شكوى عاجلة لمكتب العمل لتثبيت الوقائع.
+        </div>
 
       </div>
 
@@ -1714,8 +1890,7 @@ footer{
 
 
         <p class="note">
-          مجموع الفئات المذكورة 7,968 حالة، أي أقل من الإجمالي
-          بـ123 حالة، وفق البيانات الواردة.
+          مجموع القطاعات الثلاثة المذكورة 7,968 حالة، ويكتمل الإجمالي (8,091) بإضافة القطاع الاستثماري الذي سجل 123 حالة.
         </p>
 
       </div>
@@ -2051,136 +2226,6 @@ footer{
 
 
 <!-- =========================
-     RIGHTS
-========================= -->
-
-<section id="rights" class="rights">
-
-  <div class="container">
-
-    <div class="section-head reveal">
-
-      <div class="section-kicker">
-        WORKER RIGHTS
-      </div>
-
-      <h2>
-        ماذا يفعل العامل بعد الإصابة؟
-      </h2>
-
-      <p class="lead">
-        وفي أعقاب وقوع الإصابة، يبرز البعد القانوني والإجرائي
-        لحماية حقوق المصابين؛ حيث يشدد الاستشاري القانوني
-        مصطفى الشربيني على ضرورة الإثبات الرسمي الفوري عبر
-        تحرير إخطار الإصابة لدى التأمينات والشرطة، والاحتفاظ
-        بكافة التقارير الطبية والأشعة لتأسيس ملف أدلة متكامل.
-      </p>
-
-    </div>
-
-
-    <div class="rights-grid">
-
-
-      <div class="right reveal">
-
-        <div class="right-number">
-          01
-        </div>
-
-        <h3>
-          وثّق الإصابة والإخطار الفوري
-        </h3>
-
-        <p>
-          تحرير إخطار الإصابة لدى التأمينات والشرطة،
-          والاحتفاظ بالتقارير الطبية والأشعة لتأسيس
-          ملف أدلة متكامل.
-        </p>
-
-      </div>
-
-
-      <div class="right reveal">
-
-        <div class="right-number">
-          02
-        </div>
-
-        <h3>
-          الشكاوى ومكاتب العمل
-        </h3>
-
-        <p>
-          دعوة العمال الذين يتعرضون لتهديدات الفصل أو المنع
-          من العودة إلى تقديم شكاوى عاجلة لمكاتب العمل
-          لتثبيت الوقائع.
-        </p>
-
-      </div>
-
-
-      <div class="right reveal">
-
-        <div class="right-number">
-          03
-        </div>
-
-        <h3>
-          قانون التأمينات الاجتماعية
-        </h3>
-
-        <p>
-          إلزام صاحب العمل بإخطار التأمينات فوراً على
-          (النموذج 22) وإبلاغ الشرطة خلال 48 ساعة،
-          وصرف تعويض أجر يعادل 100% طوال العجز المؤقت.
-        </p>
-
-      </div>
-
-
-      <div class="right reveal">
-
-        <div class="right-number">
-          04
-        </div>
-
-        <h3>
-          معاش العجز والتعويض التكميلي
-        </h3>
-
-        <p>
-          استحقاق معاش عجز كامل بنسبة 80% من أجر التسوية
-          عند ثبوت العجز الكلي المستديم، وإمكانية الرجوع
-          أمام القضاء المدني لطلب تعويض تكميلي.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="methodology reveal">
-
-      <strong>
-        ملاحظة منهجية:
-      </strong>
-
-      <p>
-        البيانات الإحصائية تضع الحوادث الفردية داخل سياق أوسع،
-        لكنها لا تثبت بمفردها مسؤولية جهة بعينها عن حادث محدد.
-        لذلك يظل تحديد أسباب الواقعة ومسؤوليتها مرتبطًا بفحص
-        ظروف الحادث والتحقيق الفني والمستندات ذات الصلة.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
      FAQ
 ========================= -->
 
@@ -2208,9 +2253,7 @@ footer{
       </summary>
 
       <p>
-        ليس بالضرورة. تقتصر النشرة الرسمية على المنشآت التي تضم
-        50 عاملاً فأكثر، ما يترك مساحة واسعة من الإصابات غير
-        المرصودة في القطاع غير الرسمي والورش الصغرى.
+        ليس بالضرورة. تغطي النشرة الرسمية منشآت القطاع الحكومي والعام والاستثماري، والقطاع الخاص الذي يضم 50 عاملاً فأكثر، ما يترك مساحة واسعة من الإصابات غير المرصودة في القطاع غير الرسمي والورش الصغرى.
       </p>
 
     </details>
@@ -2293,6 +2336,13 @@ footer{
 
 
     <p class="reveal">
+      النشرة المعتمدة: «النشرة السنوية لإحصاءات إصابات العمل لعام 2024»،
+      الصادرة بتاريخ 1 ديسمبر 2025، وهي الأحدث وقت إعداد هذه القصة.
+      ولم تصدر نشرة عام 2025 بعد.
+    </p>
+
+
+    <p class="reveal">
       الموقع الرسمي لـ
       <a
         href="https://www.capmas.gov.eg/"
@@ -2312,6 +2362,22 @@ footer{
         وزارة العمل
       </a>
     </p>
+
+
+    <div class="methodology reveal">
+
+      <strong>
+        ملاحظة منهجية:
+      </strong>
+
+      <p>
+        البيانات الإحصائية تضع الحوادث الفردية داخل سياق أوسع،
+        لكنها لا تثبت بمفردها مسؤولية جهة بعينها عن حادث محدد.
+        لذلك يظل تحديد أسباب الواقعة ومسؤوليتها مرتبطًا بفحص
+        ظروف الحادث والتحقيق الفني والمستندات ذات الصلة.
+      </p>
+
+    </div>
 
 
     <div class="methodology reveal">
@@ -2536,6 +2602,68 @@ document
     });
 
   });
+
+
+/* =========================
+   PICTOGRAM: 100 WORKERS
+========================= */
+
+(function(){
+
+  const box = document.getElementById("people100");
+  if(!box) return;
+
+  const icon =
+    '<svg class="person" viewBox="0 0 24 32" aria-hidden="true">' +
+    '<path d="M5 9a7 7 0 0 1 14 0z" fill="currentColor"/>' +
+    '<rect x="3.5" y="8.5" width="17" height="2" rx="1" fill="currentColor"/>' +
+    '<circle cx="12" cy="14.5" r="3.5" fill="currentColor"/>' +
+    '<path d="M4 31v-8a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v8z" fill="currentColor"/>' +
+    '</svg>';
+
+  const FALL = 32;
+  const HIT = 28;
+
+  let html = "";
+  for(let i = 0; i < 100; i++){
+    html += icon;
+  }
+  box.innerHTML = html;
+
+  const people = box.querySelectorAll(".person");
+
+  people.forEach((el, i)=>{
+    if(i < FALL){
+      el.classList.add("fall");
+    } else if(i < FALL + HIT){
+      el.classList.add("hit");
+    }
+  });
+
+  const pObs = new IntersectionObserver(
+    (entries)=>{
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+          people.forEach((el, i)=>{
+            setTimeout(()=>{
+              el.classList.add("on");
+            }, i * 18);
+          });
+
+          pObs.unobserve(entry.target);
+
+        }
+
+      });
+    },
+    { threshold:.3 }
+  );
+
+  pObs.observe(box);
+
+})();
 
 </script>
 
