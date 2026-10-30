@@ -993,6 +993,442 @@ h2{
   font-size:14px;
 }
 
+
+/* =========================
+   OVERSIGHT DATA DASHBOARD
+========================= */
+
+.oversight-dashboard{
+  margin:40px 0 10px;
+}
+
+.oversight-dashboard-intro{
+  color:#c6cec9;
+  max-width:850px;
+  margin:0 0 28px;
+}
+
+.oversight-chart{
+  margin:28px 0;
+  padding:28px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.oversight-chart-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:22px;
+}
+
+.oversight-chart-head h4{
+  margin:0;
+  color:var(--cream);
+  font-size:23px;
+}
+
+.oversight-chart-head p{
+  margin:5px 0 0;
+  color:#aeb9b3;
+  font-size:13px;
+}
+
+.chart-badge{
+  flex:0 0 auto;
+  padding:8px 12px;
+  border:1px solid rgba(199,166,106,.35);
+  border-radius:30px;
+  color:var(--gold);
+  font-size:12px;
+  font-weight:900;
+}
+
+.service-chart{
+  position:relative;
+  height:300px;
+  padding:20px 12px 45px 48px;
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 59px,
+      rgba(255,255,255,.055) 60px
+    );
+}
+
+.service-y-label{
+  position:absolute;
+  right:0;
+  top:3px;
+  color:#8e9b95;
+  font-size:11px;
+}
+
+.service-y-label.y2{ top:25%; }
+.service-y-label.y3{ top:50%; }
+.service-y-label.y4{ top:75%; }
+.service-y-label.y5{ top:auto; bottom:5px; }
+
+.service-svg{
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+
+.service-area{
+  fill:rgba(199,166,106,.08);
+}
+
+.service-line{
+  fill:none;
+  stroke:var(--gold);
+  stroke-width:3.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:900;
+  stroke-dashoffset:900;
+  transition:stroke-dashoffset 1.8s ease;
+}
+
+.oversight-chart.show .service-line{
+  stroke-dashoffset:0;
+}
+
+.service-point{
+  fill:var(--forest);
+  stroke:var(--gold);
+  stroke-width:3;
+  transform-origin:center;
+  transform-box:fill-box;
+  transform:scale(0);
+  transition:transform .45s ease;
+}
+
+.oversight-chart.show .service-point{
+  transform:scale(1);
+}
+
+.service-value{
+  fill:var(--cream);
+  font-size:12px;
+  font-weight:900;
+  text-anchor:middle;
+}
+
+.service-year{
+  fill:#9eaaa4;
+  font-size:11px;
+  text-anchor:middle;
+}
+
+.service-note{
+  margin:14px 0 0;
+  color:#8e9b95;
+  font-size:12px;
+}
+
+.training-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:20px;
+}
+
+.training-card{
+  position:relative;
+  padding:26px;
+  min-height:190px;
+  border-radius:9px;
+  background:#f1ece2;
+  color:var(--ink);
+  overflow:hidden;
+}
+
+.training-card:after{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  left:-70px;
+  bottom:-85px;
+  background:rgba(185,76,56,.08);
+}
+
+.training-card.gold-card{
+  background:var(--gold);
+  color:var(--forest);
+}
+
+.training-card .mini-label{
+  display:block;
+  font-size:12px;
+  font-weight:900;
+  color:var(--red);
+  margin-bottom:8px;
+}
+
+.training-card.gold-card .mini-label{
+  color:var(--forest);
+  opacity:.7;
+}
+
+.training-number{
+  display:block;
+  font-size:clamp(42px,6vw,68px);
+  line-height:1;
+  font-weight:900;
+  color:var(--forest);
+}
+
+.training-card:first-child .training-number{
+  color:var(--red);
+}
+
+.training-card p{
+  position:relative;
+  z-index:1;
+  margin:12px 0 0;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.training-period{
+  margin-top:15px;
+  padding-top:12px;
+  border-top:1px solid rgba(24,53,47,.15);
+  font-size:12px;
+  font-weight:800;
+}
+
+.inspection-chart{
+  display:grid;
+  gap:15px;
+  margin-top:20px;
+}
+
+.inspection-row{
+  display:grid;
+  grid-template-columns:minmax(180px,1.2fr) 3fr 90px;
+  gap:14px;
+  align-items:center;
+}
+
+.inspection-name{
+  font-size:13px;
+  color:#cbd3ce;
+  line-height:1.5;
+}
+
+.inspection-track{
+  height:18px;
+  background:rgba(255,255,255,.09);
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.inspection-fill{
+  height:100%;
+  width:0;
+  border-radius:20px;
+  background:var(--gold);
+  transition:width 1.2s ease;
+}
+
+.inspection-row.petroleum .inspection-fill{
+  background:var(--red);
+}
+
+.inspection-row.petroleum .inspection-name{
+  color:var(--cream);
+  font-weight:900;
+}
+
+.inspection-value{
+  text-align:left;
+  direction:ltr;
+  color:var(--gold);
+  font-size:13px;
+  font-weight:900;
+}
+
+.inspection-row.petroleum .inspection-value{
+  color:var(--red);
+}
+
+.inspection-total{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#aeb9b3;
+  font-size:13px;
+}
+
+.inspection-total strong{
+  color:var(--cream);
+  font-size:22px;
+}
+
+.petroleum-focus{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:28px;
+  align-items:center;
+  margin-top:24px;
+  padding:25px;
+  border:1px solid rgba(185,76,56,.38);
+  background:rgba(185,76,56,.08);
+  border-radius:9px;
+}
+
+.petroleum-focus-number{
+  text-align:center;
+}
+
+.petroleum-focus-number strong{
+  display:block;
+  color:var(--red);
+  font-size:58px;
+  line-height:1;
+}
+
+.petroleum-focus-number span{
+  color:#c6cec9;
+  font-size:12px;
+}
+
+.petroleum-focus h4{
+  margin:0 0 8px;
+  color:var(--cream);
+  font-size:21px;
+}
+
+.petroleum-focus p{
+  margin:0;
+  color:#b8c2bd;
+  font-size:14px;
+}
+
+.law-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin-top:22px;
+}
+
+.law-card{
+  padding:20px 15px;
+  min-height:155px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.035);
+  border-radius:8px;
+  transition:.25s ease;
+}
+
+.law-card:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,.06);
+}
+
+.law-number{
+  display:block;
+  color:var(--gold);
+  font-size:25px;
+  font-weight:900;
+  line-height:1;
+  margin-bottom:14px;
+}
+
+.law-card b{
+  display:block;
+  color:var(--cream);
+  font-size:14px;
+  line-height:1.7;
+}
+
+.law-card span{
+  display:block;
+  margin-top:7px;
+  color:#9eaaa4;
+  font-size:11px;
+  line-height:1.6;
+}
+
+@media(max-width:950px){
+  .law-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .inspection-row{
+    grid-template-columns:minmax(160px,1.1fr) 2fr 80px;
+  }
+}
+
+@media(max-width:700px){
+  .oversight-chart{
+    padding:22px 16px;
+  }
+
+  .oversight-chart-head{
+    display:block;
+  }
+
+  .chart-badge{
+    display:inline-block;
+    margin-top:12px;
+  }
+
+  .training-grid,
+  .petroleum-focus{
+    grid-template-columns:1fr;
+  }
+
+  .inspection-row{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+
+  .inspection-track{
+    height:14px;
+  }
+
+  .inspection-value{
+    text-align:right;
+  }
+
+  .law-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .service-chart{
+    padding-left:30px;
+  }
+}
+
+@media(max-width:520px){
+  .law-grid{
+    grid-template-columns:1fr;
+  }
+
+  .training-card{
+    min-height:165px;
+  }
+
+  .training-number{
+    font-size:50px;
+  }
+}
+
+
 /* =========================
    LEGAL NOTE
 ========================= */
@@ -2231,62 +2667,202 @@ footer{
       <p>
         أمام هذه المخاطر المتصاعدة، دفعنا البحث والتقصي إلى القيام بزيارة ميدانية
         لمقر المعهد والمركز القومي لدراسات السلامة والصحة المهنية وتأمين بيئة العمل،
-        للوقوف على الآليات المتبعة والجهود المبذولة على أرض الواقع. وخلال جولتنا،
-        تبيّن حجم التحديات التي يواجهها ملف تأمين العمال، حيث كشفت البيانات الرسمية
-        الموثقة التي حصلنا عليها عن تذبذب واضح في حجم الخدمات الميدانية (والتي تشمل
-        القياسات البيئية وتقديم الاستشارات الفنية للمنشآت)؛ إذ سجل المعهد في عام 2019
-        نحو 177 خدمة ميدانية، ليتراجع المؤشر بشكل حاد عام 2020 إلى 103 خدمات تزامناً
-        مع جائحة كورونا، قبل أن يعاود الارتفاع التدريجي ليسجل 145 خدمة في 2021،
-        و153 خدمة في 2022، ثم يعود للتراجع إلى 101 خدمة في 2023، ليستقر أخيراً عند
-        146 خدمة ميدانية خلال عام 2024.
+        للوقوف على الآليات المتبعة والجهود المبذولة على أرض الواقع.
       </p>
 
-      <p>
-        وفي مسار موازٍ لبناء الكوادر الفنية القادرة على كبح هذه الحوادث، رصدنا خلال
-        زيارتنا الدور المحوري الذي تلعبه معاهد السلامة والصحة المهنية «التابعة للمؤسسة
-        الثقافية العمالية بالاتحاد العام لنقابات عمال مصر»؛ حيث تُعنى هذه المعاهد بنشر
-        ثقافة السلامة وتوعية العمال بحقوقهم وواجباتهم، إلى جانب تدريب وتأهيل الأخصائيين
-        والفنيين لجان السلامة بالمنشآت. ووفقاً للبيانات التي زودنا بها المسؤولون
-        بالمعهد، نجحت المنظومة التدريبية في تنفيذ 1,095 دورة تدريبية، أسفرت عن تأهيل
-        وتدريب 24,520 أخصائياً وفنياً في الفترة من 2019 إلى 2024، وفقاً لما ينظمه
-        القرار رقم 134 لسنة 2003، حيث يجرى اختبار هؤلاء الكوادر بصرامة تحت إشراف لجنة
-        مشتركة مع الإدارة المركزية بوزارة العمل لضمان كفاءتهم الميدانية.
-      </p>
+      <div class="oversight-dashboard">
 
-      <h3>
-        خريطة التفتيش: أين يقع قطاع «البترول»؟
-      </h3>
+        <p class="oversight-dashboard-intro">
+          وخلال الجولة، كشفت البيانات الرسمية التي حصلنا عليها عن مسارين متوازيين:
+          خدمات ميدانية تتذبذب من عام إلى آخر، ومنظومة تدريبية تحاول بناء الكوادر
+          القادرة على الوقاية من الحوادث قبل وقوعها.
+        </p>
 
-      <p>
-        تعد عمليات التفتيش على القطاعات الاقتصادية الأداة الأساسية للدولة لضمان
-        الامتثال للوائح وحماية أطراف الإنتاج؛ إذ تمنح القوانين الأولوية للمنشآت ذات
-        الخطورة العالية، الكثافة العمالية، أو تلك التي يقع بها حادث جسيم أو شكوى.
-      </p>
+        <!-- FIELD SERVICES: 2019–2024 -->
+        <div class="oversight-chart reveal" id="servicesChart">
 
-      <p>
-        وتكشف البيانات التاريخية لإدارات التفتيش بوزارة العمل (في الفترة من 2019
-        إلى 2023) عن فحص وإعادة تقييم 155,570 منشأة توزعت على القطاعات المختلفة
-        على النحو التالي:
-      </p>
+          <div class="oversight-chart-head">
+            <div>
+              <h4>الخدمات الميدانية: مؤشر يتذبذب</h4>
+              <p>القياسات البيئية والاستشارات الفنية للمنشآت — 2019 إلى 2024</p>
+            </div>
+            <div class="chart-badge">6 سنوات</div>
+          </div>
 
-      <ul>
-        <li>الصناعات التحويلية: <b>56,641</b> منشأة</li>
-        <li>خدمات المجتمع: <b>42,382</b> منشأة</li>
-        <li>التجارة والفنادق والمطاعم: <b>31,461</b> منشأة</li>
-        <li>الكهرباء والمياه والغاز: <b>7,328</b> منشأة</li>
-        <li>النقل والمواصلات والتخزين: <b>6,901</b> منشأة</li>
-        <li>التشييد والبناء: <b>3,854</b> منشأة</li>
-        <li>الزراعة وصيد البر والبحر: <b>3,539</b> منشأة</li>
-        <li>المناجم والمحاجر والبترول (القطاع التابع له الحادث): <b>3,464</b> منشأة</li>
-      </ul>
+          <div class="service-chart">
+            <span class="service-y-label">200</span>
+            <span class="service-y-label y2">150</span>
+            <span class="service-y-label y3">100</span>
+            <span class="service-y-label y4">50</span>
+            <span class="service-y-label y5">0</span>
 
-      <p>
-        وتعكس هذه الأرقام تحدياً كبيراً؛ فبالرغم من أن قطاع «المناجم والمحاجر
-        والبترول» يأتي في مؤخرة الخريطة العددية للمنشآت المفتش عليها نظراً لطبيعته
-        النوعية، إلا أنه يمثل أحد أكثر القطاعات خطورة من حيث شدة الإصابات والآلات
-        المستخدمة، وهو ما يضع فرض الرقابة الصارمة عليه محط تساؤل حقيقي في ظل فاجعة
-        عامل شركة البترول.
-      </p>
+            <svg class="service-svg"
+                 viewBox="0 0 720 250"
+                 preserveAspectRatio="none"
+                 role="img"
+                 aria-label="تغير عدد الخدمات الميدانية من 177 خدمة في 2019 إلى 146 خدمة في 2024">
+
+              <path class="service-area"
+                    d="M20 42 L155 121 L290 69 L425 59 L560 124 L695 68 L695 230 L20 230 Z"></path>
+
+              <path class="service-line"
+                    d="M20 42 L155 121 L290 69 L425 59 L560 124 L695 68"></path>
+
+              <g>
+                <circle class="service-point" cx="20" cy="42" r="5"></circle>
+                <text class="service-value" x="20" y="25">177</text>
+                <text class="service-year" x="20" y="248">2019</text>
+
+                <circle class="service-point" cx="155" cy="121" r="5"></circle>
+                <text class="service-value" x="155" y="104">103</text>
+                <text class="service-year" x="155" y="248">2020</text>
+
+                <circle class="service-point" cx="290" cy="69" r="5"></circle>
+                <text class="service-value" x="290" y="52">145</text>
+                <text class="service-year" x="290" y="248">2021</text>
+
+                <circle class="service-point" cx="425" cy="59" r="5"></circle>
+                <text class="service-value" x="425" y="42">153</text>
+                <text class="service-year" x="425" y="248">2022</text>
+
+                <circle class="service-point" cx="560" cy="124" r="5"></circle>
+                <text class="service-value" x="560" y="107">101</text>
+                <text class="service-year" x="560" y="248">2023</text>
+
+                <circle class="service-point" cx="695" cy="68" r="5"></circle>
+                <text class="service-value" x="695" y="51">146</text>
+                <text class="service-year" x="695" y="248">2024</text>
+              </g>
+            </svg>
+          </div>
+
+          <p class="service-note">
+            هبط المؤشر من 177 خدمة في 2019 إلى 103 في 2020، ثم ارتفع تدريجيًا قبل تراجع 2023 واستقراره عند 146 خدمة في 2024.
+          </p>
+
+        </div>
+
+        <!-- TRAINING -->
+        <div class="oversight-chart reveal">
+
+          <div class="oversight-chart-head">
+            <div>
+              <h4>بناء الكوادر: أرقام المنظومة التدريبية</h4>
+              <p>وفق البيانات التي زودنا بها المسؤولون بالمعهد — 2019 إلى 2024</p>
+            </div>
+            <div class="chart-badge">2019 — 2024</div>
+          </div>
+
+          <div class="training-grid">
+
+            <div class="training-card">
+              <span class="mini-label">إجمالي الدورات</span>
+              <strong class="training-number">1,095</strong>
+              <p>دورة تدريبية نُفذت خلال الفترة.</p>
+              <div class="training-period">ست سنوات من التدريب</div>
+            </div>
+
+            <div class="training-card gold-card">
+              <span class="mini-label">الكوادر المؤهلة والمدرّبة</span>
+              <strong class="training-number">24,520</strong>
+              <p>أخصائيًا وفنيًا جرى تدريبهم وتأهيلهم.</p>
+              <div class="training-period">اختبارات تحت إشراف لجنة مشتركة مع الإدارة المركزية بوزارة العمل</div>
+            </div>
+
+          </div>
+
+          <p class="service-note">
+            ترتبط هذه المنظومة بما ينظمه القرار رقم 134 لسنة 2003، وفق ما ورد في البيانات التي زودنا بها المعهد.
+          </p>
+
+        </div>
+
+        <!-- INSPECTIONS -->
+        <div class="oversight-chart reveal">
+
+          <div class="oversight-chart-head">
+            <div>
+              <h4>خريطة التفتيش: أين يقع قطاع «البترول»؟</h4>
+              <p>فحص وإعادة تقييم المنشآت حسب القطاع — 2019 إلى 2023</p>
+            </div>
+            <div class="chart-badge">155,570 منشأة</div>
+          </div>
+
+          <div class="inspection-chart">
+
+            <div class="inspection-row">
+              <div class="inspection-name">الصناعات التحويلية</div>
+              <div class="inspection-track"><div class="inspection-fill" data-width="100%"></div></div>
+              <div class="inspection-value">56,641</div>
+            </div>
+
+            <div class="inspection-row">
+              <div class="inspection-name">خدمات المجتمع</div>
+              <div class="inspection-track"><div class="inspection-fill" data-width="74.8%"></div></div>
+              <div class="inspection-value">42,382</div>
+            </div>
+
+            <div class="inspection-row">
+              <div class="inspection-name">التجارة والفنادق والمطاعم</div>
+              <div class="inspection-track"><div class="inspection-fill" data-width="55.5%"></div></div>
+              <div class="inspection-value">31,461</div>
+            </div>
+
+            <div class="inspection-row">
+              <div class="inspection-name">الكهرباء والمياه والغاز</div>
+              <div class="inspection-track"><div class="inspection-fill" data-width="12.9%"></div></div>
+              <div class="inspection-value">7,328</div>
+            </div>
+
+            <div class="inspection-row">
+              <div class="inspection-name">النقل والمواصلات والتخزين</div>
+              <div class="inspection-track"><div class="inspection-fill" data-width="12.2%"></div></div>
+              <div class="inspection-value">6,901</div>
+            </div>
+
+            <div class="inspection-row">
+              <div class="inspection-name">التشييد والبناء</div>
+              <div class="inspection-track"><div class="inspection-fill" data-width="6.8%"></div></div>
+              <div class="inspection-value">3,854</div>
+            </div>
+
+            <div class="inspection-row">
+              <div class="inspection-name">الزراعة وصيد البر والبحر</div>
+              <div class="inspection-track"><div class="inspection-fill" data-width="6.2%"></div></div>
+              <div class="inspection-value">3,539</div>
+            </div>
+
+            <div class="inspection-row petroleum">
+              <div class="inspection-name">المناجم والمحاجر والبترول</div>
+              <div class="inspection-track"><div class="inspection-fill" data-width="6.1%"></div></div>
+              <div class="inspection-value">3,464</div>
+            </div>
+
+          </div>
+
+          <div class="inspection-total">
+            <span>إجمالي المنشآت التي فُحصت وأعيد تقييمها</span>
+            <strong>155,570</strong>
+          </div>
+
+          <div class="petroleum-focus">
+            <div class="petroleum-focus-number">
+              <strong>3,464</strong>
+              <span>منشأة</span>
+            </div>
+            <div>
+              <h4>قطاع «المناجم والمحاجر والبترول» في آخر الخريطة العددية</h4>
+              <p>
+                يمثل هذا القطاع 3,464 منشأة من إجمالي المنشآت المفحوصة في البيانات المعروضة،
+                مع الإشارة إلى أن طبيعة القطاع وخطورة الآلات المستخدمة تجعله مختلفًا نوعيًا
+                عن مجرد الترتيب العددي للمنشآت.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
 
       <h3>
         الصلاحيات التنفيذية والقوانين الحاكمة
@@ -2294,19 +2870,57 @@ footer{
 
       <p>
         تستند وزارة العمل في بسط رقابتها الميدانية إلى الكتاب الخامس من قانون العمل
-        رقم 12 لسنة 2003 وقراراته الوزارية المنفذة، والتي تمنح المفتشين كامل
-        الصلاحيات لإنفاذ القانون عبر جولات مكاتب السلامة والصحة المهنية، بالاعتماد
-        على حزمة قرارات تاريخية أبرزها:
+        رقم 12 لسنة 2003 وقراراته الوزارية المنفذة، والتي تمنح المفتشين الصلاحيات
+        اللازمة لإنفاذ القانون عبر جولات مكاتب السلامة والصحة المهنية.
       </p>
 
-      <ol>
-        <li><b>قرار وزير العمل رقم 134 لسنة 2003</b> (المعدل بالقرار 216 لسنة 2016): الخاص بتحديد المنشآت الملزمة بإنشاء أجهزة وظيفية ولجان للسلامة والصحة المهنية وتأمين بيئة العمل وقواعد تدريبها.</li>
-        <li><b>قرار وزير العمل رقم 126 لسنة 2003</b>: المنظم لإحصائيات ونماذج إصابات العمل والحوادث الجسيمة والأمراض المهنية.</li>
-        <li><b>قرار وزير العمل رقم 211 لسنة 2003</b>: المحدد لشكاوى وحدود الأمان والاشتراطات اللازمة لدرء المخاطر الفيزيائية، الميكانيكية، البيولوجية، والكيميائية.</li>
-        <li><b>قرار وزير العمل رقم 129 لسنة 2007</b>: الخاص بدليل الإجراءات العملي في مجال السلامة وتأمين بيئة العمل.</li>
-        <li><b>قرار وزير العمل رقم 122 لسنة 2017</b>: المتضمن تعميم قوائم المراجعة (Checklists) الموحدة ليتحرك المفتشون بموجبها أثناء الفحص الميداني للمنشآت.</li>
-      </ol>
+      <div class="oversight-chart reveal">
 
+        <div class="oversight-chart-head">
+          <div>
+            <h4>5 قرارات تحكم منظومة السلامة والتفتيش</h4>
+            <p>أبرز القرارات التاريخية الواردة في المادة</p>
+          </div>
+          <div class="chart-badge">2003 — 2017</div>
+        </div>
+
+        <div class="law-grid">
+
+          <div class="law-card">
+            <span class="law-number">134</span>
+            <b>قرار وزير العمل رقم 134 لسنة 2003</b>
+            <span>المعدل بالقرار 216 لسنة 2016 — أجهزة ولجان السلامة وقواعد تدريبها.</span>
+          </div>
+
+          <div class="law-card">
+            <span class="law-number">126</span>
+            <b>قرار وزير العمل رقم 126 لسنة 2003</b>
+            <span>إحصائيات ونماذج إصابات العمل والحوادث الجسيمة والأمراض المهنية.</span>
+          </div>
+
+          <div class="law-card">
+            <span class="law-number">211</span>
+            <b>قرار وزير العمل رقم 211 لسنة 2003</b>
+            <span>اشتراطات وحدود الأمان ودرء المخاطر الفيزيائية والميكانيكية والبيولوجية والكيميائية.</span>
+          </div>
+
+          <div class="law-card">
+            <span class="law-number">129</span>
+            <b>قرار وزير العمل رقم 129 لسنة 2007</b>
+            <span>دليل الإجراءات العملي في مجال السلامة وتأمين بيئة العمل.</span>
+          </div>
+
+          <div class="law-card">
+            <span class="law-number">122</span>
+            <b>قرار وزير العمل رقم 122 لسنة 2017</b>
+            <span>تعميم قوائم المراجعة الموحدة التي يتحرك المفتشون بموجبها.</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
     </div>
 
   </div>
@@ -2647,6 +3261,42 @@ document
   .forEach(chart=>{
     barObserver.observe(chart);
   });
+
+
+
+/* =========================
+   OVERSIGHT DASHBOARD
+========================= */
+
+const oversightCharts =
+  document.querySelectorAll(".oversight-chart");
+
+const oversightObserver =
+  new IntersectionObserver(
+    (entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("show");
+
+          entry.target
+            .querySelectorAll(".inspection-fill")
+            .forEach(bar=>{
+              bar.style.width = bar.dataset.width;
+            });
+
+          oversightObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold:.2
+    }
+  );
+
+oversightCharts.forEach(chart=>{
+  oversightObserver.observe(chart);
+});
 
 
 /* =========================
