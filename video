@@ -1,0 +1,86 @@
+from PIL import Image
+import numpy as np, os, subprocess, math, wave
+
+# مسارات العمل والملفات
+work = "ahmed_film_assets"
+os.makedirs(work, exist_ok=True)
+out = "ahmed_documentary_90sec.mp4"
+
+# 1. توليد أو تجهيز اللوحات الست للقصة (يمكنك استبدالها بصور المشاهد الفعلية)
+# هنا نفترض أن لديك صور المشاهد الستة محفوظة مسبقاً أو يتم توليدها ديناميكياً
+panel_paths = []
+for i in range(1, 7):
+    # إنشاء خلفية لكل مشهد بمقاسات 1080p وحفظها
+    canvas = Image.new("RGB", (1920, 1080), (12, 16, 20))
+    path = os.path.join(work, f"scene_{i}.jpg")
+    canvas.save(path, quality=94)
+    panel_paths.append(path)
+
+# 2. إنشاء خلفية صوتية سينمائية هادئة (بدون أصوات بشرية: طنين منخفض دافئ ونبضات هادئة)
+sr = 48000
+duration = 90
+t = np.arange(sr * duration, dtype=np.float32) / sr
+fade_in = np.clip(t / 5, 0, 1)
+fade_out = np.clip((duration - t) / 7, 0, 1)
+env = fade_in * fade_out
+
+audio = (
+    0.10 * np.sin(2 * np.pi * 55 * t) +
+    0.045 * np.sin(2 * np.pi * 82.4 * t) +
+    0.018 * np.sin(2 * np.pi * (110 + 0.8 * np.sin(2 * np.pi * 0.08 * t)) * t) +
+    0.012 * np.sin(2 * np.pi * 0.22 * t) * np.sin(2 * np.pi * 165 * t)
+)
+
+# إضافة نسيج جوي خفيف ومنتظم
+rng = np.random.default_rng(7)
+noise = rng.normal(0, 1, len(t)).astype(np.float32)
+kernel = np.ones(240, dtype=np.float32) / 240
+air = np.convolve(noise, kernel, mode="same")
+audio = np.clip((audio + 0.025 * air) * env, -0.8, 0.8)
+stereo = np.stack([audio, audio], axis=1)
+
+wav = os.path.join(work, "ambient_score.wav")
+with wave.open(wav, "wb") as wf:
+    wf.setnchannels(2)
+    wf.setsampwidth(2)
+    wf.setframerate(sr)
+    pcm = (stereo * 32767).astype("<i2")
+    wf.writeframes(pcm.tobytes())
+
+# 3. تحويل كل مشهد إلى مقطع مدته 15 ثانية مع حركة تقريب بطيئة (Zoom & Pan) عبر FFmpeg
+clips = []
+for i, path in enumerate(panel_paths):
+    clip = os.path.join(work, f"clip_{i+1}.mp4")
+    vf = (
+        "zoompan=z='min(zoom+0.00022,1.035)':"
+        "x='iw/2-(iw/zoom/2)+sin(on/180)*3':"
+        "y='ih/2-(ih/zoom/2)':d=360:s=1920x1080:fps=24,"
+        "fade=t=in:st=0:d=0.8,fade=t=out:st=14.2:d=0.8,"
+        "format=yuv420p"
+    )
+    cmd = [
+        "ffmpeg", "-y", "-loop", "1", "-i", path, "-t", "15", "-vf", vf,
+        "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", clip
+    ]
+    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    clips.append(clip)
+
+# 4. دمج المقاطع وترتيبها مع الملف الصوتي لإنتاج الفيلم النهائي (90 ثانية)
+concat_file = os.path.join(work, "concat.txt")
+with open(concat_file, "w") as f:
+    for p in clips:
+        f.write(f"file '{p}'\n")
+
+silent = os.path.join(work, "silent.mp4")
+subprocess.run([
+    "ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", concat_file,
+    "-c", "copy", silent
+], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+subprocess.run([
+    "ffmpeg", "-y", "-i", silent, "-i", wav, "-t", "90",
+    "-c:v", "copy", "-c:a", "aac", "-b:a", "160k",
+    "-shortest", "-movflags", "+faststart", out
+], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+print("تم إنتاج الفيلم بنجاح:", out)
